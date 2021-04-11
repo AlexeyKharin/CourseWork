@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Rzk-gi-4tg" customClass="CellProgress" customModule="Интерфеи_с_приложения_IOS8_KharinAlexey" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gfm-8F-6fq">
+                    <rect key="frame" x="12" y="12" width="334" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zPp-aE-qSJ">
+                    <rect key="frame" x="12" y="38" width="390" height="7"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="7" id="SGz-9A-o6y"/>
+                    </constraints>
+                </progressView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BnC-jI-k1E">
+                    <rect key="frame" x="375" y="12" width="27" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vz5-gM-w0s"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="Gfm-8F-6fq" firstAttribute="top" secondItem="Rzk-gi-4tg" secondAttribute="top" constant="12" id="2ip-uO-puW"/>
+                <constraint firstItem="zPp-aE-qSJ" firstAttribute="top" secondItem="Gfm-8F-6fq" secondAttribute="bottom" constant="10" id="9kq-ij-r2l"/>
+                <constraint firstItem="zPp-aE-qSJ" firstAttribute="top" secondItem="BnC-jI-k1E" secondAttribute="bottom" constant="10" id="Dbr-tf-Irl"/>
+                <constraint firstItem="vz5-gM-w0s" firstAttribute="bottom" secondItem="zPp-aE-qSJ" secondAttribute="bottom" constant="15" id="Fe3-42-W3x"/>
+                <constraint firstItem="Gfm-8F-6fq" firstAttribute="leading" secondItem="Rzk-gi-4tg" secondAttribute="leading" constant="12" id="FnZ-e6-1aw"/>
+                <constraint firstItem="zPp-aE-qSJ" firstAttribute="leading" secondItem="Rzk-gi-4tg" secondAttribute="leading" constant="12" id="HVB-AG-0Oa"/>
+                <constraint firstAttribute="trailing" secondItem="Gfm-8F-6fq" secondAttribute="trailing" constant="68" id="aUy-hY-flS"/>
+                <constraint firstItem="BnC-jI-k1E" firstAttribute="top" secondItem="Rzk-gi-4tg" secondAttribute="top" constant="12" id="ect-w3-J1p"/>
+                <constraint firstAttribute="trailing" secondItem="zPp-aE-qSJ" secondAttribute="trailing" constant="12" id="f9h-oy-ahh"/>
+                <constraint firstAttribute="trailing" secondItem="BnC-jI-k1E" secondAttribute="trailing" constant="12" id="gLl-dn-za7"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="countProgress" destination="BnC-jI-k1E" id="Rfe-Tj-mha"/>
+                <outlet property="progress" destination="zPp-aE-qSJ" id="omz-Kl-bn0"/>
+                <outlet property="progressGoal" destination="Gfm-8F-6fq" id="1Vu-rZ-OOs"/>
+            </connections>
+            <point key="canvasLocation" x="211.59420289855075" y="286.60714285714283"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "8036D348-F137-435E-A6A8-34174282E9C1"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D75A1F89-3536-4E58-A802-EFB498329CE0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x418;&#x43d;&#x442;&#x435;&#x440;&#x444;&#x435;&#x438;&#x306;&#x441; &#x43f;&#x440;&#x438;&#x43b;&#x43e;&#x436;&#x435;&#x43d;&#x438;&#x44f;-IOS8-KharinAlexey/HabitsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "collectionView"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E6454098-C567-4A57-80D4-AB0B45A05E73"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x418;&#x43d;&#x442;&#x435;&#x440;&#x444;&#x435;&#x438;&#x306;&#x441; &#x43f;&#x440;&#x438;&#x43b;&#x43e;&#x436;&#x435;&#x43d;&#x438;&#x44f;-IOS8-KharinAlexey/HabitsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "collectionView"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "E6454098-C567-4A57-80D4-AB0B45A05E73 - 7d845a22a6861b46"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x418;&#x43d;&#x442;&#x435;&#x440;&#x444;&#x435;&#x439;&#x441;_&#x43f;&#x440;&#x438;&#x43b;&#x43e;&#x436;&#x435;&#x43d;&#x438;&#x44f;_IOS8_KharinAlexey.HabitsViewController.(collectionView in _7E235EF24DC7B3B898722626BCB61019).getter : __C.UICollectionView"
+                  moduleName = "&#x418;&#x43d;&#x442;&#x435;&#x440;&#x444;&#x435;&#x438;&#x306;&#x441; &#x43f;&#x440;&#x438;&#x43b;&#x43e;&#x436;&#x435;&#x43d;&#x438;&#x44f;-IOS8-KharinAlexey"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexeykharin/Developer/%D0%98%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B8%CC%86%D1%81%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F-IOS8-KharinAlexey/%D0%98%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B8%CC%86%D1%81%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F-IOS8-KharinAlexey/HabitsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "9"
+                  endingLineNumber = "9"
+                  offsetFromSymbolStart = "221">
+               </Location>
+               <Location
+                  uuid = "E6454098-C567-4A57-80D4-AB0B45A05E73 - aaa7a95b6846cbb2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x418;&#x43d;&#x442;&#x435;&#x440;&#x444;&#x435;&#x439;&#x441;_&#x43f;&#x440;&#x438;&#x43b;&#x43e;&#x436;&#x435;&#x43d;&#x438;&#x44f;_IOS8_KharinAlexey.HabitsViewController.(collectionView in _7E235EF24DC7B3B898722626BCB61019).setter : __C.UICollectionView"
+                  moduleName = "&#x418;&#x43d;&#x442;&#x435;&#x440;&#x444;&#x435;&#x438;&#x306;&#x441; &#x43f;&#x440;&#x438;&#x43b;&#x43e;&#x436;&#x435;&#x43d;&#x438;&#x44f;-IOS8-KharinAlexey"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexeykharin/Developer/%D0%98%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B8%CC%86%D1%81%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F-IOS8-KharinAlexey/%D0%98%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B8%CC%86%D1%81%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F-IOS8-KharinAlexey/HabitsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "9"
+                  endingLineNumber = "9"
+                  offsetFromSymbolStart = "164">
+               </Location>
+               <Location
+                  uuid = "E6454098-C567-4A57-80D4-AB0B45A05E73 - 4ebe28cb4d3adc2c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x418;&#x43d;&#x442;&#x435;&#x440;&#x444;&#x435;&#x439;&#x441;_&#x43f;&#x440;&#x438;&#x43b;&#x43e;&#x436;&#x435;&#x43d;&#x438;&#x44f;_IOS8_KharinAlexey.HabitsViewController.(collectionView in _7E235EF24DC7B3B898722626BCB61019).modify : __C.UICollectionView"
+                  moduleName = "&#x418;&#x43d;&#x442;&#x435;&#x440;&#x444;&#x435;&#x438;&#x306;&#x441; &#x43f;&#x440;&#x438;&#x43b;&#x43e;&#x436;&#x435;&#x43d;&#x438;&#x44f;-IOS8-KharinAlexey"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexeykharin/Developer/%D0%98%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B8%CC%86%D1%81%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F-IOS8-KharinAlexey/%D0%98%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B8%CC%86%D1%81%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F-IOS8-KharinAlexey/HabitsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "26">
+               </Location>
+               <Location
+                  uuid = "E6454098-C567-4A57-80D4-AB0B45A05E73 - 9e299bbfc62dff2b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x418;&#x43d;&#x442;&#x435;&#x440;&#x444;&#x435;&#x439;&#x441;_&#x43f;&#x440;&#x438;&#x43b;&#x43e;&#x436;&#x435;&#x43d;&#x438;&#x44f;_IOS8_KharinAlexey.HabitsViewController.(collectionView in _7E235EF24DC7B3B898722626BCB61019).modify : __C.UICollectionView with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "&#x418;&#x43d;&#x442;&#x435;&#x440;&#x444;&#x435;&#x438;&#x306;&#x441; &#x43f;&#x440;&#x438;&#x43b;&#x43e;&#x436;&#x435;&#x43d;&#x438;&#x44f;-IOS8-KharinAlexey"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexeykharin/Developer/%D0%98%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B8%CC%86%D1%81%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F-IOS8-KharinAlexey/%D0%98%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B8%CC%86%D1%81%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F-IOS8-KharinAlexey/HabitsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "9"
+                  endingLineNumber = "9"
+                  offsetFromSymbolStart = "26">
+               </Location>
+               <Location
+                  uuid = "E6454098-C567-4A57-80D4-AB0B45A05E73 - e76f6e301380fbed"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x418;&#x43d;&#x442;&#x435;&#x440;&#x444;&#x435;&#x439;&#x441;_&#x43f;&#x440;&#x438;&#x43b;&#x43e;&#x436;&#x435;&#x43d;&#x438;&#x44f;_IOS8_KharinAlexey.HabitsViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; &#x418;&#x43d;&#x442;&#x435;&#x440;&#x444;&#x435;&#x439;&#x441;_&#x43f;&#x440;&#x438;&#x43b;&#x43e;&#x436;&#x435;&#x43d;&#x438;&#x44f;_IOS8_KharinAlexey.HabitsViewController"
+                  moduleName = "&#x418;&#x43d;&#x442;&#x435;&#x440;&#x444;&#x435;&#x438;&#x306;&#x441; &#x43f;&#x440;&#x438;&#x43b;&#x43e;&#x436;&#x435;&#x43d;&#x438;&#x44f;-IOS8-KharinAlexey"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexeykharin/Developer/%D0%98%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B8%CC%86%D1%81%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F-IOS8-KharinAlexey/%D0%98%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B8%CC%86%D1%81%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F-IOS8-KharinAlexey/HabitsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "9"
+                  endingLineNumber = "9"
+                  offsetFromSymbolStart = "223">
+               </Location>
+               <Location
+                  uuid = "E6454098-C567-4A57-80D4-AB0B45A05E73 - ca187e97d3c5974c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x418;&#x43d;&#x442;&#x435;&#x440;&#x444;&#x435;&#x439;&#x441;_&#x43f;&#x440;&#x438;&#x43b;&#x43e;&#x436;&#x435;&#x43d;&#x438;&#x44f;_IOS8_KharinAlexey.HabitsViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;&#x418;&#x43d;&#x442;&#x435;&#x440;&#x444;&#x435;&#x439;&#x441;_&#x43f;&#x440;&#x438;&#x43b;&#x43e;&#x436;&#x435;&#x43d;&#x438;&#x44f;_IOS8_KharinAlexey.HabitsViewController&gt;"
+                  moduleName = "&#x418;&#x43d;&#x442;&#x435;&#x440;&#x444;&#x435;&#x438;&#x306;&#x441; &#x43f;&#x440;&#x438;&#x43b;&#x43e;&#x436;&#x435;&#x43d;&#x438;&#x44f;-IOS8-KharinAlexey"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexeykharin/Developer/%D0%98%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B8%CC%86%D1%81%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F-IOS8-KharinAlexey/%D0%98%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B8%CC%86%D1%81%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F-IOS8-KharinAlexey/HabitsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "9"
+                  endingLineNumber = "9"
+                  offsetFromSymbolStart = "170">
+               </Location>
+               <Location
+                  uuid = "E6454098-C567-4A57-80D4-AB0B45A05E73 - 6edd7ac9e12f3c0e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; __C.UICollectionView in &#x418;&#x43d;&#x442;&#x435;&#x440;&#x444;&#x435;&#x439;&#x441;_&#x43f;&#x440;&#x438;&#x43b;&#x43e;&#x436;&#x435;&#x43d;&#x438;&#x44f;_IOS8_KharinAlexey.HabitsViewController.(collectionView in _7E235EF24DC7B3B898722626BCB61019).getter : __C.UICollectionView"
+                  moduleName = "&#x418;&#x43d;&#x442;&#x435;&#x440;&#x444;&#x435;&#x438;&#x306;&#x441; &#x43f;&#x440;&#x438;&#x43b;&#x43e;&#x436;&#x435;&#x43d;&#x438;&#x44f;-IOS8-KharinAlexey"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexeykharin/Developer/%D0%98%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B8%CC%86%D1%81%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F-IOS8-KharinAlexey/%D0%98%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B8%CC%86%D1%81%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F-IOS8-KharinAlexey/HabitsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "10"
+                  endingLineNumber = "10"
+                  offsetFromSymbolStart = "41">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BC375A01-18E0-47C8-BB5E-94E9B08CAB81"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x418;&#x43d;&#x442;&#x435;&#x440;&#x444;&#x435;&#x438;&#x306;&#x441; &#x43f;&#x440;&#x438;&#x43b;&#x43e;&#x436;&#x435;&#x43d;&#x438;&#x44f;-IOS8-KharinAlexey/HabitsStore.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1"
+            endingLineNumber = "1"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "63870B2D-C506-4C13-A41B-BBF6D97082DE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x418;&#x43d;&#x442;&#x435;&#x440;&#x444;&#x435;&#x438;&#x306;&#x441; &#x43f;&#x440;&#x438;&#x43b;&#x43e;&#x436;&#x435;&#x43d;&#x438;&#x44f;-IOS8-KharinAlexey/HabitDetailsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8A397078-8CE1-42EC-8FDD-9ADE54645E0B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x418;&#x43d;&#x442;&#x435;&#x440;&#x444;&#x435;&#x438;&#x306;&#x441; &#x43f;&#x440;&#x438;&#x43b;&#x43e;&#x436;&#x435;&#x43d;&#x438;&#x44f;-IOS8-KharinAlexey/HabitsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "HabitsViewController"
+            landmarkType = "21">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "30FE2329-4087-4FEA-8FF3-48F9370278AD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x418;&#x43d;&#x442;&#x435;&#x440;&#x444;&#x435;&#x438;&#x306;&#x441; &#x43f;&#x440;&#x438;&#x43b;&#x43e;&#x436;&#x435;&#x43d;&#x438;&#x44f;-IOS8-KharinAlexey/HabitViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "saveHabit(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

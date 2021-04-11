@@ -1,0 +1,640 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B415667B261A269B00E94307 /* HabitDetailsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B415667A261A269B00E94307 /* HabitDetailsHeader.swift */; };
+		B45943FD25EA460A006B9345 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45943FC25EA460A006B9345 /* AppDelegate.swift */; };
+		B45943FF25EA460A006B9345 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45943FE25EA460A006B9345 /* SceneDelegate.swift */; };
+		B459440125EA460A006B9345 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B459440025EA460A006B9345 /* ViewController.swift */; };
+		B459440425EA460A006B9345 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B459440225EA460A006B9345 /* Main.storyboard */; };
+		B459440625EA4611006B9345 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B459440525EA4611006B9345 /* Assets.xcassets */; };
+		B459440925EA4611006B9345 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B459440725EA4611006B9345 /* LaunchScreen.storyboard */; };
+		B459441425EA4611006B9345 /* ______________________IOS8_KharinAlexeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B459441325EA4611006B9345 /* ______________________IOS8_KharinAlexeyTests.swift */; };
+		B459441F25EA4611006B9345 /* ______________________IOS8_KharinAlexeyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B459441E25EA4611006B9345 /* ______________________IOS8_KharinAlexeyUITests.swift */; };
+		B459443025EA4658006B9345 /* HabitsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B459442F25EA4658006B9345 /* HabitsStore.swift */; };
+		B459443525EA67AF006B9345 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B459443425EA67AE006B9345 /* InfoViewController.swift */; };
+		B459443A25EA74F5006B9345 /* HabitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B459443925EA74F5006B9345 /* HabitsViewController.swift */; };
+		B459444A25EA97B7006B9345 /* CellProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = B459444925EA97B6006B9345 /* CellProgress.swift */; };
+		B459444F25EA97C6006B9345 /* CellProgress.xib in Resources */ = {isa = PBXBuildFile; fileRef = B459444E25EA97C6006B9345 /* CellProgress.xib */; };
+		B459445425EBAB1A006B9345 /* ProgressCellCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B459445325EBAB1A006B9345 /* ProgressCellCollection.swift */; };
+		B459446625EBEB0C006B9345 /* CreateHabitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B459446525EBEB0C006B9345 /* CreateHabitsViewController.swift */; };
+		B487091F25FA0C2F006A995D /* HabitCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B487091E25FA0C2F006A995D /* HabitCollectionViewCell.swift */; };
+		B487092725FA93FE006A995D /* HabitDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B487092625FA93FE006A995D /* HabitDetailsViewController.swift */; };
+		B487092C25FA9AF5006A995D /* HabitDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B487092B25FA9AF5006A995D /* HabitDetailsCell.swift */; };
+		B487093125FB3DDD006A995D /* HabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B487093025FB3DDD006A995D /* HabitViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B459441025EA4611006B9345 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B45943F125EA460A006B9345 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B45943F825EA460A006B9345;
+			remoteInfo = "Интерфейс приложения-IOS8-KharinAlexey";
+		};
+		B459441B25EA4611006B9345 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B45943F125EA460A006B9345 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B45943F825EA460A006B9345;
+			remoteInfo = "Интерфейс приложения-IOS8-KharinAlexey";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B415667A261A269B00E94307 /* HabitDetailsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailsHeader.swift; sourceTree = "<group>"; };
+		B45943F925EA460A006B9345 /* MyHabits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyHabits.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B45943FC25EA460A006B9345 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B45943FE25EA460A006B9345 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		B459440025EA460A006B9345 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B459440325EA460A006B9345 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B459440525EA4611006B9345 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B459440825EA4611006B9345 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B459440A25EA4611006B9345 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B459440F25EA4611006B9345 /* MyHabitsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyHabitsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B459441325EA4611006B9345 /* ______________________IOS8_KharinAlexeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "______________________IOS8_KharinAlexeyTests.swift"; sourceTree = "<group>"; };
+		B459441525EA4611006B9345 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B459441A25EA4611006B9345 /* MyHabitsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyHabitsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B459441E25EA4611006B9345 /* ______________________IOS8_KharinAlexeyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "______________________IOS8_KharinAlexeyUITests.swift"; sourceTree = "<group>"; };
+		B459442025EA4612006B9345 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B459442F25EA4658006B9345 /* HabitsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsStore.swift; sourceTree = "<group>"; };
+		B459443425EA67AE006B9345 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		B459443925EA74F5006B9345 /* HabitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsViewController.swift; sourceTree = "<group>"; };
+		B459444925EA97B6006B9345 /* CellProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellProgress.swift; sourceTree = "<group>"; };
+		B459444E25EA97C6006B9345 /* CellProgress.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellProgress.xib; sourceTree = "<group>"; };
+		B459445325EBAB1A006B9345 /* ProgressCellCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCellCollection.swift; sourceTree = "<group>"; };
+		B459446525EBEB0C006B9345 /* CreateHabitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHabitsViewController.swift; sourceTree = "<group>"; };
+		B487091E25FA0C2F006A995D /* HabitCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCollectionViewCell.swift; sourceTree = "<group>"; };
+		B487092625FA93FE006A995D /* HabitDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailsViewController.swift; sourceTree = "<group>"; };
+		B487092B25FA9AF5006A995D /* HabitDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailsCell.swift; sourceTree = "<group>"; };
+		B487093025FB3DDD006A995D /* HabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B45943F625EA460A006B9345 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B459440C25EA4611006B9345 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B459441725EA4611006B9345 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B45943F025EA460A006B9345 = {
+			isa = PBXGroup;
+			children = (
+				B45943FB25EA460A006B9345 /* Интерфейс приложения-IOS8-KharinAlexey */,
+				B459441225EA4611006B9345 /* Интерфейс приложения-IOS8-KharinAlexeyTests */,
+				B459441D25EA4611006B9345 /* Интерфейс приложения-IOS8-KharinAlexeyUITests */,
+				B45943FA25EA460A006B9345 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B45943FA25EA460A006B9345 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B45943F925EA460A006B9345 /* MyHabits.app */,
+				B459440F25EA4611006B9345 /* MyHabitsTests.xctest */,
+				B459441A25EA4611006B9345 /* MyHabitsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B45943FB25EA460A006B9345 /* Интерфейс приложения-IOS8-KharinAlexey */ = {
+			isa = PBXGroup;
+			children = (
+				B45943FC25EA460A006B9345 /* AppDelegate.swift */,
+				B45943FE25EA460A006B9345 /* SceneDelegate.swift */,
+				B459440025EA460A006B9345 /* ViewController.swift */,
+				B459443425EA67AE006B9345 /* InfoViewController.swift */,
+				B459440225EA460A006B9345 /* Main.storyboard */,
+				B487091E25FA0C2F006A995D /* HabitCollectionViewCell.swift */,
+				B459445325EBAB1A006B9345 /* ProgressCellCollection.swift */,
+				B459444925EA97B6006B9345 /* CellProgress.swift */,
+				B459444E25EA97C6006B9345 /* CellProgress.xib */,
+				B459443925EA74F5006B9345 /* HabitsViewController.swift */,
+				B459442F25EA4658006B9345 /* HabitsStore.swift */,
+				B459446525EBEB0C006B9345 /* CreateHabitsViewController.swift */,
+				B487093025FB3DDD006A995D /* HabitViewController.swift */,
+				B487092625FA93FE006A995D /* HabitDetailsViewController.swift */,
+				B487092B25FA9AF5006A995D /* HabitDetailsCell.swift */,
+				B415667A261A269B00E94307 /* HabitDetailsHeader.swift */,
+				B459440525EA4611006B9345 /* Assets.xcassets */,
+				B459440725EA4611006B9345 /* LaunchScreen.storyboard */,
+				B459440A25EA4611006B9345 /* Info.plist */,
+			);
+			path = "Интерфейс приложения-IOS8-KharinAlexey";
+			sourceTree = "<group>";
+		};
+		B459441225EA4611006B9345 /* Интерфейс приложения-IOS8-KharinAlexeyTests */ = {
+			isa = PBXGroup;
+			children = (
+				B459441325EA4611006B9345 /* ______________________IOS8_KharinAlexeyTests.swift */,
+				B459441525EA4611006B9345 /* Info.plist */,
+			);
+			path = "Интерфейс приложения-IOS8-KharinAlexeyTests";
+			sourceTree = "<group>";
+		};
+		B459441D25EA4611006B9345 /* Интерфейс приложения-IOS8-KharinAlexeyUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B459441E25EA4611006B9345 /* ______________________IOS8_KharinAlexeyUITests.swift */,
+				B459442025EA4612006B9345 /* Info.plist */,
+			);
+			path = "Интерфейс приложения-IOS8-KharinAlexeyUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B45943F825EA460A006B9345 /* MyHabits */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B459442325EA4612006B9345 /* Build configuration list for PBXNativeTarget "MyHabits" */;
+			buildPhases = (
+				B45943F525EA460A006B9345 /* Sources */,
+				B45943F625EA460A006B9345 /* Frameworks */,
+				B45943F725EA460A006B9345 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MyHabits;
+			productName = "Интерфейс приложения-IOS8-KharinAlexey";
+			productReference = B45943F925EA460A006B9345 /* MyHabits.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B459440E25EA4611006B9345 /* MyHabitsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B459442625EA4612006B9345 /* Build configuration list for PBXNativeTarget "MyHabitsTests" */;
+			buildPhases = (
+				B459440B25EA4611006B9345 /* Sources */,
+				B459440C25EA4611006B9345 /* Frameworks */,
+				B459440D25EA4611006B9345 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B459441125EA4611006B9345 /* PBXTargetDependency */,
+			);
+			name = MyHabitsTests;
+			productName = "Интерфейс приложения-IOS8-KharinAlexeyTests";
+			productReference = B459440F25EA4611006B9345 /* MyHabitsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B459441925EA4611006B9345 /* MyHabitsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B459442925EA4612006B9345 /* Build configuration list for PBXNativeTarget "MyHabitsUITests" */;
+			buildPhases = (
+				B459441625EA4611006B9345 /* Sources */,
+				B459441725EA4611006B9345 /* Frameworks */,
+				B459441825EA4611006B9345 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B459441C25EA4611006B9345 /* PBXTargetDependency */,
+			);
+			name = MyHabitsUITests;
+			productName = "Интерфейс приложения-IOS8-KharinAlexeyUITests";
+			productReference = B459441A25EA4611006B9345 /* MyHabitsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B45943F125EA460A006B9345 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1230;
+				LastUpgradeCheck = 1230;
+				TargetAttributes = {
+					B45943F825EA460A006B9345 = {
+						CreatedOnToolsVersion = 12.3;
+					};
+					B459440E25EA4611006B9345 = {
+						CreatedOnToolsVersion = 12.3;
+						TestTargetID = B45943F825EA460A006B9345;
+					};
+					B459441925EA4611006B9345 = {
+						CreatedOnToolsVersion = 12.3;
+						TestTargetID = B45943F825EA460A006B9345;
+					};
+				};
+			};
+			buildConfigurationList = B45943F425EA460A006B9345 /* Build configuration list for PBXProject "MyHabits" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B45943F025EA460A006B9345;
+			productRefGroup = B45943FA25EA460A006B9345 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B45943F825EA460A006B9345 /* MyHabits */,
+				B459440E25EA4611006B9345 /* MyHabitsTests */,
+				B459441925EA4611006B9345 /* MyHabitsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B45943F725EA460A006B9345 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B459440925EA4611006B9345 /* LaunchScreen.storyboard in Resources */,
+				B459440625EA4611006B9345 /* Assets.xcassets in Resources */,
+				B459444F25EA97C6006B9345 /* CellProgress.xib in Resources */,
+				B459440425EA460A006B9345 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B459440D25EA4611006B9345 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B459441825EA4611006B9345 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B45943F525EA460A006B9345 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B459445425EBAB1A006B9345 /* ProgressCellCollection.swift in Sources */,
+				B459443025EA4658006B9345 /* HabitsStore.swift in Sources */,
+				B459443A25EA74F5006B9345 /* HabitsViewController.swift in Sources */,
+				B487092C25FA9AF5006A995D /* HabitDetailsCell.swift in Sources */,
+				B459444A25EA97B7006B9345 /* CellProgress.swift in Sources */,
+				B487092725FA93FE006A995D /* HabitDetailsViewController.swift in Sources */,
+				B415667B261A269B00E94307 /* HabitDetailsHeader.swift in Sources */,
+				B487093125FB3DDD006A995D /* HabitViewController.swift in Sources */,
+				B459440125EA460A006B9345 /* ViewController.swift in Sources */,
+				B45943FD25EA460A006B9345 /* AppDelegate.swift in Sources */,
+				B45943FF25EA460A006B9345 /* SceneDelegate.swift in Sources */,
+				B459443525EA67AF006B9345 /* InfoViewController.swift in Sources */,
+				B459446625EBEB0C006B9345 /* CreateHabitsViewController.swift in Sources */,
+				B487091F25FA0C2F006A995D /* HabitCollectionViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B459440B25EA4611006B9345 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B459441425EA4611006B9345 /* ______________________IOS8_KharinAlexeyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B459441625EA4611006B9345 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B459441F25EA4611006B9345 /* ______________________IOS8_KharinAlexeyUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B459441125EA4611006B9345 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B45943F825EA460A006B9345 /* MyHabits */;
+			targetProxy = B459441025EA4611006B9345 /* PBXContainerItemProxy */;
+		};
+		B459441C25EA4611006B9345 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B45943F825EA460A006B9345 /* MyHabits */;
+			targetProxy = B459441B25EA4611006B9345 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B459440225EA460A006B9345 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B459440325EA460A006B9345 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B459440725EA4611006B9345 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B459440825EA4611006B9345 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B459442125EA4612006B9345 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B459442225EA4612006B9345 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B459442425EA4612006B9345 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Интерфейс приложения-IOS8-KharinAlexey/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Alexey-Kharin.----------------------IOS8-KharinAlexey";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B459442525EA4612006B9345 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Интерфейс приложения-IOS8-KharinAlexey/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Alexey-Kharin.----------------------IOS8-KharinAlexey";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B459442725EA4612006B9345 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Интерфейс приложения-IOS8-KharinAlexeyTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Alexey-Kharin.----------------------IOS8-KharinAlexeyTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyHabits.app/MyHabits";
+			};
+			name = Debug;
+		};
+		B459442825EA4612006B9345 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Интерфейс приложения-IOS8-KharinAlexeyTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Alexey-Kharin.----------------------IOS8-KharinAlexeyTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyHabits.app/MyHabits";
+			};
+			name = Release;
+		};
+		B459442A25EA4612006B9345 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Интерфейс приложения-IOS8-KharinAlexeyUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Alexey-Kharin.----------------------IOS8-KharinAlexeyUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Интерфейс приложения-IOS8-KharinAlexey";
+			};
+			name = Debug;
+		};
+		B459442B25EA4612006B9345 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Интерфейс приложения-IOS8-KharinAlexeyUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Alexey-Kharin.----------------------IOS8-KharinAlexeyUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Интерфейс приложения-IOS8-KharinAlexey";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B45943F425EA460A006B9345 /* Build configuration list for PBXProject "MyHabits" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B459442125EA4612006B9345 /* Debug */,
+				B459442225EA4612006B9345 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B459442325EA4612006B9345 /* Build configuration list for PBXNativeTarget "MyHabits" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B459442425EA4612006B9345 /* Debug */,
+				B459442525EA4612006B9345 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B459442625EA4612006B9345 /* Build configuration list for PBXNativeTarget "MyHabitsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B459442725EA4612006B9345 /* Debug */,
+				B459442825EA4612006B9345 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B459442925EA4612006B9345 /* Build configuration list for PBXNativeTarget "MyHabitsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B459442A25EA4612006B9345 /* Debug */,
+				B459442B25EA4612006B9345 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B45943F125EA460A006B9345 /* Project object */;
+}
