@@ -34,7 +34,7 @@ class HabitsViewController: UIViewController {
         )
         return collectionView
     }()
-    
+//   Test
     let customNavigationBar = UINavigationBar()
     let titlelabel = UILabel()
     
