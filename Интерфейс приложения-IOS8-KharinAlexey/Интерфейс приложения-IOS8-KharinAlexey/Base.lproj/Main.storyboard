@@ -255,7 +255,6 @@
                             <navigationBar contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Ye1-GA-hBz">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="faO-8M-q9V"/>
                                     <constraint firstAttribute="height" constant="44" id="g7l-8r-gPY"/>
                                 </constraints>
                                 <items>
@@ -276,10 +275,10 @@
                                 </items>
                             </navigationBar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kf2-4z-VUw">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="754"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Utq-hc-Kit">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="800"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="573"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="НАЗВАНИЕ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BdE-ls-XWb">
                                                 <rect key="frame" x="16" y="22" width="382" height="21"/>
@@ -330,7 +329,7 @@
                                                 </constraints>
                                             </datePicker>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9R3-xI-fHx">
-                                                <rect key="frame" x="110" y="725" width="194" height="33"/>
+                                                <rect key="frame" x="110" y="532" width="194" height="33"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <state key="normal" title="Удалить привычку">
                                                     <color key="titleColor" systemColor="systemRedColor"/>
@@ -357,13 +356,13 @@
                                             <constraint firstAttribute="trailing" secondItem="BdE-ls-XWb" secondAttribute="trailing" constant="16" id="bHl-18-Agb"/>
                                             <constraint firstItem="d3t-sL-Pt4" firstAttribute="leading" secondItem="Utq-hc-Kit" secondAttribute="leading" constant="16" id="dIb-W9-zUW"/>
                                             <constraint firstAttribute="trailing" secondItem="mpJ-PH-2RF" secondAttribute="trailing" constant="16" id="dhR-wR-kMt"/>
+                                            <constraint firstAttribute="bottom" secondItem="9R3-xI-fHx" secondAttribute="bottom" constant="8" id="e2M-E9-ohA"/>
                                             <constraint firstItem="BdE-ls-XWb" firstAttribute="top" secondItem="Utq-hc-Kit" secondAttribute="top" constant="22" id="fgN-NF-ILm"/>
                                             <constraint firstItem="iqv-qC-sPz" firstAttribute="leading" secondItem="Utq-hc-Kit" secondAttribute="leading" constant="16" id="fyc-yw-Hyj"/>
                                             <constraint firstItem="BdE-ls-XWb" firstAttribute="leading" secondItem="Utq-hc-Kit" secondAttribute="leading" constant="16" id="ha3-Jc-s7E"/>
                                             <constraint firstItem="d3t-sL-Pt4" firstAttribute="top" secondItem="CQm-hX-k93" secondAttribute="bottom" constant="15" id="j6H-8C-eOG"/>
                                             <constraint firstItem="mpJ-PH-2RF" firstAttribute="leading" secondItem="Utq-hc-Kit" secondAttribute="leading" constant="16" id="lkT-JT-fCV"/>
-                                            <constraint firstAttribute="bottom" secondItem="9R3-xI-fHx" secondAttribute="bottom" constant="42" id="lt0-Uh-hii"/>
-                                            <constraint firstItem="9R3-xI-fHx" firstAttribute="top" secondItem="a7g-f7-mgI" secondAttribute="bottom" constant="339" id="mfC-c0-n9x"/>
+                                            <constraint firstItem="9R3-xI-fHx" firstAttribute="top" secondItem="a7g-f7-mgI" secondAttribute="bottom" constant="146" id="nuE-9A-fOD"/>
                                             <constraint firstItem="a7g-f7-mgI" firstAttribute="leading" secondItem="Utq-hc-Kit" secondAttribute="leading" constant="16" id="q0R-dA-DEb"/>
                                             <constraint firstItem="CQm-hX-k93" firstAttribute="leading" secondItem="Utq-hc-Kit" secondAttribute="leading" constant="16" id="x4Q-pE-FZJ"/>
                                         </constraints>
@@ -371,10 +370,10 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Utq-hc-Kit" firstAttribute="leading" secondItem="Kf2-4z-VUw" secondAttribute="leading" id="4na-i1-YtM"/>
-                                    <constraint firstItem="Utq-hc-Kit" firstAttribute="top" secondItem="Kf2-4z-VUw" secondAttribute="top" id="Ch5-Er-8G5"/>
+                                    <constraint firstAttribute="bottom" secondItem="Utq-hc-Kit" secondAttribute="bottom" id="KSl-l3-ytb"/>
                                     <constraint firstItem="Utq-hc-Kit" firstAttribute="width" secondItem="Kf2-4z-VUw" secondAttribute="width" id="NHk-qN-TfT"/>
                                     <constraint firstAttribute="trailing" secondItem="Utq-hc-Kit" secondAttribute="trailing" id="Qth-em-cp7"/>
-                                    <constraint firstAttribute="bottom" secondItem="Utq-hc-Kit" secondAttribute="bottom" id="XZD-dS-Dvn"/>
+                                    <constraint firstItem="Utq-hc-Kit" firstAttribute="top" secondItem="Kf2-4z-VUw" secondAttribute="top" id="sbW-ma-8d1"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -384,10 +383,10 @@
                             <constraint firstItem="Ye1-GA-hBz" firstAttribute="leading" secondItem="ZMD-TQ-Lu5" secondAttribute="leading" id="9Zh-SX-XEP"/>
                             <constraint firstItem="Kf2-4z-VUw" firstAttribute="leading" secondItem="ZMD-TQ-Lu5" secondAttribute="leading" id="BXM-3a-4he"/>
                             <constraint firstItem="Kf2-4z-VUw" firstAttribute="trailing" secondItem="ZMD-TQ-Lu5" secondAttribute="trailing" id="QaA-EG-v8w"/>
-                            <constraint firstItem="Kf2-4z-VUw" firstAttribute="top" secondItem="Ye1-GA-hBz" secondAttribute="bottom" id="U8W-3w-mbm"/>
                             <constraint firstItem="Ye1-GA-hBz" firstAttribute="top" secondItem="ZMD-TQ-Lu5" secondAttribute="top" id="XD4-fa-4Ey"/>
+                            <constraint firstItem="Kf2-4z-VUw" firstAttribute="bottom" secondItem="ZMD-TQ-Lu5" secondAttribute="bottom" constant="-20" id="daf-u2-PVT"/>
                             <constraint firstItem="Ye1-GA-hBz" firstAttribute="trailing" secondItem="ZMD-TQ-Lu5" secondAttribute="trailing" id="wGT-So-oeP"/>
-                            <constraint firstAttribute="bottom" secondItem="Kf2-4z-VUw" secondAttribute="bottom" id="xFm-rE-EkP"/>
+                            <constraint firstItem="Kf2-4z-VUw" firstAttribute="top" secondItem="Ye1-GA-hBz" secondAttribute="bottom" id="ygG-1y-ZMB"/>
                         </constraints>
                     </view>
                     <connections>

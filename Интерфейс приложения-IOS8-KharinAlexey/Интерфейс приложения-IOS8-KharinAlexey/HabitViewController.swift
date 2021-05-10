@@ -28,13 +28,15 @@ class HabitViewController: UIViewController {
     @IBAction func createColorPicker(_ sender: Any) {
         presentColorPicKer ()
     }
-    
-    func presentColorPicKer () {
+    lazy var colorPickerView: UIColorPickerViewController = {
         let colorPicker =  UIColorPickerViewController()
         colorPicker.delegate = self
         colorPicker.selectedColor = detailedInformationOfHabit!.color
         colorPicker.title = "Выбрать цвет"
-        present(colorPicker, animated: true, completion: nil)
+        return colorPicker
+    }()
+    func presentColorPicKer () {
+        present(colorPickerView, animated: true, completion: nil)
     }
     
     @IBOutlet weak var scrollView: UIScrollView!
@@ -162,6 +164,7 @@ class HabitViewController: UIViewController {
 extension HabitViewController:  UIColorPickerViewControllerDelegate {
     func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
         colorPicker.backgroundColor = viewController.selectedColor
+        colorPickerView.selectedColor = viewController.selectedColor
     }
     func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
         print("Color picked")

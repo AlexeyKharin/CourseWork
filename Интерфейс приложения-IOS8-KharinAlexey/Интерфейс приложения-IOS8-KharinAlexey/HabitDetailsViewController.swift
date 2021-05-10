@@ -15,7 +15,7 @@ class HabitDetailsViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.toAutoLayout()
-        tableView.register(HabitDetailsHeader.self, forHeaderFooterViewReuseIdentifier: String(describing: HabitDetailsHeader.self))
+//        tableView.register(HabitDetailsHeader.self, forHeaderFooterViewReuseIdentifier: String(describing: HabitDetailsHeader.self))
         tableView.register(HabitDetailsCell.self, forCellReuseIdentifier: String(describing: HabitDetailsCell.self))
         return tableView
     }()
@@ -100,13 +100,16 @@ extension HabitDetailsViewController: UITableViewDataSource {
         }
         return cell
     }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return  "АКТИВНОСТЬ"
+    }
 }
 // MARK: - UITableViewDelegate
 extension HabitDetailsViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: String(describing: HabitDetailsHeader.self)) as! HabitDetailsHeader
-        return headerView
-    }
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: String(describing: HabitDetailsHeader.self)) as! HabitDetailsHeader
+//        return headerView
+//    }
 }
 protocol CloseHabitDetailsViewController {
     func closeHabitDetailsViewController ()

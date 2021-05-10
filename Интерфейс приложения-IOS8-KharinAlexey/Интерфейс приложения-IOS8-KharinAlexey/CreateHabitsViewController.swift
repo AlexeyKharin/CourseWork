@@ -55,12 +55,16 @@ class CreateHabitsViewController: UIViewController {
         }
     }
     
-    func presentColorPicKer () {
+    lazy var colorPickerView: UIColorPickerViewController = {
         let colorPicker =  UIColorPickerViewController()
         colorPicker.delegate = self
         colorPicker.selectedColor = .orange
         colorPicker.title = "Выбрать цвет"
-        present(colorPicker, animated: true, completion: nil)
+        return colorPicker
+    }()
+    
+    func presentColorPicKer () {
+        present(colorPickerView, animated: true, completion: nil)
     }
     
     @IBAction func pickColor(_ sender: Any) {
@@ -129,6 +133,8 @@ class CreateHabitsViewController: UIViewController {
 extension CreateHabitsViewController:  UIColorPickerViewControllerDelegate {
     func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
         colorPicker.backgroundColor = viewController.selectedColor
+        colorPickerView.selectedColor = viewController.selectedColor
+
     }
     func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
         print("Color picked")

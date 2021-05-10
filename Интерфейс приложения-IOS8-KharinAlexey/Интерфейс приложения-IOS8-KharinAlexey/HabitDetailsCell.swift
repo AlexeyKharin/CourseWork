@@ -41,3 +41,4 @@ class HabitDetailsCell: UITableViewCell {
         NSLayoutConstraint.activate(constraints)
     }
 }
+
