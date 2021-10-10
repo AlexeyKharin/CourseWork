@@ -1,9 +1,3 @@
-//
-//  AppDelegate.swift
-//  Forecast
-//
-//  Created by Alexey Kharin on 02.10.2021.
-//
 
 import UIKit
 
