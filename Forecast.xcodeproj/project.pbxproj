@@ -8,6 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		8DA73A80EBACD01B17A09046 /* Pods_Forecast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E31B6F693353EE979CEF454A /* Pods_Forecast.framework */; };
+		B43349A12718ABBC00DF3A0C /* HourlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43349A02718ABBC00DF3A0C /* HourlyViewController.swift */; };
+		B43349A42718B1B100DF3A0C /* HourlyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43349A32718B1B100DF3A0C /* HourlyTableViewCell.swift */; };
+		B43349A7271AE8CB00DF3A0C /* DailySummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43349A6271AE8CB00DF3A0C /* DailySummaryViewController.swift */; };
+		B43349AA271AEF7C00DF3A0C /* DaySummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43349A9271AEF7C00DF3A0C /* DaySummaryTableViewCell.swift */; };
+		B43349B5271B685400DF3A0C /* CollectionHeaderForSectionOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43349B4271B685400DF3A0C /* CollectionHeaderForSectionOne.swift */; };
+		B43349B8271B69DB00DF3A0C /* CollectionHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43349B7271B69DB00DF3A0C /* CollectionHeaderCell.swift */; };
+		B43349BC271C0B7A00DF3A0C /* CallCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43349BB271C0B7A00DF3A0C /* CallCollectionView.swift */; };
+		B43349BF271C227500DF3A0C /* NightSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43349BE271C227500DF3A0C /* NightSummaryTableViewCell.swift */; };
+		B43349CC271F40F600DF3A0C /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43349CB271F40F600DF3A0C /* OnboardingViewController.swift */; };
+		B43349CF271F44F400DF3A0C /* UIPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43349CE271F44F400DF3A0C /* UIPageViewController.swift */; };
+		B43349D32725759600DF3A0C /* SunAndMoonFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43349D22725759500DF3A0C /* SunAndMoonFooter.swift */; };
+		B43349D92725BF8700DF3A0C /* DashedLineHorizonatalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43349D82725BF8700DF3A0C /* DashedLineHorizonatalView.swift */; };
+		B45EA5BA272849E00016E1C2 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45EA5B9272849E00016E1C2 /* Coordinator.swift */; };
+		B45EA5BE27285FF30016E1C2 /* ViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45EA5BD27285FF30016E1C2 /* ViewModelDelegate.swift */; };
 		B47DEEA6271218E800C17235 /* RealmModelHourly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47DEEA5271218E800C17235 /* RealmModelHourly.swift */; };
 		B47DEEB52712F53200C17235 /* RealmDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47DEEB42712F53200C17235 /* RealmDataProvider.swift */; };
 		B486C97127087EF600C6006F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B486C97027087EF600C6006F /* AppDelegate.swift */; };
@@ -23,11 +37,28 @@
 		B486C992270CE88A00C6006F /* GeoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B486C991270CE88A00C6006F /* GeoData.swift */; };
 		B486C995270F6F8B00C6006F /* ConverterModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B486C994270F6F8A00C6006F /* ConverterModelData.swift */; };
 		B4B0C27127135CB4005B18A0 /* RealmModelDaily.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B0C27027135CB4005B18A0 /* RealmModelDaily.swift */; };
+		B4B0C2752715D797005B18A0 /* DailyCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B0C2742715D796005B18A0 /* DailyCollectionCell.swift */; };
+		B4B0C27F2716171B005B18A0 /* HourlyCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B0C27E2716171A005B18A0 /* HourlyCollectionCell.swift */; };
+		B4B0C2822716210E005B18A0 /* CallHourlyCollecttionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B0C2812716210E005B18A0 /* CallHourlyCollecttionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1A3AB818B06D2D2A19C56FBE /* Pods-Forecast.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Forecast.release.xcconfig"; path = "Target Support Files/Pods-Forecast/Pods-Forecast.release.xcconfig"; sourceTree = "<group>"; };
 		2A877F81E002231109D4363A /* Pods-Forecast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Forecast.debug.xcconfig"; path = "Target Support Files/Pods-Forecast/Pods-Forecast.debug.xcconfig"; sourceTree = "<group>"; };
+		B43349A02718ABBC00DF3A0C /* HourlyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyViewController.swift; sourceTree = "<group>"; };
+		B43349A32718B1B100DF3A0C /* HourlyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyTableViewCell.swift; sourceTree = "<group>"; };
+		B43349A6271AE8CB00DF3A0C /* DailySummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailySummaryViewController.swift; sourceTree = "<group>"; };
+		B43349A9271AEF7C00DF3A0C /* DaySummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaySummaryTableViewCell.swift; sourceTree = "<group>"; };
+		B43349B4271B685400DF3A0C /* CollectionHeaderForSectionOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHeaderForSectionOne.swift; sourceTree = "<group>"; };
+		B43349B7271B69DB00DF3A0C /* CollectionHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHeaderCell.swift; sourceTree = "<group>"; };
+		B43349BB271C0B7A00DF3A0C /* CallCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallCollectionView.swift; sourceTree = "<group>"; };
+		B43349BE271C227500DF3A0C /* NightSummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightSummaryTableViewCell.swift; sourceTree = "<group>"; };
+		B43349CB271F40F600DF3A0C /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		B43349CE271F44F400DF3A0C /* UIPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPageViewController.swift; sourceTree = "<group>"; };
+		B43349D22725759500DF3A0C /* SunAndMoonFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunAndMoonFooter.swift; sourceTree = "<group>"; };
+		B43349D82725BF8700DF3A0C /* DashedLineHorizonatalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashedLineHorizonatalView.swift; sourceTree = "<group>"; };
+		B45EA5B9272849E00016E1C2 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		B45EA5BD27285FF30016E1C2 /* ViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelDelegate.swift; sourceTree = "<group>"; };
 		B47DEEA5271218E800C17235 /* RealmModelHourly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModelHourly.swift; sourceTree = "<group>"; };
 		B47DEEB42712F53200C17235 /* RealmDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataProvider.swift; sourceTree = "<group>"; };
 		B486C96D27087EF600C6006F /* Forecast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Forecast.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,6 +76,9 @@
 		B486C991270CE88A00C6006F /* GeoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoData.swift; sourceTree = "<group>"; };
 		B486C994270F6F8A00C6006F /* ConverterModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterModelData.swift; sourceTree = "<group>"; };
 		B4B0C27027135CB4005B18A0 /* RealmModelDaily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModelDaily.swift; sourceTree = "<group>"; };
+		B4B0C2742715D796005B18A0 /* DailyCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCollectionCell.swift; sourceTree = "<group>"; };
+		B4B0C27E2716171A005B18A0 /* HourlyCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyCollectionCell.swift; sourceTree = "<group>"; };
+		B4B0C2812716210E005B18A0 /* CallHourlyCollecttionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallHourlyCollecttionView.swift; sourceTree = "<group>"; };
 		E31B6F693353EE979CEF454A /* Pods_Forecast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Forecast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -66,6 +100,50 @@
 				E31B6F693353EE979CEF454A /* Pods_Forecast.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B43349AD271B66A600DF3A0C /* DailySummaryViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B43349A6271AE8CB00DF3A0C /* DailySummaryViewController.swift */,
+				B43349A9271AEF7C00DF3A0C /* DaySummaryTableViewCell.swift */,
+				B43349D22725759500DF3A0C /* SunAndMoonFooter.swift */,
+				B43349BE271C227500DF3A0C /* NightSummaryTableViewCell.swift */,
+				B43349B4271B685400DF3A0C /* CollectionHeaderForSectionOne.swift */,
+				B43349BB271C0B7A00DF3A0C /* CallCollectionView.swift */,
+				B43349B7271B69DB00DF3A0C /* CollectionHeaderCell.swift */,
+			);
+			name = DailySummaryViewController;
+			sourceTree = "<group>";
+		};
+		B43349B3271B676B00DF3A0C /* FirstWindow */ = {
+			isa = PBXGroup;
+			children = (
+				B486C97427087EF600C6006F /* ViewController.swift */,
+				B45EA5BD27285FF30016E1C2 /* ViewModelDelegate.swift */,
+				B4B0C27E2716171A005B18A0 /* HourlyCollectionCell.swift */,
+				B4B0C2812716210E005B18A0 /* CallHourlyCollecttionView.swift */,
+				B4B0C2742715D796005B18A0 /* DailyCollectionCell.swift */,
+				B43349C9271CAB7600DF3A0C /* HourlyViewController */,
+			);
+			name = FirstWindow;
+			sourceTree = "<group>";
+		};
+		B43349C9271CAB7600DF3A0C /* HourlyViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B43349A02718ABBC00DF3A0C /* HourlyViewController.swift */,
+				B43349A32718B1B100DF3A0C /* HourlyTableViewCell.swift */,
+			);
+			name = HourlyViewController;
+			sourceTree = "<group>";
+		};
+		B45EA5B8272845D20016E1C2 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				B45EA5B9272849E00016E1C2 /* Coordinator.swift */,
+			);
+			name = Coordinators;
 			sourceTree = "<group>";
 		};
 		B486C96427087EF600C6006F = {
@@ -91,9 +169,14 @@
 			children = (
 				B486C97027087EF600C6006F /* AppDelegate.swift */,
 				B486C97227087EF600C6006F /* SceneDelegate.swift */,
-				B486C97427087EF600C6006F /* ViewController.swift */,
+				B43349B3271B676B00DF3A0C /* FirstWindow */,
+				B43349AD271B66A600DF3A0C /* DailySummaryViewController */,
 				B486C97627087EF600C6006F /* Main.storyboard */,
 				B486C988270B77B000C6006F /* NetworkManager.swift */,
+				B45EA5B8272845D20016E1C2 /* Coordinators */,
+				B43349CB271F40F600DF3A0C /* OnboardingViewController.swift */,
+				B43349D82725BF8700DF3A0C /* DashedLineHorizonatalView.swift */,
+				B43349CE271F44F400DF3A0C /* UIPageViewController.swift */,
 				B486C994270F6F8A00C6006F /* ConverterModelData.swift */,
 				B47DEEA5271218E800C17235 /* RealmModelHourly.swift */,
 				B4B0C27027135CB4005B18A0 /* RealmModelDaily.swift */,
@@ -232,17 +315,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B43349B8271B69DB00DF3A0C /* CollectionHeaderCell.swift in Sources */,
 				B47DEEB52712F53200C17235 /* RealmDataProvider.swift in Sources */,
+				B43349D32725759600DF3A0C /* SunAndMoonFooter.swift in Sources */,
+				B43349B5271B685400DF3A0C /* CollectionHeaderForSectionOne.swift in Sources */,
+				B43349BF271C227500DF3A0C /* NightSummaryTableViewCell.swift in Sources */,
 				B4B0C27127135CB4005B18A0 /* RealmModelDaily.swift in Sources */,
 				B486C986270A25B000C6006F /* ApiType.swift in Sources */,
 				B486C97527087EF600C6006F /* ViewController.swift in Sources */,
 				B486C98F270CDC2C00C6006F /* ModelDaily.swift in Sources */,
+				B43349A42718B1B100DF3A0C /* HourlyTableViewCell.swift in Sources */,
 				B486C995270F6F8B00C6006F /* ConverterModelData.swift in Sources */,
+				B4B0C2822716210E005B18A0 /* CallHourlyCollecttionView.swift in Sources */,
+				B43349A7271AE8CB00DF3A0C /* DailySummaryViewController.swift in Sources */,
+				B43349A12718ABBC00DF3A0C /* HourlyViewController.swift in Sources */,
 				B486C989270B77B000C6006F /* NetworkManager.swift in Sources */,
 				B486C97127087EF600C6006F /* AppDelegate.swift in Sources */,
+				B4B0C2752715D797005B18A0 /* DailyCollectionCell.swift in Sources */,
 				B47DEEA6271218E800C17235 /* RealmModelHourly.swift in Sources */,
+				B43349AA271AEF7C00DF3A0C /* DaySummaryTableViewCell.swift in Sources */,
+				B43349D92725BF8700DF3A0C /* DashedLineHorizonatalView.swift in Sources */,
+				B45EA5BE27285FF30016E1C2 /* ViewModelDelegate.swift in Sources */,
+				B45EA5BA272849E00016E1C2 /* Coordinator.swift in Sources */,
 				B486C992270CE88A00C6006F /* GeoData.swift in Sources */,
+				B43349CC271F40F600DF3A0C /* OnboardingViewController.swift in Sources */,
+				B43349BC271C0B7A00DF3A0C /* CallCollectionView.swift in Sources */,
+				B43349CF271F44F400DF3A0C /* UIPageViewController.swift in Sources */,
 				B486C98C270CDB4300C6006F /* ModelHourly.swift in Sources */,
+				B4B0C27F2716171B005B18A0 /* HourlyCollectionCell.swift in Sources */,
 				B486C97327087EF600C6006F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -25,6 +25,7 @@ struct NetworkManager {
                 defer {
                     DispatchQueue.main.async {
                         completion(result)
+                        print(apiType.request)
                     }
                 }
                 

@@ -1,7 +1,4 @@
 import Foundation
-
-// MARK: - ModelHourly
-
 // MARK: - ModelHourly
 struct ModelHourly: Codable {
     let lat, lon: Double?

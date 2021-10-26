@@ -12,9 +12,8 @@ class RealmModelDaily: Object {
     }
     
     dynamic var weatherDaily = List<ModelOneDay>()
-    
-   
 }
+
 @objcMembers
 class ModelOneDay: Object {
     
@@ -26,12 +25,13 @@ class ModelOneDay: Object {
     dynamic var moonset: String = String()
     dynamic var feelsLikeNight: Double = Double()
     dynamic var feelsLikeDay: Double = Double()
-    dynamic var tempDay: Double = Double()
-    dynamic var tempNight: Double = Double()
+    dynamic var tempDay: Int = Int()
+    dynamic var tempNight: Int = Int()
     dynamic var uvi: Double = Double()
     dynamic var clouds: Int = Int()
     dynamic var windSpeed: Double = Double()
-    dynamic var pop: Double = Double()
+    dynamic var pop: Int = Int()
     dynamic var weatherDescription: String = String()
     dynamic var main: String = String()
+    dynamic var imageCondition: Data = Data()
 }

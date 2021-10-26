@@ -28,7 +28,7 @@ class RealmDataProvider {
     }
     
     func obtainDailyModel() -> [RealmModelDaily] {
-
+        
         var  modelsObject = [RealmModelDaily]()
         do {
             let realm = try Realm(configuration: .defaultConfiguration)
@@ -41,7 +41,7 @@ class RealmDataProvider {
     }
     
     func obtainModelCurrent() -> [RealmModelCurrent] {
-
+        
         var  modelsObject = [RealmModelCurrent]()
         do {
             let realm = try Realm(configuration: .defaultConfiguration)
@@ -54,7 +54,7 @@ class RealmDataProvider {
     }
     
     func delete(object: RealmModelCurrent) {
-
+        
         do {
             let realm = try Realm(configuration: .defaultConfiguration)
             try realm.write {

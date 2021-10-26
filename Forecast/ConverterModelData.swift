@@ -3,8 +3,37 @@ import UIKit
 
 class ConverterModelData {
     
-    func convertHourlyModel(modelHourly: ModelHourly) ->  RealmModelCurrent {
+    private func convertImage(id: Int, icon: String) -> UIImage {
+        var image =  UIImage()
+        
+        switch id {
+        case 200..<300:
+            image =  UIImage(named: "thunder")!
+        case 300..<400:
+            image =  UIImage(named: "drizzle")!
+        case 500..<600:
+            image =  UIImage(named: "rain")!
+        case 600..<700:
+            image =  UIImage(named: "snow")!
+        case 700..<800:
+            image =  UIImage(named: "atmosphere")!
+        case 800:
+            guard icon != "01d" else {  image = UIImage(named: "clear")!
+                return  image }
+            guard icon != "01n" else {  image = UIImage(named: "moon")!
+                return image
+            }
+        case 801..<900:
+            image = UIImage(named: "clouds")!
+        default:
+            image = UIImage(named: "standart")!
+        }
+        return image
+    }
+    
+    func convertHourlyModel(modelHourly: ModelHourly, id: String) ->  RealmModelCurrent {
         let model = RealmModelCurrent()
+        model.id = id
         guard let currentTime = modelHourly.current?.dt, let sunriseTime = modelHourly.current?.sunrise, let sunsetTime = modelHourly.current?.sunset else { return model}
         guard let safetyModelTimeZone = modelHourly.timezone else { return model }
         let pop = modelHourly.current?.pop
@@ -44,7 +73,8 @@ class ConverterModelData {
             guard let weatherDescription = i.weather?.first?.weatherDescription else { return model}
             guard let weatherGroup = i.weather?.first?.main else { return model}
             guard let windSpeed = i.windSpeed else { return model}
-            
+            guard let id = i.weather?.first?.id else { return model }
+            guard let icon = i.weather?.first?.icon else { return model }
             let dataTimeCurrent = Date(timeIntervalSince1970: Double(hourTime))
             
             dateFormatter.dateFormat = "HH:mm"
@@ -61,14 +91,18 @@ class ConverterModelData {
             hourModel.weatherDescription = weatherDescription
             hourModel.weatherGroup = weatherGroup
             hourModel.windSpeed = windSpeed
+            hourModel.imageCondition = convertImage(id: id, icon: icon).pngData()!
+            hourModel.dataDate = hourTime
+            
             model.hourlyWeather.append(hourModel)
         }
         return model
     }
     
-    func convertDailyModel(modelDaily: ModelDaily) -> RealmModelDaily {
+    func convertDailyModel(modelDaily: ModelDaily, id: String) -> RealmModelDaily {
         
         let model = RealmModelDaily()
+        model.id = id
         
         let dateFormatter = DateFormatter()
         guard let timeZone = modelDaily.timezone else { return model }
@@ -77,17 +111,26 @@ class ConverterModelData {
         guard let daily = modelDaily.daily else { return model }
         for day in daily {
             let modelOneDay = ModelOneDay()
-
+            
+            guard let pop = day.pop else { return model }
+            guard let tempDay = day.temp?.day, let tempNight = day.temp?.night else { return model }
+            guard let feelsLikeNight = day.feelsLike?.night else { return model }
+            guard let windSpeed = day.windSpeed else { return model }
+            guard let uvi = day.uvi else { return model }
+            guard let feelsLikeDay = day.feelsLike?.day else { return model }
+            guard let icon = day.weather?.first?.icon else { return model }
+            guard let id = day.weather?.first?.id else { return model }
             modelOneDay.clouds = day.clouds ?? Int()
-            modelOneDay.feelsLikeDay = day.feelsLike?.day ?? Double()
-            modelOneDay.feelsLikeNight = day.feelsLike?.night ?? Double()
-            modelOneDay.tempDay = day.temp?.day ?? Double()
-            modelOneDay.tempNight = day.temp?.night ?? Double()
-            modelOneDay.pop = day.pop ?? Double()
-            modelOneDay.uvi = day.uvi ?? Double()
+            modelOneDay.feelsLikeDay = feelsLikeDay
+            modelOneDay.feelsLikeNight = feelsLikeNight
+            modelOneDay.tempDay = Int(tempDay)
+            modelOneDay.tempNight = Int(tempNight)
+            modelOneDay.pop = Int(pop*100)
+            modelOneDay.uvi = uvi
             modelOneDay.weatherDescription = day.weather?.first?.weatherDescription ?? String()
             modelOneDay.main = day.weather?.first?.main ?? String()
-            modelOneDay.windSpeed = day.windSpeed ?? Double()
+            modelOneDay.windSpeed = windSpeed
+            modelOneDay.imageCondition = convertImage(id: id, icon: icon).pngData()!
             
             guard let sunrise = day.sunrise, let sunset = day.sunset, let moonset = day.moonset, let moonrise = day.moonrise, let data = day.dt else { return model }
             
@@ -97,14 +140,14 @@ class ConverterModelData {
             let dataTimesunset = Date(timeIntervalSince1970: Double(sunset))
             let dataTimesunrise = Date(timeIntervalSince1970: Double(sunrise))
             
-            dateFormatter.dateFormat = "MM/dd"
+            dateFormatter.dateFormat = "dd/MM"
             let stringDataForTableView = dateFormatter.string(from: dataTime)
             modelOneDay.dataForTableView = stringDataForTableView
             
-            dateFormatter.dateFormat = "MM/dd MMM"
+            dateFormatter.dateFormat = "dd/MM MMM"
             let stringDataForCollection = dateFormatter.string(from: dataTime)
             modelOneDay.dataForCollection = stringDataForCollection
-           
+            
             dateFormatter.dateFormat = "HH:mm"
             let stringTimeMoonrise = dateFormatter.string(from: dataTimemoonrise)
             let stringTimeMoonset = dateFormatter.string(from: dataTimemoonset)

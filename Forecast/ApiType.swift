@@ -5,6 +5,7 @@ enum Keys: String {
 }
 
 enum ApiType {
+    
     case getDaily(Double, Double)
     case getHourly(Double, Double)
     case geographicData(String)
@@ -49,7 +50,6 @@ enum ApiType {
     var inputQuery: [String: String] {
         
         switch self {
-        
         case .geographicData(let nameCity):
             let inputQuery = [
                 "apikey": apiKey,
