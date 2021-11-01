@@ -55,8 +55,21 @@ class OnboardingViewController: UIViewController {
         
         alert.addAction(actionContinue)
         alert.addAction(actionCancel)
-        navigationController?.present(alert, animated: true, completion: nil)
+        
+        present(alert, animated: true, completion: nil)
     }
+    
+//    let customNavigationController: UINavigationController
+//
+//    init(customNavigationController: UINavigationController) {
+//        self.customNavigationController = customNavigationController
+//        super.init(nibName: nil, bundle: nil)
+//    }
+//
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+    
     
     func setupViews() {
 

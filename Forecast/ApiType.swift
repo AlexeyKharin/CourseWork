@@ -48,7 +48,6 @@ enum ApiType {
     }
     
     var inputQuery: [String: String] {
-        
         switch self {
         case .geographicData(let nameCity):
             let inputQuery = [

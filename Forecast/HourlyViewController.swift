@@ -6,8 +6,11 @@ class HourlyViewController: UIViewController {
     
     let customNavigationBar = UINavigationBar()
     
-    init(realmModelHourly: RealmModelCurrent) {
+    let customNavigationController: UINavigationController
+    
+    init(realmModelHourly: RealmModelCurrent, customNavigationController: UINavigationController) {
         self.realmModelHourly = realmModelHourly
+        self.customNavigationController = customNavigationController
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -32,11 +35,9 @@ class HourlyViewController: UIViewController {
         label.textColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1)
         label.textAlignment = .left
         label.numberOfLines = 0
-//        label.text = "Минск,Беларусь"
         label.toAutoLayout()
         return label
     }()
-    
     
     lazy var backTitle: UILabel = {
         let label = UILabel()
@@ -47,7 +48,6 @@ class HourlyViewController: UIViewController {
         return label
     }()
     
-    
     lazy var buttonBack: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "arrow.backward")!.applyingSymbolConfiguration(.init(scale: .large))! .withTintColor(UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)).withRenderingMode(.alwaysOriginal), for:.normal)
@@ -56,12 +56,12 @@ class HourlyViewController: UIViewController {
     }()
     
     @objc func back() {
-        navigationController?.popViewController(animated: true)
+        customNavigationController.popViewController(animated: true)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
         view.addSubview(customNavigationBar)
         customNavigationBar.addSubview(buttonBack)
         customNavigationBar.addSubview(backTitle)
@@ -77,7 +77,7 @@ class HourlyViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-    
+        
         buttonBack.frame = CGRect(
             x: 16,
             y: 34,
@@ -95,16 +95,16 @@ class HourlyViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.isNavigationBarHidden = false
     }
-
+    
 }
 // MARK: - UITableViewDataSource
 extension HourlyViewController: UITableViewDataSource {
-   
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return realmModelHourly.hourlyWeather.count
     }
@@ -115,7 +115,7 @@ extension HourlyViewController: UITableViewDataSource {
             for: indexPath) as! HourlyTableViewCell
         
         cell.contentHour = realmModelHourly.hourlyWeather[indexPath.row]
-    
+        
         return cell
     }
     
@@ -129,7 +129,7 @@ extension HourlyViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension HourlyViewController: UITableViewDelegate {
-
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
@@ -141,14 +141,14 @@ extension HourlyViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         .zero
     }
-
+    
 }
 
 // MARK: - Setup Views
 private extension HourlyViewController {
     
     func setupViews() {
-
+        
         view.addSubview(tableView)
         view.addSubview(titleCity)
         

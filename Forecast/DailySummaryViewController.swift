@@ -8,6 +8,8 @@ class DailySummaryViewController: UIViewController {
     
     var realmModelDaily: RealmModelDaily
         
+    let customNavigationController: UINavigationController
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.delegate = self
@@ -40,7 +42,7 @@ class DailySummaryViewController: UIViewController {
     }()
     
     @objc func back() {
-        navigationController?.popViewController(animated: true)
+        customNavigationController.popViewController(animated: true)
     }
     
     override func viewWillLayoutSubviews() {
@@ -59,7 +61,6 @@ class DailySummaryViewController: UIViewController {
             height: 20)
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -70,11 +71,13 @@ class DailySummaryViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
     }
     
-    init(realmModelDaily: RealmModelDaily, titleCity: String) {
+    init(realmModelDaily: RealmModelDaily, titleCity: String, customNavigationController: UINavigationController) {
         self.realmModelDaily = realmModelDaily
         self.titleCity = titleCity
+        self.customNavigationController = customNavigationController
         super.init(nibName: nil, bundle: nil)
     }
+    
     var titleCity: String
     
     required init?(coder: NSCoder) {
@@ -109,9 +112,11 @@ class DailySummaryViewController: UIViewController {
 
 //    MARK:- UITableViewDataSource
 extension DailySummaryViewController: UITableViewDataSource {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }

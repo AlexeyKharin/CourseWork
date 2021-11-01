@@ -1,39 +1,15 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
-    let dailyForecast: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-        label.textColor = UIColor(red: 39/255, green:39/255, blue: 34/255, alpha: 1)
-        label.textAlignment = .center
-        label.toAutoLayout()
-        label.text = "Ежедневный прогноз"
-        label.backgroundColor = .white
-        return label
-    }()
-    
-    var attrs = [
-        NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16),
-        NSAttributedString.Key.foregroundColor : UIColor(red: 39/255, green:39/255, blue: 34/255, alpha: 1),
-        NSAttributedString.Key.underlineStyle : 1] as [NSAttributedString.Key : Any]
 
-    var attributedString = NSMutableAttributedString(string:"")
+    var nameCityCountry: String = ""
+
+    var viewModel: ViewModelDelegate?
     
-    lazy var moreSevenDays: UIButton = {
-        let button = UIButton(type: .system)
-        let buttonTitleStr = NSMutableAttributedString(string:"7 дней", attributes: attrs)
-        attributedString.append(buttonTitleStr)
-        button.setAttributedTitle(attributedString, for: .normal)
-        button.addTarget(self, action: #selector(moreDays), for: .touchUpInside)
-        button.toAutoLayout()
-        return button
-    }()
+    var clousureDailyViewController: ((_ modelDaily:RealmModelDaily,_ nameCity: String) -> Void)?
     
-    @objc func moreDays() {
-        let vc = DailySummaryViewController(realmModelDaily: modelDaily!, titleCity: nameCityCountry)
-        navigationController?.pushViewController(vc, animated: true)
-    }
+    var clousureHourlyViewController: ((RealmModelCurrent) -> Void)?
+    
     
     private let containerView: UIView = {
         let containerView = UIView()
@@ -188,20 +164,11 @@ class ViewController: UIViewController {
         return label
     }()
     
-    private let layout = UICollectionViewFlowLayout()
-    
-    private lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .white
-        collectionView.toAutoLayout()
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.register(
-            DailyCollectionCell.self,
-            forCellWithReuseIdentifier: String(describing: DailyCollectionCell.self)
-        )
-        return collectionView
+    private lazy var callDailyCollectionView: CallDailyCollectionView = {
+        let collection = CallDailyCollectionView()
+        collection.toAutoLayout()
+        collection.delegate = self
+        return collection
     }()
     
     private lazy var callHourlyCollecttionView: CallHourlyCollecttionView = {
@@ -214,60 +181,58 @@ class ViewController: UIViewController {
     var nameCity: String
     
     var id: String
+    
 
     init(id: String, nameCity: String) {
         self.id = id
         self.nameCity = nameCity
         super.init(nibName: nil, bundle: nil)
-        obtainData()
-        callHourlyCollecttionView.realmHourly = modelCurrentHourly
-        resultOfRequest(apihourly: ApiType.geographicData(nameCity))
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    let realm = RealmDataProvider()
-    
-    let convert = ConverterModelData()
-    
-    var modelCurrentHourly: RealmModelCurrent?
-    
-    var modelDaily: RealmModelDaily?
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
-        guard let apiHourly = apiHourly else { return }
-        guard let apiDaily = apiDaily else { return }
-        resultOfRequest(apihourly: apiHourly)
-        resultOfRequest(apihourly: apiDaily)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        viewModel?.resultOfRequestGeo(nameCity: self.nameCity, id: self.id)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(containerView)
-        view.addSubview(collectionView)
+
         view.addSubview(callHourlyCollecttionView)
-        view.addSubview(moreSevenDays)
-        view.addSubview(dailyForecast)
-      
+
+        view.addSubview(callDailyCollectionView)
+        receiveDataFromViewModel()
         [imageEllipse, imageSunset, imageSunrise, timeSunset, timeSunrise, tempNightAndDay, tempCurrent, weahtherDescription, imageRain, imageWind, imageClouds, clouds, rain, windSpeed, timeCurrent].forEach { view.addSubview($0) }
         setUp()
         view.backgroundColor = .white
         UserDefaults.standard.set("metric", forKey: Keys.stringKey.rawValue)
-        
+        viewModel?.obtainsData(id: id)
+        viewModel?.resultOfRequestGeo(nameCity: self.nameCity, id: self.id)
     }
     
-    func obtainData() {
-        guard let modelCurrentHourly = realm.obtainModelCurrent().first(where: { $0.id == id }) else { return }
-        self.modelCurrentHourly = modelCurrentHourly
+    func receiveDataFromViewModel () {
         
-        guard let modelDaily = realm.obtainDailyModel().first(where: { $0.id == id }) else { return }
-        self.modelDaily = modelDaily
-    }
+        viewModel?.transferModelDaily = { [weak self] modelDaily in
+            self?.callDailyCollectionView.modelDaily = modelDaily
+            self?.callDailyCollectionView.collectionView.reloadData()
+//            self?.modelDaily = modelDaily
+        }
 
+        viewModel?.transferModelCurrentHourly = { [weak self] modelHourly in
+            self?.callHourlyCollecttionView.realmHourly = modelHourly
+            self?.callHourlyCollecttionView.collectionView.reloadData()
+//            self?.modelHourly = modelHourly
+        }
+
+        viewModel?.transferNameCountry = { [weak self] text in
+            self?.nameCityCountry = text
+        }
+    }
+    
     func setUp() {
         
         let constraints = [
@@ -346,69 +311,16 @@ class ViewController: UIViewController {
             callHourlyCollecttionView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 16),
             callHourlyCollecttionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             
-            dailyForecast.topAnchor.constraint(equalTo: callHourlyCollecttionView.bottomAnchor,constant: 40),
-            dailyForecast.leftAnchor.constraint(equalTo: collectionView.leftAnchor),
             
-            moreSevenDays.topAnchor.constraint(equalTo: callHourlyCollecttionView.bottomAnchor, constant: 43),
-            moreSevenDays.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
-            moreSevenDays.heightAnchor.constraint(equalToConstant: 20),
-            moreSevenDays.widthAnchor.constraint(equalToConstant: 83),
-            
-            collectionView.topAnchor.constraint(equalTo: dailyForecast.bottomAnchor, constant: 10),
-            collectionView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 16),
-            collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            
+            callDailyCollectionView.topAnchor.constraint(equalTo: callHourlyCollecttionView.bottomAnchor, constant: 40),
+            callDailyCollectionView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+            callDailyCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            callDailyCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
             
         ]
         NSLayoutConstraint.activate(constraints)
     }
-    
-    var apiDaily: ApiType?
-    var apiHourly: ApiType?
-    
-    var latAndLon: String = "" {
-        didSet {
-            let parts = latAndLon.split(separator: " ")
-            let longitude = Double(parts[0]) ?? Double()
-            let latitude = Double(parts[1]) ?? Double()
-            apiDaily = ApiType.getDaily(latitude, longitude)
-            apiHourly = ApiType.getHourly(latitude, longitude)
-            resultOfRequest(apihourly: apiDaily!)
-            resultOfRequest(apihourly: apiHourly!)
-        }
-    }
-    
-    lazy var nameCityCountry: String = ""
-    
-    func resultOfRequest(apihourly: ApiType) {
-    NetworkManager.obtainPost(apiType: apihourly) { [self] (result) in
-                switch result {
-                case .succesGeoData(data: let data):
-                    latAndLon = data.first?.response?.geoObjectCollection?.featureMember?.first?.geoObject?.point?.pos ?? ""
-                    guard let nameCountry = data.first?.response?.geoObjectCollection?.featureMember?.first?.geoObject?.metaDataProperty?.geocoderMetaData?.text else { return }
-                    
-                    nameCityCountry = "\(nameCountry)"
-                    print(data.first!)
-                    
-                case .succesHourly(data: let data):
-                    self.modelCurrentHourly =  self.convert.convertHourlyModel(modelHourly: data.first!, id: id)
-                    self.modelCurrentHourly?.nameCity = nameCity
-                    self.realm.save(modelHourly: self.modelCurrentHourly!)
-                    obtainData()
-                    callHourlyCollecttionView.collectionView.reloadData()
-        
-                case .successDaily(data: let data):
-                    self.modelDaily = self.convert.convertDailyModel(modelDaily: data.first!, id: id)
-                    self.realm.save(modelDaily: self.modelDaily!)
-                    obtainData()
-                    collectionView.reloadData()
-                    
-                default:
-                    break
-                }
-            }
-    }
+  
 }
 
 extension UIView {
@@ -417,56 +329,27 @@ extension UIView {
     }
 }
 
-extension ViewController: UICollectionViewDataSource {
+
+//MARK: - delegateOfCallDailyCollectionView
+protocol CreateDailySummaryViewController {
+    func createDailySummaryViewController(_ modelDaily: RealmModelDaily)
+}
+
+extension ViewController: CreateDailySummaryViewController {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return modelDaily?.weatherDaily.count ?? 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    
-        let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: String(describing: DailyCollectionCell.self),
-            for: indexPath) as! DailyCollectionCell
-        
-        cell.contentDaily = modelDaily?.weatherDaily[indexPath.row]
-        
-        return cell
+    func createDailySummaryViewController(_ modelDaily: RealmModelDaily) {
+        clousureDailyViewController?(modelDaily, nameCityCountry)
     }
 }
 
-extension ViewController: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let width: CGFloat = (collectionView.bounds.width - 16 * 2)
-        return CGSize(width: width, height: 56)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        10
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: .zero, left: 16, bottom: 20, right: 16)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = DailySummaryViewController(realmModelDaily: modelDaily!, titleCity: nameCityCountry)
-        navigationController?.pushViewController(vc, animated: true)
-    }
-}
-
+//MARK: - delegateOfCallHourlyCollecttionView
 protocol CreateHourlyViewController {
-    func createHourlyViewController()
+    func createHourlyViewController(_ realmHourly: RealmModelCurrent)
 }
 
 extension ViewController: CreateHourlyViewController{
     
-    func createHourlyViewController() {
-        let modelhourly = self.realm.obtainModelCurrent().first
-        let vc = HourlyViewController(realmModelHourly: modelhourly!)
-        vc.titleCity.text = nameCityCountry
-        self.navigationController?.pushViewController(vc, animated: true)
+    func createHourlyViewController(_ realmHourly: RealmModelCurrent) {
+        clousureHourlyViewController?(realmHourly)
     }
 }

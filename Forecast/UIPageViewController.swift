@@ -2,11 +2,7 @@ import UIKit
 
 class PageViewController: UIPageViewController {
     
-    let realm = RealmDataProvider()
-    
     var pages = [UIViewController]()
-    
-    let page1 = OnboardingViewController()
     
     let pageControl = UIPageControl()
     
@@ -17,32 +13,21 @@ class PageViewController: UIPageViewController {
     lazy var buttonSettings: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "settings")!.applyingSymbolConfiguration(.init(scale: .large))! .withTintColor(UIColor(red: 39/255, green: 39/255, blue: 39/255, alpha: 1)).withRenderingMode(.alwaysOriginal), for:.normal)
-//        button.addTarget(self, action: #selector(back), for: .touchUpInside)
         return button
     }()
     
     lazy var buttonFindLocation: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "location")!.applyingSymbolConfiguration(.init(scale: .large))! .withTintColor(UIColor(red: 39/255, green: 39/255, blue: 39/255, alpha: 1)).withRenderingMode(.alwaysOriginal), for:.normal)
-//        button.addTarget(self, action: #selector(back), for: .touchUpInside)
         return button
     }()
-    
-    func createViewcontrollers() {
-        if !realm.obtainModelCurrent().isEmpty {
-            for model in realm.obtainModelCurrent() {
-                let page = ViewController(id: model.id, nameCity:model.nameCity)
-                self.pages.append(page)
-                self.pageControl.numberOfPages = self.pages.count
-                self.setViewControllers([self.pages[0]], direction: .forward, animated: true, completion: nil)
-                print(model.nameCity)
-            }
-        }
-    }
+
    
     override func viewDidLoad() {
         super.viewDidLoad()
+    
         view.addSubview(customNavigationBar)
+        customNavigationBar.backgroundColor = .white
         customNavigationBar.addSubview(buttonSettings)
         customNavigationBar.addSubview(buttonFindLocation)
         
@@ -55,16 +40,6 @@ class PageViewController: UIPageViewController {
         setup()
         style()
         layout()
-        
-        page1.transferString = { text in
-            
-            let page = ViewController(id: String(describing: self.pages.count + 1), nameCity: text)
-            self.pages.append(page)
-            self.pageControl.numberOfPages = self.pages.count
-            self.setViewControllers([self.pages[0]], direction: .forward, animated: true, completion: nil)
-            
-        }
-        createViewcontrollers()
     }
     
     override func viewWillLayoutSubviews() {
@@ -96,23 +71,30 @@ class PageViewController: UIPageViewController {
 }
 
 extension PageViewController {
-
+    
+    func createOneViewCintroller(page: UIViewController) {
+        pages.append(page)
+        pageControl.numberOfPages = pages.count
+        setViewControllers([pages[initialPage]], direction: .forward, animated: true, completion: nil)
+    }
+    
+    func createBasedViewControllers(pages: [UIViewController]) {
+        self.pages = pages
+        self.pageControl.numberOfPages = self.pages.count
+        setViewControllers([self.pages[initialPage]], direction: .forward, animated: true, completion: nil)
+    }
+    
     func setup() {
         dataSource = self
         delegate = self
         
         pageControl.addTarget(self, action: #selector(pageControlTapped(_:)), for: .valueChanged)
-    
-        pages.append(page1)
-        
-        setViewControllers([pages[initialPage]], direction: .forward, animated: true, completion: nil)
     }
     
     func style() {
         pageControl.translatesAutoresizingMaskIntoConstraints = false
         pageControl.currentPageIndicatorTintColor = .black
         pageControl.pageIndicatorTintColor = .systemGray2
-        pageControl.numberOfPages = pages.count
         pageControl.currentPage = initialPage
         
     }

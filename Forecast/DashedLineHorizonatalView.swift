@@ -3,6 +3,7 @@ import Foundation
 import UIKit
 
 class DashedLineHorizonatalView: UIView {
+    
     init() {
         super.init(frame: .zero)
         setup()
@@ -13,7 +14,6 @@ class DashedLineHorizonatalView: UIView {
     }
 
     private func setup() {
-    
         let shapeLayer = CAShapeLayer()
         shapeLayer.strokeColor = UIColor(red: 32/255, green: 78/255, blue: 199/255, alpha: 1).cgColor
         shapeLayer.lineWidth = 1

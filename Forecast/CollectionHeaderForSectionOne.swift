@@ -22,7 +22,6 @@ class CollectionHeaderForSectionOne: UITableViewHeaderFooterView {
         label.textColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1)
         label.textAlignment = .left
         label.numberOfLines = 2
-//        label.text = "Минск,Беларусь"
         label.toAutoLayout()
         return label
     }()

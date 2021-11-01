@@ -3,16 +3,19 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
-
+    
+    let pageCoordinator = PageCoordinator()
+    
+  
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-       
+        
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
-//        let vc = ViewController()
-//        let vc = OnboardingViewController()
-        let vc = PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+        
+        let vc = pageCoordinator.pageViewController
         let navigation = UINavigationController(rootViewController: vc)
+       
         window?.rootViewController = navigation
         window?.makeKeyAndVisible()
     }

@@ -22,6 +22,11 @@
 		B43349D92725BF8700DF3A0C /* DashedLineHorizonatalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43349D82725BF8700DF3A0C /* DashedLineHorizonatalView.swift */; };
 		B45EA5BA272849E00016E1C2 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45EA5B9272849E00016E1C2 /* Coordinator.swift */; };
 		B45EA5BE27285FF30016E1C2 /* ViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45EA5BD27285FF30016E1C2 /* ViewModelDelegate.swift */; };
+		B45EA5C1272893EF0016E1C2 /* PageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45EA5C0272893EF0016E1C2 /* PageCoordinator.swift */; };
+		B45EA5C5272D70B50016E1C2 /* CallDailyCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45EA5C4272D70B50016E1C2 /* CallDailyCollectionView.swift */; };
+		B45EA5C8272D71090016E1C2 /* CallContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45EA5C7272D71090016E1C2 /* CallContainerView.swift */; };
+		B45EA5CD272DC4460016E1C2 /* ViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45EA5CC272DC4460016E1C2 /* ViewControllerCoordinator.swift */; };
+		B45EA5D1272E8DB50016E1C2 /* ViewModalFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45EA5D0272E8DB50016E1C2 /* ViewModalFactory.swift */; };
 		B47DEEA6271218E800C17235 /* RealmModelHourly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47DEEA5271218E800C17235 /* RealmModelHourly.swift */; };
 		B47DEEB52712F53200C17235 /* RealmDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47DEEB42712F53200C17235 /* RealmDataProvider.swift */; };
 		B486C97127087EF600C6006F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B486C97027087EF600C6006F /* AppDelegate.swift */; };
@@ -59,6 +64,11 @@
 		B43349D82725BF8700DF3A0C /* DashedLineHorizonatalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashedLineHorizonatalView.swift; sourceTree = "<group>"; };
 		B45EA5B9272849E00016E1C2 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		B45EA5BD27285FF30016E1C2 /* ViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelDelegate.swift; sourceTree = "<group>"; };
+		B45EA5C0272893EF0016E1C2 /* PageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCoordinator.swift; sourceTree = "<group>"; };
+		B45EA5C4272D70B50016E1C2 /* CallDailyCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallDailyCollectionView.swift; sourceTree = "<group>"; };
+		B45EA5C7272D71090016E1C2 /* CallContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallContainerView.swift; sourceTree = "<group>"; };
+		B45EA5CC272DC4460016E1C2 /* ViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerCoordinator.swift; sourceTree = "<group>"; };
+		B45EA5D0272E8DB50016E1C2 /* ViewModalFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModalFactory.swift; sourceTree = "<group>"; };
 		B47DEEA5271218E800C17235 /* RealmModelHourly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModelHourly.swift; sourceTree = "<group>"; };
 		B47DEEB42712F53200C17235 /* RealmDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataProvider.swift; sourceTree = "<group>"; };
 		B486C96D27087EF600C6006F /* Forecast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Forecast.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +115,7 @@
 		B43349AD271B66A600DF3A0C /* DailySummaryViewController */ = {
 			isa = PBXGroup;
 			children = (
+				B43349D82725BF8700DF3A0C /* DashedLineHorizonatalView.swift */,
 				B43349A6271AE8CB00DF3A0C /* DailySummaryViewController.swift */,
 				B43349A9271AEF7C00DF3A0C /* DaySummaryTableViewCell.swift */,
 				B43349D22725759500DF3A0C /* SunAndMoonFooter.swift */,
@@ -116,17 +127,18 @@
 			name = DailySummaryViewController;
 			sourceTree = "<group>";
 		};
-		B43349B3271B676B00DF3A0C /* FirstWindow */ = {
+		B43349B3271B676B00DF3A0C /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				B486C97427087EF600C6006F /* ViewController.swift */,
-				B45EA5BD27285FF30016E1C2 /* ViewModelDelegate.swift */,
 				B4B0C27E2716171A005B18A0 /* HourlyCollectionCell.swift */,
 				B4B0C2812716210E005B18A0 /* CallHourlyCollecttionView.swift */,
 				B4B0C2742715D796005B18A0 /* DailyCollectionCell.swift */,
-				B43349C9271CAB7600DF3A0C /* HourlyViewController */,
+				B45EA5C4272D70B50016E1C2 /* CallDailyCollectionView.swift */,
+				B45EA5C7272D71090016E1C2 /* CallContainerView.swift */,
+				B45EA5BD27285FF30016E1C2 /* ViewModelDelegate.swift */,
 			);
-			name = FirstWindow;
+			name = ViewController;
 			sourceTree = "<group>";
 		};
 		B43349C9271CAB7600DF3A0C /* HourlyViewController */ = {
@@ -142,6 +154,8 @@
 			isa = PBXGroup;
 			children = (
 				B45EA5B9272849E00016E1C2 /* Coordinator.swift */,
+				B45EA5C0272893EF0016E1C2 /* PageCoordinator.swift */,
+				B45EA5CC272DC4460016E1C2 /* ViewControllerCoordinator.swift */,
 			);
 			name = Coordinators;
 			sourceTree = "<group>";
@@ -169,14 +183,15 @@
 			children = (
 				B486C97027087EF600C6006F /* AppDelegate.swift */,
 				B486C97227087EF600C6006F /* SceneDelegate.swift */,
-				B43349B3271B676B00DF3A0C /* FirstWindow */,
+				B43349C9271CAB7600DF3A0C /* HourlyViewController */,
+				B43349B3271B676B00DF3A0C /* ViewController */,
 				B43349AD271B66A600DF3A0C /* DailySummaryViewController */,
 				B486C97627087EF600C6006F /* Main.storyboard */,
 				B486C988270B77B000C6006F /* NetworkManager.swift */,
 				B45EA5B8272845D20016E1C2 /* Coordinators */,
-				B43349CB271F40F600DF3A0C /* OnboardingViewController.swift */,
-				B43349D82725BF8700DF3A0C /* DashedLineHorizonatalView.swift */,
 				B43349CE271F44F400DF3A0C /* UIPageViewController.swift */,
+				B45EA5D0272E8DB50016E1C2 /* ViewModalFactory.swift */,
+				B43349CB271F40F600DF3A0C /* OnboardingViewController.swift */,
 				B486C994270F6F8A00C6006F /* ConverterModelData.swift */,
 				B47DEEA5271218E800C17235 /* RealmModelHourly.swift */,
 				B4B0C27027135CB4005B18A0 /* RealmModelDaily.swift */,
@@ -320,12 +335,16 @@
 				B43349D32725759600DF3A0C /* SunAndMoonFooter.swift in Sources */,
 				B43349B5271B685400DF3A0C /* CollectionHeaderForSectionOne.swift in Sources */,
 				B43349BF271C227500DF3A0C /* NightSummaryTableViewCell.swift in Sources */,
+				B45EA5C5272D70B50016E1C2 /* CallDailyCollectionView.swift in Sources */,
 				B4B0C27127135CB4005B18A0 /* RealmModelDaily.swift in Sources */,
+				B45EA5C8272D71090016E1C2 /* CallContainerView.swift in Sources */,
 				B486C986270A25B000C6006F /* ApiType.swift in Sources */,
 				B486C97527087EF600C6006F /* ViewController.swift in Sources */,
 				B486C98F270CDC2C00C6006F /* ModelDaily.swift in Sources */,
 				B43349A42718B1B100DF3A0C /* HourlyTableViewCell.swift in Sources */,
+				B45EA5CD272DC4460016E1C2 /* ViewControllerCoordinator.swift in Sources */,
 				B486C995270F6F8B00C6006F /* ConverterModelData.swift in Sources */,
+				B45EA5C1272893EF0016E1C2 /* PageCoordinator.swift in Sources */,
 				B4B0C2822716210E005B18A0 /* CallHourlyCollecttionView.swift in Sources */,
 				B43349A7271AE8CB00DF3A0C /* DailySummaryViewController.swift in Sources */,
 				B43349A12718ABBC00DF3A0C /* HourlyViewController.swift in Sources */,
@@ -340,6 +359,7 @@
 				B486C992270CE88A00C6006F /* GeoData.swift in Sources */,
 				B43349CC271F40F600DF3A0C /* OnboardingViewController.swift in Sources */,
 				B43349BC271C0B7A00DF3A0C /* CallCollectionView.swift in Sources */,
+				B45EA5D1272E8DB50016E1C2 /* ViewModalFactory.swift in Sources */,
 				B43349CF271F44F400DF3A0C /* UIPageViewController.swift in Sources */,
 				B486C98C270CDB4300C6006F /* ModelHourly.swift in Sources */,
 				B4B0C27F2716171B005B18A0 /* HourlyCollectionCell.swift in Sources */,

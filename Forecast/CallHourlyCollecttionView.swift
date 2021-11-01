@@ -32,17 +32,17 @@ final class CallHourlyCollecttionView: UIView,  UICollectionViewDelegateFlowLayo
     
     lazy var moreDetails: UIButton = {
         let button = UIButton(type: .system)
-        let buttonTitleStr = NSMutableAttributedString(string:"Подробнее на 24 часа", attributes:attrs)
+        let buttonTitleStr = NSMutableAttributedString(string:"Подробнее на 24 часа", attributes: attrs)
         attributedString.append(buttonTitleStr)
         button.setAttributedTitle(attributedString, for: .normal)
         button.addTarget(self, action: #selector(back), for: .touchUpInside)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         button.toAutoLayout()
         return button
     }()
     
     @objc func back() {
-        delegate?.createHourlyViewController()
+        guard let realmHourly = realmHourly else { return }
+        delegate?.createHourlyViewController(realmHourly)
     }
     
     //    MARK:- UICollectionViewDataSource
@@ -91,10 +91,10 @@ final class CallHourlyCollecttionView: UIView,  UICollectionViewDelegateFlowLayo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.createHourlyViewController()
+        guard let realmHourly = realmHourly else { return }
+        delegate?.createHourlyViewController(realmHourly)
     }
-    
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         layout.scrollDirection = .horizontal

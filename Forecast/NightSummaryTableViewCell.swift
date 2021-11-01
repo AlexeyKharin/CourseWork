@@ -3,6 +3,7 @@ import Foundation
 import UIKit
 
 class NightSummaryTableViewCell: UITableViewCell {
+    
     var contentNight: ModelOneDay? {
         didSet {
             guard let tempNight = contentNight?.tempNight else { return }
