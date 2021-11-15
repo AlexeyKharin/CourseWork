@@ -2,6 +2,7 @@ import Foundation
 
 enum Keys: String {
     case stringKey
+    case boolKey
 }
 
 enum ApiType {
@@ -35,7 +36,7 @@ enum ApiType {
     var apiKey: String {
         switch self {
         case .geographicData:
-            return "508e46ca-d232-4cd6-8439-bbbb7539a9b6"
+            return "69be8e2c-31b4-40d2-93a0-9b9a2a1311b5"
         default:
             return "f1bc1b3aee2e9ba489dc6af0da95c556"
         }
@@ -84,7 +85,6 @@ enum ApiType {
             return inputQuery
         }
     }
-    
 
     var request: URL {
         var urlComponents = URLComponents()
@@ -96,7 +96,6 @@ enum ApiType {
         return urlComponents.url!
     }
 }
-
 
 extension URLComponents {
     

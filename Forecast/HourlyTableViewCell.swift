@@ -4,19 +4,29 @@ import UIKit
 
 class HourlyTableViewCell: UITableViewCell {
     
+    let units = UserDefaults.standard.object(forKey: Keys.stringKey.rawValue) as? String
+    
     var contentHour: RealmModelHourly? {
         didSet {
             guard let pop = contentHour?.pop else { return }
             guard let windSpeed = contentHour?.windSpeed else { return }
             guard let tempFeelsLike =  contentHour?.tempFeelsLike else { return }
             guard let clouds = contentHour?.clouds else { return }
+            
             data.text = contentHour?.data
             hour.text = contentHour?.time
-            temp.text = "\(Int(contentHour!.temp))°"
             precipitationValue.text = "\(Int(pop*100))%"
-            windSpeedValue.text = "\(Int(windSpeed)) m/s"
             cloudyValue.text = "\(clouds)%"
-            feelLikesValue.text = "\(Int(tempFeelsLike))°"
+            
+            if units == "metric" {
+                feelLikesValue.text = "\(Int(tempFeelsLike))°"
+                windSpeedValue.text = "\(Int(windSpeed)) m/s"
+                temp.text = "\(Int(contentHour!.temp))°"
+            } else if units == "imperial" {
+                feelLikesValue.text = "\(Int(tempFeelsLike))F°"
+                windSpeedValue.text = "\(Int(windSpeed)) mil/hour"
+                temp.text = "\(Int(contentHour!.temp))F°"
+            }
         }
     }
     
@@ -57,7 +67,7 @@ class HourlyTableViewCell: UITableViewCell {
         imageMoon.toAutoLayout()
         return imageMoon
     }()
-
+    
     private let imageWind: UIImageView = {
         let imageWind = UIImageView()
         imageWind.image = UIImage(named: "wind")

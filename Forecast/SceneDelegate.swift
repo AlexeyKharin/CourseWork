@@ -4,16 +4,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     
-    let pageCoordinator = PageCoordinator()
-    
-  
-    
+//    let pageCoordinator = PageCoordinator(navigation: UINavigationController())
+        
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
         
-        let vc = pageCoordinator.pageViewController
+//        let vc = pageCoordinator.pageViewController
+//        let vc = ContainerViewController()
+        let vc = SettingsViewController()
         let navigation = UINavigationController(rootViewController: vc)
        
         window?.rootViewController = navigation

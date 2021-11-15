@@ -52,7 +52,6 @@ final class CallCollectionView: UIView, UICollectionViewDataSource, UICollection
     }
     
     //MARK:- UICollectionViewDataSource
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return weatherDaily.count
     }

@@ -18,10 +18,18 @@ class PageCoordinator: Coordinator {
     
     let pageOneBoarding: OnboardingViewController
     
-    init() {
+    let navigation: UINavigationController
+    
+    init(navigation: UINavigationController) {
+        self.navigation = navigation
+        
         pageViewController = PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-        
-        
+    
+//        pageViewController.clousureRreturnBack = { [weak self] (text, currentIndex) in
+//         
+//            let page =  self?.pageViewController.pages[currentIndex]
+//        }
+//        
         pageOneBoarding = OnboardingViewController()
         
         viewControllers.append(pageOneBoarding)
@@ -29,9 +37,9 @@ class PageCoordinator: Coordinator {
         if !realmOfFactory.realm.obtainModelCurrent().isEmpty {
             for model in realmOfFactory.realm.obtainModelCurrent() {
                 
-                let page = ViewControllerCoordinator(navigationController: UINavigationController(), controllerFactory: factory, nameCity: model.nameCity, id: model.id)
+                let page = ViewControllerCoordinator(navigationController: navigation, controllerFactory: factory, nameCity: model.nameCity, id: model.id)
                 
-                viewControllers.append(page.navigationController)
+                viewControllers.append(page.page)
                 
                 coordinators.append(page)
             }
@@ -40,14 +48,12 @@ class PageCoordinator: Coordinator {
             pageViewController.createBasedViewControllers(pages: viewControllers)
         }
         
-        pageOneBoarding.transferString = { [weak self] text in
-            let page = ViewControllerCoordinator(navigationController: UINavigationController(), controllerFactory: self?.factory as! ControllerFactory, nameCity: text, id: String(describing: (self?.viewControllers.count)! + 1))
+        pageOneBoarding.transferString = { text in
+            let page = ViewControllerCoordinator(navigationController: navigation, controllerFactory: self.factory as ControllerFactory, nameCity: text, id: String(describing: (self.viewControllers.count) + 1))
             
-            self?.pageViewController.createOneViewCintroller(page: page.navigationController)
-            self?.viewControllers.append(page.navigationController)
-            self?.coordinators.append(page)
-            
+            self.pageViewController.createOneViewCintroller(page: page.page)
+            self.viewControllers.append(page.page)
+            self.coordinators.append(page)
         }
-        
     }
 }

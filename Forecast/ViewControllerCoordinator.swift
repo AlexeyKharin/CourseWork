@@ -20,7 +20,7 @@ class ViewControllerCoordinator: Coordinator  {
     
     let page: ViewController
     
-    init(navigationController:UINavigationController, controllerFactory: ControllerFactory, nameCity: String, id: String) {
+    init(navigationController: UINavigationController, controllerFactory: ControllerFactory, nameCity: String, id: String) {
         self.navigationController = navigationController
         self.controllerFactory = controllerFactory
         self.id = id
@@ -29,24 +29,20 @@ class ViewControllerCoordinator: Coordinator  {
         page = ViewController(id: id, nameCity: nameCity)
         page.viewModel = viewModal.viewModal
         
-        navigationController.pushViewController(page, animated: true)
-        
         page.clousureDailyViewController = { (modelDaily, nameCity) in
             
-            guard let navigation = (UIApplication.shared.keyWindow?.rootViewController as? UINavigationController) else { return }
+            //            guard let navigation = (UIApplication.shared.keyWindow?.rootViewController as? UINavigationController) else { return }
             
-            let vc = DailySummaryViewController(realmModelDaily: modelDaily, titleCity: nameCity, customNavigationController: navigation)
+            let vc = DailySummaryViewController(realmModelDaily: modelDaily, titleCity: nameCity, customNavigationController: navigationController)
             
-            navigation.pushViewController(vc, animated: true)
+            self.navigationController.pushViewController(vc, animated: true)
         }
         
-        page.clousureHourlyViewController = { modelHourly in
+        page.clousureHourlyViewController = { (modelHourly, nameCity) in
             
-            guard let navigation = (UIApplication.shared.keyWindow?.rootViewController as? UINavigationController) else { return }
+            let vc = HourlyViewController(realmModelHourly: modelHourly, customNavigationController: navigationController, titleCity: nameCity)
             
-            let vc = HourlyViewController(realmModelHourly: modelHourly, customNavigationController: navigation)
-            
-            navigation.pushViewController(vc, animated: true)
+            self.navigationController.pushViewController(vc, animated: true)
         }
     }
 }

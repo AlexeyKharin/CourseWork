@@ -4,6 +4,8 @@ import UIKit
 
 class DaySummaryTableViewCell: UITableViewCell {
     
+    let units = UserDefaults.standard.object(forKey: Keys.stringKey.rawValue) as? String
+    
     var contentDay: ModelOneDay? {
         didSet {
             guard let tempDay = contentDay?.tempDay else { return }
@@ -14,13 +16,20 @@ class DaySummaryTableViewCell: UITableViewCell {
             guard let clouds = contentDay?.clouds else { return }
             guard let dataImage = contentDay?.imageCondition else  { return }
             weatherDescription.text = contentDay?.weatherDescription
-            temp.text = "\(tempDay)°"
-            feelLikesValue.text = "\(feelsLikeDay)°"
-            windSpeedValue.text = "\(windSpeed)m/s"
             uviValue.text = "\(uvi)%"
             rainValue.text = "\(pop)%"
             cloudyValue.text = "\(clouds)%"
             imageCondition.image = UIImage(data: dataImage)
+            
+            if units == "metric" {
+                temp.text = "\(tempDay)°"
+                feelLikesValue.text = "\(feelsLikeDay)°"
+                windSpeedValue.text = "\(windSpeed)m/s"
+            } else if units == "imperial" {
+                temp.text = "\(tempDay)F°"
+                feelLikesValue.text = "\(feelsLikeDay)F°"
+                windSpeedValue.text = "\(windSpeed)mil/hour"
+            }
         }
     }
 

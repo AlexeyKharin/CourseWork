@@ -4,14 +4,20 @@ import UIKit
 
 class HourlyCollectionCell: UICollectionViewCell {
     
+    let units = UserDefaults.standard.object(forKey: Keys.stringKey.rawValue) as? String
+    
     var contentHourly: RealmModelHourly? {
         didSet {
-            temp.text = "\(Int(contentHourly!.temp))°"
             dataOfHourlyyForecast.text = contentHourly?.time
             imageCondition.image = UIImage(data: contentHourly!.imageCondition)
+            if units == "metric" {
+                temp.text = "\(Int(contentHourly!.temp))°"
+            } else if units == "imperial" {
+                temp.text = "\(Int(contentHourly!.temp))°F"
+            }
         }
     }
-    
+  
     var switcher: Bool? {
         didSet {
             if switcher! {
@@ -44,6 +50,7 @@ class HourlyCollectionCell: UICollectionViewCell {
         label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         label.textColor = UIColor(red: 156/255, green: 151/255, blue: 151/255, alpha: 1)
         label.textAlignment = .center
+        label.numberOfLines = 2
         label.toAutoLayout()
         return label
     }()
@@ -60,10 +67,11 @@ class HourlyCollectionCell: UICollectionViewCell {
         let contraints = [
             
             dataOfHourlyyForecast.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            dataOfHourlyyForecast.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            dataOfHourlyyForecast.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 2),
+            dataOfHourlyyForecast.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -2),
             
             imageCondition.topAnchor.constraint(equalTo: dataOfHourlyyForecast.bottomAnchor, constant: 5),
-            imageCondition.centerXAnchor.constraint(equalTo: dataOfHourlyyForecast.centerXAnchor),
+            imageCondition.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             imageCondition.heightAnchor.constraint(equalToConstant: 20),
             imageCondition.widthAnchor.constraint(equalToConstant: 20),
             

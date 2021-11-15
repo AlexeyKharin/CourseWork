@@ -4,16 +4,21 @@ import UIKit
 
 class DailyCollectionCell: UICollectionViewCell {
     
+    let units = UserDefaults.standard.object(forKey: Keys.stringKey.rawValue) as? String
+    
     var contentDaily: ModelOneDay? {
         didSet {
-            
             guard let tempDay = contentDaily?.tempDay, let tempMight = contentDaily?.tempNight else { return }
-            dataOfdailyForecast.text = contentDaily?.dataForTableView
-            temp.text = "\(tempMight)°-\((tempDay))°"
-            weatherDescription.text = contentDaily?.weatherDescription
-            
             guard let pop = contentDaily?.pop else { return }
+            dataOfdailyForecast.text = contentDaily?.dataForTableView
+            weatherDescription.text = contentDaily?.weatherDescription
             rain.text = "\(pop)%"
+          
+            if units == "metric" {
+                temp.text = "\(tempMight)°-\((tempDay))°"
+            } else if units == "imperial" {
+                temp.text = "\(tempMight)°F-\((tempDay))°F"
+            }
         }
     }
     

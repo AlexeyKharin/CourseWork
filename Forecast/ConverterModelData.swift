@@ -32,6 +32,9 @@ class ConverterModelData {
     }
     
     func convertHourlyModel(modelHourly: ModelHourly, id: String) ->  RealmModelCurrent {
+        
+        let toggleFormart = UserDefaults.standard.bool(forKey: Keys.boolKey.rawValue)
+        
         let model = RealmModelCurrent()
         model.id = id
         guard let currentTime = modelHourly.current?.dt, let sunriseTime = modelHourly.current?.sunrise, let sunsetTime = modelHourly.current?.sunset else { return model}
@@ -47,10 +50,21 @@ class ConverterModelData {
         let dataTimeSunset = Date(timeIntervalSince1970: Double(sunsetTime))
         let dataTimeSunrise = Date(timeIntervalSince1970: Double(sunriseTime))
         
-        dateFormatter.dateFormat = "HH:mm, E d MMM"
         dateFormatter.timeZone = TimeZone(identifier: safetyModelTimeZone)
-        
+
+        if toggleFormart {
+            dateFormatter.dateFormat = "h:mm a, E d MMM"
+        } else {
+            dateFormatter.dateFormat = "HH:mm, E d MMM"
+        }
         let stringTimeCurrent = dateFormatter.string(from: dataTimeCurrent)
+        
+        if toggleFormart {
+            dateFormatter.dateFormat = "h:mm a"
+        } else {
+            dateFormatter.dateFormat = "HH:mm"
+        }
+        
         let stringTimeSunset  = dateFormatter.string(from: dataTimeSunset)
         let stringTimeSunrise = dateFormatter.string(from: dataTimeSunrise)
         
@@ -76,8 +90,11 @@ class ConverterModelData {
             guard let id = i.weather?.first?.id else { return model }
             guard let icon = i.weather?.first?.icon else { return model }
             let dataTimeCurrent = Date(timeIntervalSince1970: Double(hourTime))
-            
-            dateFormatter.dateFormat = "HH:mm"
+            if toggleFormart {
+                dateFormatter.dateFormat = "h:mm a"
+            } else {
+                dateFormatter.dateFormat = "HH:mm"
+            }
             let stringTimeHour = dateFormatter.string(from: dataTimeCurrent)
             dateFormatter.dateFormat = "MMM d/MM"
             let stringData  = dateFormatter.string(from: dataTimeCurrent)
@@ -100,6 +117,8 @@ class ConverterModelData {
     }
     
     func convertDailyModel(modelDaily: ModelDaily, id: String) -> RealmModelDaily {
+        
+        let toggleFormart = UserDefaults.standard.bool(forKey: Keys.boolKey.rawValue)
         
         let model = RealmModelDaily()
         model.id = id
@@ -148,7 +167,11 @@ class ConverterModelData {
             let stringDataForCollection = dateFormatter.string(from: dataTime)
             modelOneDay.dataForCollection = stringDataForCollection
             
-            dateFormatter.dateFormat = "HH:mm"
+            if toggleFormart {
+                dateFormatter.dateFormat = "h:mm a"
+            } else {
+                dateFormatter.dateFormat = "HH:mm"
+            }
             let stringTimeMoonrise = dateFormatter.string(from: dataTimemoonrise)
             let stringTimeMoonset = dateFormatter.string(from: dataTimemoonset)
             let stringTimeSunset = dateFormatter.string(from: dataTimesunset)

@@ -2,14 +2,17 @@ import Foundation
 import UIKit
 
 final class CallHourlyCollecttionView: UIView,  UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
-
+    
+    var heightCell = Int()
+    var heightCollectionView = Int(0)
+    
     var delegate: CreateHourlyViewController?
     
     var realmHourly: RealmModelCurrent?
     
     private let layout = UICollectionViewFlowLayout()
     
-     lazy var collectionView: UICollectionView = {
+    lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .white
         collectionView.toAutoLayout()
@@ -27,7 +30,7 @@ final class CallHourlyCollecttionView: UIView,  UICollectionViewDelegateFlowLayo
         NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16),
         NSAttributedString.Key.foregroundColor : UIColor(red: 39/255, green:39/255, blue: 34/255, alpha: 1),
         NSAttributedString.Key.underlineStyle : 1] as [NSAttributedString.Key : Any]
-
+    
     var attributedString = NSMutableAttributedString(string:"")
     
     lazy var moreDetails: UIButton = {
@@ -46,9 +49,9 @@ final class CallHourlyCollecttionView: UIView,  UICollectionViewDelegateFlowLayo
     }
     
     //    MARK:- UICollectionViewDataSource
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return realmHourly?.hourlyWeather.count ?? 0
+        return realmHourly?.hourlyWeather.count ?? 24
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -63,9 +66,9 @@ final class CallHourlyCollecttionView: UIView,  UICollectionViewDelegateFlowLayo
         
         let currentTime = Date()
         let time = Date(timeIntervalSince1970: Double(content!.dataDate))
-
+        
         let contentNext = Date(timeIntervalSince1970: Double((realmHourly?.hourlyWeather[indexPath.row + 1].dataDate)!))
-
+        
         if currentTime > time && currentTime < contentNext {
             cell.switcher = true
         } else {
@@ -74,7 +77,7 @@ final class CallHourlyCollecttionView: UIView,  UICollectionViewDelegateFlowLayo
         }
         return cell
     }
-//        MARK:- UICollectionViewDelegateFlowLayout
+    //        MARK:- UICollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 8
@@ -83,7 +86,7 @@ final class CallHourlyCollecttionView: UIView,  UICollectionViewDelegateFlowLayo
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let width: CGFloat = (collectionView.bounds.width - (8 * 6) - (16*2)) / 7
-        return CGSize(width: width, height: 83)
+        return CGSize(width: width, height: CGFloat(heightCell))
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -94,13 +97,24 @@ final class CallHourlyCollecttionView: UIView,  UICollectionViewDelegateFlowLayo
         guard let realmHourly = realmHourly else { return }
         delegate?.createHourlyViewController(realmHourly)
     }
-
+    
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         layout.scrollDirection = .horizontal
         addSubview(collectionView)
         addSubview(moreDetails)
-       
+        
+        let toggleFormart = UserDefaults.standard.bool(forKey: Keys.boolKey.rawValue)
+        
+        if !toggleFormart {
+            heightCell = 83
+            heightCollectionView = 90
+        } else {
+            heightCell = 93
+            heightCollectionView = 96
+        }
         let constraints = [
             
             moreDetails.topAnchor.constraint(equalTo: topAnchor),
@@ -111,7 +125,7 @@ final class CallHourlyCollecttionView: UIView,  UICollectionViewDelegateFlowLayo
             collectionView.topAnchor.constraint(equalTo:  moreDetails.bottomAnchor, constant: 10),
             collectionView.leftAnchor.constraint(equalTo: leftAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionView.heightAnchor.constraint(equalToConstant: 90),
+            collectionView.heightAnchor.constraint(equalToConstant: CGFloat(heightCollectionView)),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ]
         

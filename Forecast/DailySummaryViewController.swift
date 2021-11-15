@@ -33,6 +33,16 @@ class DailySummaryViewController: UIViewController {
         return label
     }()
     
+    let titleCity: UILabel = {
+       let label = UILabel()
+       label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+       label.textColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1)
+       label.textAlignment = .left
+       label.numberOfLines = 0
+       label.toAutoLayout()
+       return label
+   }()
+    
     lazy var buttonBack: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "arrow.backward")!.applyingSymbolConfiguration(.init(scale: .large))! .withTintColor(UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)).withRenderingMode(.alwaysOriginal), for:.normal)
@@ -73,13 +83,11 @@ class DailySummaryViewController: UIViewController {
     
     init(realmModelDaily: RealmModelDaily, titleCity: String, customNavigationController: UINavigationController) {
         self.realmModelDaily = realmModelDaily
-        self.titleCity = titleCity
+        self.titleCity.text = titleCity
         self.customNavigationController = customNavigationController
         super.init(nibName: nil, bundle: nil)
     }
-    
-    var titleCity: String
-    
+        
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -88,6 +96,7 @@ class DailySummaryViewController: UIViewController {
         view.addSubview(customNavigationBar)
         customNavigationBar.addSubview(buttonBack)
         customNavigationBar.addSubview(backTitle)
+        view.addSubview(titleCity)
         view.backgroundColor = .white
         view.addSubview(tableView)
 
@@ -98,10 +107,14 @@ class DailySummaryViewController: UIViewController {
             height: 50)
         
         let constraints = [
-            tableView.topAnchor.constraint(equalTo: customNavigationBar.bottomAnchor),
+            titleCity.topAnchor.constraint(equalTo: customNavigationBar.bottomAnchor, constant: 15),
+            titleCity.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 15),
+            titleCity.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
+            
+            tableView.topAnchor.constraint(equalTo: titleCity.bottomAnchor),
             tableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 15),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 40)
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40)
 
         ]
         NSLayoutConstraint.activate(constraints)
@@ -153,8 +166,7 @@ extension DailySummaryViewController: UITableViewDataSource {
             let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: String(describing: CollectionHeaderForSectionOne.self) ) as! CollectionHeaderForSectionOne
             
             headerView.contentDaily = realmModelDaily
-            headerView.title.text = titleCity
-            
+    
             headerView.dataTransfer =  { model in
                 self.realmModelOndeDay = model
                 self.tableView.reloadData()
@@ -177,20 +189,11 @@ extension DailySummaryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
         case 0:
-            return 153
+            return 76
         default:
             return 12
         }
     }
-    
-//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        switch section {
-//        case 0:
-//            return .zero
-//        default:
-//            return 157
-//        }
-//    }
 }
 
 

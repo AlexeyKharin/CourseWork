@@ -177,14 +177,16 @@ class SunAndMoonСell: UITableViewCell {
             imageSun.widthAnchor.constraint(equalToConstant: 25),
             
             lineHorizontalOne.topAnchor.constraint(equalTo: imageSun.bottomAnchor, constant: 10),
-            lineHorizontalOne.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+            lineHorizontalOne.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16),
+            lineHorizontalOne.rightAnchor.constraint(equalTo: lineVertical.leftAnchor, constant:  -28),
             lineHorizontalOne.heightAnchor.constraint(equalToConstant: 1),
             
             sunrise.topAnchor.constraint(equalTo: lineHorizontalOne.bottomAnchor, constant: 8),
             sunrise.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 19),
             
             lineHorizontalTwo.topAnchor.constraint(equalTo: sunrise.bottomAnchor, constant: 9),
-            lineHorizontalTwo.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+            lineHorizontalTwo.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16),
+            lineHorizontalTwo.rightAnchor.constraint(equalTo: lineVertical.leftAnchor, constant: -28),
             lineHorizontalTwo.heightAnchor.constraint(equalToConstant: 1),
             
             sunset.topAnchor.constraint(equalTo: lineHorizontalTwo.bottomAnchor, constant: 8),
@@ -202,14 +204,16 @@ class SunAndMoonСell: UITableViewCell {
             imageMoon.widthAnchor.constraint(equalToConstant: 25),
 
             lineHorizontalThree.centerYAnchor.constraint(equalTo: lineHorizontalOne.centerYAnchor),
-            lineHorizontalThree.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            lineHorizontalThree.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
+            lineHorizontalThree.leftAnchor.constraint(equalTo: lineVertical.rightAnchor, constant: 12),
             lineHorizontalThree.heightAnchor.constraint(equalToConstant: 1),
             
             moonrise.centerYAnchor.constraint(equalTo: sunrise.centerYAnchor),
             moonrise.leftAnchor.constraint(equalTo: lineVertical.rightAnchor, constant: 27),
 
             lineHorizontalFour.centerYAnchor.constraint(equalTo: lineHorizontalTwo.centerYAnchor),
-            lineHorizontalFour.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            lineHorizontalFour.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
+            lineHorizontalFour.leftAnchor.constraint(equalTo: lineVertical.rightAnchor, constant: 12),
             lineHorizontalFour.heightAnchor.constraint(equalToConstant: 1),
             
             moonset.centerYAnchor.constraint(equalTo: sunset.centerYAnchor),

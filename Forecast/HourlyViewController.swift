@@ -1,5 +1,6 @@
 import UIKit
 import Foundation
+
 class HourlyViewController: UIViewController {
     
     var realmModelHourly: RealmModelCurrent
@@ -8,10 +9,12 @@ class HourlyViewController: UIViewController {
     
     let customNavigationController: UINavigationController
     
-    init(realmModelHourly: RealmModelCurrent, customNavigationController: UINavigationController) {
+    init(realmModelHourly: RealmModelCurrent, customNavigationController: UINavigationController, titleCity: String) {
         self.realmModelHourly = realmModelHourly
         self.customNavigationController = customNavigationController
+        self.titleCity.text = titleCity
         super.init(nibName: nil, bundle: nil)
+        graphTemp.contentHourly = realmModelHourly
     }
     
     required init?(coder: NSCoder) {
@@ -29,7 +32,7 @@ class HourlyViewController: UIViewController {
         return tableView
     }()
     
-    lazy var titleCity: UILabel = {
+     var titleCity: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         label.textColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1)
@@ -48,6 +51,8 @@ class HourlyViewController: UIViewController {
         return label
     }()
     
+    var graphTemp = GraphTemp()
+    
     lazy var buttonBack: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "arrow.backward")!.applyingSymbolConfiguration(.init(scale: .large))! .withTintColor(UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)).withRenderingMode(.alwaysOriginal), for:.normal)
@@ -61,11 +66,11 @@ class HourlyViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.addSubview(customNavigationBar)
         customNavigationBar.addSubview(buttonBack)
         customNavigationBar.addSubview(backTitle)
         view.backgroundColor = .white
+        graphTemp.toAutoLayout()
         
         customNavigationBar.frame = CGRect(
             x: .zero,
@@ -100,7 +105,6 @@ class HourlyViewController: UIViewController {
         super.viewWillDisappear(animated)
         self.navigationController?.isNavigationBarHidden = false
     }
-    
 }
 // MARK: - UITableViewDataSource
 extension HourlyViewController: UITableViewDataSource {
@@ -142,13 +146,16 @@ extension HourlyViewController: UITableViewDelegate {
         .zero
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
 
 // MARK: - Setup Views
 private extension HourlyViewController {
     
     func setupViews() {
-        
+        view.addSubview(graphTemp)
         view.addSubview(tableView)
         view.addSubview(titleCity)
         
@@ -156,13 +163,18 @@ private extension HourlyViewController {
             
             titleCity.topAnchor.constraint(equalTo: customNavigationBar.bottomAnchor, constant: 15),
             titleCity.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 48),
+            titleCity.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
             
-            tableView.topAnchor.constraint(equalTo: titleCity.bottomAnchor, constant: 15),
+            graphTemp.topAnchor.constraint(equalTo: titleCity.bottomAnchor, constant: 15),
+            graphTemp.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+            graphTemp.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            graphTemp.heightAnchor.constraint(equalToConstant: 200),
+            
+            tableView.topAnchor.constraint(equalTo: graphTemp.bottomAnchor, constant: 15),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ]
-        
         NSLayoutConstraint.activate(constraints)
     }
 }

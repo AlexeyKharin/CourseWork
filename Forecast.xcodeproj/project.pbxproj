@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		8DA73A80EBACD01B17A09046 /* Pods_Forecast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E31B6F693353EE979CEF454A /* Pods_Forecast.framework */; };
+		B42614F127305F5E006EF010 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42614F027305F5E006EF010 /* ContainerViewController.swift */; };
+		B42614F42730648C006EF010 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42614F32730648C006EF010 /* MenuViewController.swift */; };
+		B42614F727306BE0006EF010 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42614F627306BE0006EF010 /* SettingsViewController.swift */; };
+		B42614FB2731AE49006EF010 /* ContainerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42614FA2731AE49006EF010 /* ContainerCoordinator.swift */; };
 		B43349A12718ABBC00DF3A0C /* HourlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43349A02718ABBC00DF3A0C /* HourlyViewController.swift */; };
 		B43349A42718B1B100DF3A0C /* HourlyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43349A32718B1B100DF3A0C /* HourlyTableViewCell.swift */; };
 		B43349A7271AE8CB00DF3A0C /* DailySummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43349A6271AE8CB00DF3A0C /* DailySummaryViewController.swift */; };
@@ -41,6 +45,7 @@
 		B486C98F270CDC2C00C6006F /* ModelDaily.swift in Sources */ = {isa = PBXBuildFile; fileRef = B486C98E270CDC2C00C6006F /* ModelDaily.swift */; };
 		B486C992270CE88A00C6006F /* GeoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B486C991270CE88A00C6006F /* GeoData.swift */; };
 		B486C995270F6F8B00C6006F /* ConverterModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B486C994270F6F8A00C6006F /* ConverterModelData.swift */; };
+		B49AA123273FB380000412D0 /* GraphTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49AA122273FB380000412D0 /* GraphTemp.swift */; };
 		B4B0C27127135CB4005B18A0 /* RealmModelDaily.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B0C27027135CB4005B18A0 /* RealmModelDaily.swift */; };
 		B4B0C2752715D797005B18A0 /* DailyCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B0C2742715D796005B18A0 /* DailyCollectionCell.swift */; };
 		B4B0C27F2716171B005B18A0 /* HourlyCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B0C27E2716171A005B18A0 /* HourlyCollectionCell.swift */; };
@@ -50,6 +55,10 @@
 /* Begin PBXFileReference section */
 		1A3AB818B06D2D2A19C56FBE /* Pods-Forecast.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Forecast.release.xcconfig"; path = "Target Support Files/Pods-Forecast/Pods-Forecast.release.xcconfig"; sourceTree = "<group>"; };
 		2A877F81E002231109D4363A /* Pods-Forecast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Forecast.debug.xcconfig"; path = "Target Support Files/Pods-Forecast/Pods-Forecast.debug.xcconfig"; sourceTree = "<group>"; };
+		B42614F027305F5E006EF010 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		B42614F32730648C006EF010 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		B42614F627306BE0006EF010 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		B42614FA2731AE49006EF010 /* ContainerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerCoordinator.swift; sourceTree = "<group>"; };
 		B43349A02718ABBC00DF3A0C /* HourlyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyViewController.swift; sourceTree = "<group>"; };
 		B43349A32718B1B100DF3A0C /* HourlyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyTableViewCell.swift; sourceTree = "<group>"; };
 		B43349A6271AE8CB00DF3A0C /* DailySummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailySummaryViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +94,7 @@
 		B486C98E270CDC2C00C6006F /* ModelDaily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDaily.swift; sourceTree = "<group>"; };
 		B486C991270CE88A00C6006F /* GeoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoData.swift; sourceTree = "<group>"; };
 		B486C994270F6F8A00C6006F /* ConverterModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterModelData.swift; sourceTree = "<group>"; };
+		B49AA122273FB380000412D0 /* GraphTemp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphTemp.swift; sourceTree = "<group>"; };
 		B4B0C27027135CB4005B18A0 /* RealmModelDaily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModelDaily.swift; sourceTree = "<group>"; };
 		B4B0C2742715D796005B18A0 /* DailyCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCollectionCell.swift; sourceTree = "<group>"; };
 		B4B0C27E2716171A005B18A0 /* HourlyCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyCollectionCell.swift; sourceTree = "<group>"; };
@@ -115,7 +125,6 @@
 		B43349AD271B66A600DF3A0C /* DailySummaryViewController */ = {
 			isa = PBXGroup;
 			children = (
-				B43349D82725BF8700DF3A0C /* DashedLineHorizonatalView.swift */,
 				B43349A6271AE8CB00DF3A0C /* DailySummaryViewController.swift */,
 				B43349A9271AEF7C00DF3A0C /* DaySummaryTableViewCell.swift */,
 				B43349D22725759500DF3A0C /* SunAndMoonFooter.swift */,
@@ -123,6 +132,7 @@
 				B43349B4271B685400DF3A0C /* CollectionHeaderForSectionOne.swift */,
 				B43349BB271C0B7A00DF3A0C /* CallCollectionView.swift */,
 				B43349B7271B69DB00DF3A0C /* CollectionHeaderCell.swift */,
+				B43349D82725BF8700DF3A0C /* DashedLineHorizonatalView.swift */,
 			);
 			name = DailySummaryViewController;
 			sourceTree = "<group>";
@@ -131,12 +141,12 @@
 			isa = PBXGroup;
 			children = (
 				B486C97427087EF600C6006F /* ViewController.swift */,
+				B45EA5BD27285FF30016E1C2 /* ViewModelDelegate.swift */,
+				B45EA5C7272D71090016E1C2 /* CallContainerView.swift */,
 				B4B0C27E2716171A005B18A0 /* HourlyCollectionCell.swift */,
 				B4B0C2812716210E005B18A0 /* CallHourlyCollecttionView.swift */,
 				B4B0C2742715D796005B18A0 /* DailyCollectionCell.swift */,
 				B45EA5C4272D70B50016E1C2 /* CallDailyCollectionView.swift */,
-				B45EA5C7272D71090016E1C2 /* CallContainerView.swift */,
-				B45EA5BD27285FF30016E1C2 /* ViewModelDelegate.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -145,15 +155,40 @@
 			isa = PBXGroup;
 			children = (
 				B43349A02718ABBC00DF3A0C /* HourlyViewController.swift */,
+				B49AA122273FB380000412D0 /* GraphTemp.swift */,
 				B43349A32718B1B100DF3A0C /* HourlyTableViewCell.swift */,
 			);
 			name = HourlyViewController;
+			sourceTree = "<group>";
+		};
+		B457201327418B0100D6B702 /* DataStored */ = {
+			isa = PBXGroup;
+			children = (
+				B486C994270F6F8A00C6006F /* ConverterModelData.swift */,
+				B47DEEB42712F53200C17235 /* RealmDataProvider.swift */,
+				B4B0C27027135CB4005B18A0 /* RealmModelDaily.swift */,
+				B47DEEA5271218E800C17235 /* RealmModelHourly.swift */,
+			);
+			name = DataStored;
+			sourceTree = "<group>";
+		};
+		B457201427418B2800D6B702 /* DataJSON */ = {
+			isa = PBXGroup;
+			children = (
+				B486C991270CE88A00C6006F /* GeoData.swift */,
+				B486C98E270CDC2C00C6006F /* ModelDaily.swift */,
+				B486C98B270CDB4300C6006F /* ModelHourly.swift */,
+				B486C988270B77B000C6006F /* NetworkManager.swift */,
+				B486C985270A25B000C6006F /* ApiType.swift */,
+			);
+			name = DataJSON;
 			sourceTree = "<group>";
 		};
 		B45EA5B8272845D20016E1C2 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
 				B45EA5B9272849E00016E1C2 /* Coordinator.swift */,
+				B42614FA2731AE49006EF010 /* ContainerCoordinator.swift */,
 				B45EA5C0272893EF0016E1C2 /* PageCoordinator.swift */,
 				B45EA5CC272DC4460016E1C2 /* ViewControllerCoordinator.swift */,
 			);
@@ -187,19 +222,15 @@
 				B43349B3271B676B00DF3A0C /* ViewController */,
 				B43349AD271B66A600DF3A0C /* DailySummaryViewController */,
 				B486C97627087EF600C6006F /* Main.storyboard */,
-				B486C988270B77B000C6006F /* NetworkManager.swift */,
 				B45EA5B8272845D20016E1C2 /* Coordinators */,
+				B42614F027305F5E006EF010 /* ContainerViewController.swift */,
+				B42614F627306BE0006EF010 /* SettingsViewController.swift */,
 				B43349CE271F44F400DF3A0C /* UIPageViewController.swift */,
+				B42614F32730648C006EF010 /* MenuViewController.swift */,
 				B45EA5D0272E8DB50016E1C2 /* ViewModalFactory.swift */,
 				B43349CB271F40F600DF3A0C /* OnboardingViewController.swift */,
-				B486C994270F6F8A00C6006F /* ConverterModelData.swift */,
-				B47DEEA5271218E800C17235 /* RealmModelHourly.swift */,
-				B4B0C27027135CB4005B18A0 /* RealmModelDaily.swift */,
-				B486C98E270CDC2C00C6006F /* ModelDaily.swift */,
-				B47DEEB42712F53200C17235 /* RealmDataProvider.swift */,
-				B486C985270A25B000C6006F /* ApiType.swift */,
-				B486C98B270CDB4300C6006F /* ModelHourly.swift */,
-				B486C991270CE88A00C6006F /* GeoData.swift */,
+				B457201327418B0100D6B702 /* DataStored */,
+				B457201427418B2800D6B702 /* DataJSON */,
 				B486C97927087EFD00C6006F /* Assets.xcassets */,
 				B486C97B27087EFD00C6006F /* LaunchScreen.storyboard */,
 				B486C97E27087EFD00C6006F /* Info.plist */,
@@ -332,6 +363,7 @@
 			files = (
 				B43349B8271B69DB00DF3A0C /* CollectionHeaderCell.swift in Sources */,
 				B47DEEB52712F53200C17235 /* RealmDataProvider.swift in Sources */,
+				B42614F127305F5E006EF010 /* ContainerViewController.swift in Sources */,
 				B43349D32725759600DF3A0C /* SunAndMoonFooter.swift in Sources */,
 				B43349B5271B685400DF3A0C /* CollectionHeaderForSectionOne.swift in Sources */,
 				B43349BF271C227500DF3A0C /* NightSummaryTableViewCell.swift in Sources */,
@@ -340,6 +372,7 @@
 				B45EA5C8272D71090016E1C2 /* CallContainerView.swift in Sources */,
 				B486C986270A25B000C6006F /* ApiType.swift in Sources */,
 				B486C97527087EF600C6006F /* ViewController.swift in Sources */,
+				B49AA123273FB380000412D0 /* GraphTemp.swift in Sources */,
 				B486C98F270CDC2C00C6006F /* ModelDaily.swift in Sources */,
 				B43349A42718B1B100DF3A0C /* HourlyTableViewCell.swift in Sources */,
 				B45EA5CD272DC4460016E1C2 /* ViewControllerCoordinator.swift in Sources */,
@@ -352,14 +385,17 @@
 				B486C97127087EF600C6006F /* AppDelegate.swift in Sources */,
 				B4B0C2752715D797005B18A0 /* DailyCollectionCell.swift in Sources */,
 				B47DEEA6271218E800C17235 /* RealmModelHourly.swift in Sources */,
+				B42614FB2731AE49006EF010 /* ContainerCoordinator.swift in Sources */,
 				B43349AA271AEF7C00DF3A0C /* DaySummaryTableViewCell.swift in Sources */,
 				B43349D92725BF8700DF3A0C /* DashedLineHorizonatalView.swift in Sources */,
+				B42614F727306BE0006EF010 /* SettingsViewController.swift in Sources */,
 				B45EA5BE27285FF30016E1C2 /* ViewModelDelegate.swift in Sources */,
 				B45EA5BA272849E00016E1C2 /* Coordinator.swift in Sources */,
 				B486C992270CE88A00C6006F /* GeoData.swift in Sources */,
 				B43349CC271F40F600DF3A0C /* OnboardingViewController.swift in Sources */,
 				B43349BC271C0B7A00DF3A0C /* CallCollectionView.swift in Sources */,
 				B45EA5D1272E8DB50016E1C2 /* ViewModalFactory.swift in Sources */,
+				B42614F42730648C006EF010 /* MenuViewController.swift in Sources */,
 				B43349CF271F44F400DF3A0C /* UIPageViewController.swift in Sources */,
 				B486C98C270CDB4300C6006F /* ModelHourly.swift in Sources */,
 				B4B0C27F2716171B005B18A0 /* HourlyCollectionCell.swift in Sources */,

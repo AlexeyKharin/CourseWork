@@ -2,6 +2,10 @@ import UIKit
 
 class PageViewController: UIPageViewController {
     
+    var currentIndexA: Int = 0
+    
+    var dataTransfer: DataTranfer?
+    
     var pages = [UIViewController]()
     
     let pageControl = UIPageControl()
@@ -10,19 +14,64 @@ class PageViewController: UIPageViewController {
     
     let customNavigationBar = UINavigationBar()
     
+    var pageDelegate: PageViewControllerDelegate?
+    
     lazy var buttonSettings: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "settings")!.applyingSymbolConfiguration(.init(scale: .large))! .withTintColor(UIColor(red: 39/255, green: 39/255, blue: 39/255, alpha: 1)).withRenderingMode(.alwaysOriginal), for:.normal)
+        button.addTarget(self, action: #selector(toggleMenu) , for: .touchUpInside)
         return button
     }()
+    
+    @objc func toggleMenu() {
+        pageDelegate?.toggleMenu()
+    }
     
     lazy var buttonFindLocation: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "location")!.applyingSymbolConfiguration(.init(scale: .large))! .withTintColor(UIColor(red: 39/255, green: 39/255, blue: 39/255, alpha: 1)).withRenderingMode(.alwaysOriginal), for:.normal)
+        button.addTarget(self, action: #selector(returnBack), for: .touchUpInside)
         return button
     }()
-
-   
+    
+    @objc func returnBack() {
+        udateAccount()
+    }
+    
+    private func udateAccount() {
+        let alert = UIAlertController(title: "Хотите изменить город", message: "Введите название горорода, для которого ищите прогноз погоды", preferredStyle: .alert)
+        let actionCancel = UIAlertAction(title: "Отмена", style: .cancel) { _ in
+        }
+        let actionContinue = UIAlertAction(title: "Изменить", style: .default) { [weak self] _ in
+            
+            let textField = alert.textFields![0] as UITextField
+            guard let text = textField.text else { return }
+            
+            let page = self?.pages[(self?.currentIndexA)!] as! ViewController
+            page.udateCity(nameCity: text)
+        }
+        
+        alert.addTextField { (textField) in
+            textField.placeholder = "Введите город"
+        }
+        
+        alert.addAction(actionContinue)
+        alert.addAction(actionCancel)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+     var titleCity: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        label.textColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1)
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.text = "Прогноз погоды"
+        label.toAutoLayout()
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -30,12 +79,8 @@ class PageViewController: UIPageViewController {
         customNavigationBar.backgroundColor = .white
         customNavigationBar.addSubview(buttonSettings)
         customNavigationBar.addSubview(buttonFindLocation)
-        
-        customNavigationBar.frame = CGRect(
-            x: .zero,
-            y: 44,
-            width: self.view.bounds.width,
-            height: 50)
+        customNavigationBar.addSubview(titleCity)
+        customNavigationBar.toAutoLayout()
         
         setup()
         style()
@@ -44,7 +89,6 @@ class PageViewController: UIPageViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-    
         buttonSettings.frame = CGRect(
             x: 16,
             y: 10,
@@ -61,13 +105,17 @@ class PageViewController: UIPageViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        
+        guard let page = pages[currentIndexA] as? ViewController else { return }
+        let parts = page.nameCityCountry.split(separator: ",")
+        guard let nameCity = parts.last else { return }
+        titleCity.text = String(nameCity)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.isNavigationBarHidden = false
     }
-
 }
 
 extension PageViewController {
@@ -96,17 +144,23 @@ extension PageViewController {
         pageControl.currentPageIndicatorTintColor = .black
         pageControl.pageIndicatorTintColor = .systemGray2
         pageControl.currentPage = initialPage
-        
     }
     
     func layout() {
         view.addSubview(pageControl)
         
         NSLayoutConstraint.activate([
+            customNavigationBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            customNavigationBar.widthAnchor.constraint(equalTo: view.widthAnchor),
+            customNavigationBar.heightAnchor.constraint(equalToConstant: 50),
+            
             pageControl.topAnchor.constraint(equalTo: customNavigationBar.bottomAnchor),
             pageControl.widthAnchor.constraint(equalTo: view.widthAnchor),
-            pageControl.heightAnchor.constraint(equalToConstant: 20)
-          
+            pageControl.heightAnchor.constraint(equalToConstant: 20),
+            
+            titleCity.topAnchor.constraint(equalTo: customNavigationBar.topAnchor, constant: 20),
+            titleCity.leftAnchor.constraint(equalTo: customNavigationBar.leftAnchor, constant: 50),
+            titleCity.trailingAnchor.constraint(equalTo: customNavigationBar.trailingAnchor, constant: -50)
         ])
     }
     
@@ -143,7 +197,7 @@ extension PageViewController: UIPageViewControllerDataSource {
 
 // MARK: - Delegates
 extension PageViewController: UIPageViewControllerDelegate {
-    
+  
     // How we keep our pageControl in sync with viewControllers
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         
@@ -151,6 +205,18 @@ extension PageViewController: UIPageViewControllerDelegate {
         guard let currentIndex = pages.firstIndex(of: viewControllers[0]) else { return }
         
         pageControl.currentPage = currentIndex
+        self.currentIndexA = currentIndex
+        
+        if ((pages[currentIndex] as? ViewController) != nil) {
+            let page = pages[currentIndex] as! ViewController
+            let parts = page.nameCityCountry.split(separator: ",")
+            guard let nameCity = parts.last else { return }
+            titleCity.text = String(nameCity)
+            dataTransfer?.onTapShowProfile(String(nameCity))
+        } else {
+            titleCity.text = "Прогноз погоды"
+            dataTransfer?.onTapShowProfile("Прогноз погоды")
+        }
     }
 }
 

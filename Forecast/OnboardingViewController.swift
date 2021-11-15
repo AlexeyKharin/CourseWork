@@ -23,7 +23,7 @@ class OnboardingViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupViews()
-
+        
     }
     
     lazy var buttonFindLocation: UIButton = {
@@ -59,20 +59,8 @@ class OnboardingViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-//    let customNavigationController: UINavigationController
-//
-//    init(customNavigationController: UINavigationController) {
-//        self.customNavigationController = customNavigationController
-//        super.init(nibName: nil, bundle: nil)
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-    
-    
     func setupViews() {
-
+        
         view.addSubview(lineVertical)
         view.addSubview(lineHorizontal)
         view.addSubview(buttonFindLocation)
@@ -94,5 +82,5 @@ class OnboardingViewController: UIViewController {
             buttonFindLocation.widthAnchor.constraint(equalToConstant: 50)
         ]
         NSLayoutConstraint.activate(constraints)
-}
+    }
 }

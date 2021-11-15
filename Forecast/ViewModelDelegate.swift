@@ -51,10 +51,12 @@ class ViewModel: ViewModelDelegate {
                 
                 resultOfRequesDaily(id: id, latitude: latitude!, longitude: longitude!)
                 resultOfRequesHourly(nameCity: nameCity, id: id, latitude: latitude!, longitude: longitude!)
-                obtainsData(id: id)
+//                obtainsData(id: id)
                 guard let nameCountry = data.first?.response?.geoObjectCollection?.featureMember?.first?.geoObject?.metaDataProperty?.geocoderMetaData?.text else { return }
                 transferNameCountry?(nameCountry)
-                
+            case .failure(error: let error):
+                obtainsData(id: id)
+                print(error)
             default:
                 break
             }
@@ -76,6 +78,10 @@ class ViewModel: ViewModelDelegate {
             case .successDaily(data: let data):
                 let model = convert?.convertDailyModel(modelDaily: data.first!, id: id)
                 realm?.save(modelDaily: model!)
+                obtainsData(id: id)
+            case .failure(error: let error):
+                obtainsData(id: id)
+                print(error)
             default:
                 break
             }
@@ -90,6 +96,10 @@ class ViewModel: ViewModelDelegate {
                 let model = convert?.convertHourlyModel(modelHourly: data.first!, id: id)
                 model?.nameCity = nameCity
                 realm?.save(modelHourly: model!)
+                obtainsData(id: id)
+            case .failure(error: let error):
+                obtainsData(id: id)
+                print(error)
             default:
                 break
             }

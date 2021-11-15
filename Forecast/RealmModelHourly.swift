@@ -9,6 +9,7 @@ class RealmModelCurrent: Object {
     override class func primaryKey() -> String? {
         return "id"
 }
+    
     dynamic var nameCity: String = String()
     dynamic var timezone: String = String()
     dynamic var windSpeed: Double = Double()
