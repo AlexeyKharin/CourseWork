@@ -9,7 +9,8 @@ class HourlyCollectionCell: UICollectionViewCell {
     var contentHourly: RealmModelHourly? {
         didSet {
             dataOfHourlyyForecast.text = contentHourly?.time
-            imageCondition.image = UIImage(data: contentHourly!.imageCondition)
+            guard let image = UIImage(data: contentHourly?.imageCondition ?? Data()) else { return }
+            imageCondition.image = image
             if units == "metric" {
                 temp.text = "\(Int(contentHourly!.temp))°"
             } else if units == "imperial" {

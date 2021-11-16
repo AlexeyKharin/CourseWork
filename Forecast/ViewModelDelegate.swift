@@ -51,7 +51,6 @@ class ViewModel: ViewModelDelegate {
                 
                 resultOfRequesDaily(id: id, latitude: latitude!, longitude: longitude!)
                 resultOfRequesHourly(nameCity: nameCity, id: id, latitude: latitude!, longitude: longitude!)
-//                obtainsData(id: id)
                 guard let nameCountry = data.first?.response?.geoObjectCollection?.featureMember?.first?.geoObject?.metaDataProperty?.geocoderMetaData?.text else { return }
                 transferNameCountry?(nameCountry)
             case .failure(error: let error):

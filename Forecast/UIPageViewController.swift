@@ -47,7 +47,7 @@ class PageViewController: UIPageViewController {
             let textField = alert.textFields![0] as UITextField
             guard let text = textField.text else { return }
             
-            let page = self?.pages[(self?.currentIndexA)!] as! ViewController
+            let page = (self?.pages[(self?.currentIndexA)!])! as! ViewController
             page.udateCity(nameCity: text)
         }
         

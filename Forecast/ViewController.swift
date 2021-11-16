@@ -52,7 +52,7 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel?.resultOfRequestGeo(nameCity: self.nameCity, id: self.id)
-        viewModel?.obtainsData(id: id)
+//        viewModel?.obtainsData(id: id)
     }
     
     override func viewDidLoad() {

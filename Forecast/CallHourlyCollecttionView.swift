@@ -51,7 +51,7 @@ final class CallHourlyCollecttionView: UIView,  UICollectionViewDelegateFlowLayo
     //    MARK:- UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return realmHourly?.hourlyWeather.count ?? 24
+        return realmHourly?.hourlyWeather.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
