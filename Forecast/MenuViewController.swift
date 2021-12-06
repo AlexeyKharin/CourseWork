@@ -6,6 +6,8 @@ protocol  DataTranfer {
 
 class MenuViewController: UIViewController, DataTranfer {
     
+    var delegate: PageViewControllerDelegate?
+    
     lazy var onTapShowProfile: (String) -> Void = { [weak self] nameCity in
         self?.buttonLocationString.setTitle(nameCity, for: .normal)
     }
@@ -69,6 +71,7 @@ class MenuViewController: UIViewController, DataTranfer {
     
     @objc func returnBack() {
         navigationController?.popViewController(animated: true)
+        delegate?.toggleMenu()
     }
     
     lazy var buttonLocationImage: UIButton = {
@@ -255,7 +258,7 @@ class MenuViewController: UIViewController, DataTranfer {
         let units = UserDefaults.standard.object(forKey: Keys.stringKey.rawValue) as? String
         let toggleFormart = UserDefaults.standard.bool(forKey: Keys.boolKey.rawValue)
         
-        if units == "metric" {
+        if units == UnitsQuery.metric.rawValue {
             let underlineAttributedStringTemp = NSAttributedString(string: "°C", attributes: attrs)
             let underlineAttributedStringWind = NSAttributedString(string: "m/s", attributes: attrs)
             
@@ -271,12 +274,10 @@ class MenuViewController: UIViewController, DataTranfer {
         }
         
         if toggleFormart {
-            let underlineAttributedString = NSAttributedString(string: "24 часа", attributes: attrs)
-            
+            let underlineAttributedString = NSAttributedString(string: "12 часа", attributes: attrs)
             labelValueClock.attributedText = underlineAttributedString
         } else {
             let underlineAttributedString = NSAttributedString(string: "24 часа", attributes: attrs)
-            
             labelValueClock.attributedText = underlineAttributedString
         }
     }
@@ -392,7 +393,6 @@ class DashedLineHorizonatal: UIView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         setup()
-        
     }
     
     private func setup() {

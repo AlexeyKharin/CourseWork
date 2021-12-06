@@ -12,7 +12,7 @@ class CallContainerView: UIView {
             guard let windSpeedContent = contentCurrent?.windSpeed else { return }
             guard let cloudsContent = contentCurrent?.clouds else { return }
             guard let tempCurrentContent = contentCurrent?.hourlyWeather.first?.temp else { return }
-
+            
             self.clouds.text = "\(cloudsContent)%"
             timeSunset.text = contentCurrent?.sunsetTime
             timeSunrise.text = contentCurrent?.sunriseTime
@@ -20,10 +20,10 @@ class CallContainerView: UIView {
             self.timeCurrent.text = contentCurrent?.currentTime
             self.weahtherDescription.text = contentCurrent?.weatherDescription
             
-            if units == "metric" {
+            if units == UnitsQuery.metric.rawValue {
                 self.windSpeed.text = "\(Int(windSpeedContent))m/s"
                 self.tempCurrent.text = "\(Int(tempCurrentContent))°"
-            } else if units == "imperial" {
+            } else if units == UnitsQuery.imperial.rawValue {
                 self.windSpeed.text = "\(Int(windSpeedContent)) mil/hour"
                 self.tempCurrent.text = "\(Int(tempCurrentContent))F°"
             }
@@ -44,7 +44,7 @@ class CallContainerView: UIView {
     
     private let imageEllipse: UIImageView = {
         let imageEllipse = UIImageView()
-        imageEllipse.image = UIImage(named: "Ellipse")
+        imageEllipse.image = Images.elipse
         imageEllipse.contentMode = .scaleToFill
         imageEllipse.toAutoLayout()
         return imageEllipse
@@ -52,14 +52,14 @@ class CallContainerView: UIView {
     
     private let imageSunset: UIImageView = {
         let imageEllipse = UIImageView()
-        imageEllipse.image = UIImage(named: "sunset")?.withTintColor(UIColor(red: 246/255, green:221/255, blue: 1/255, alpha: 1))
+        imageEllipse.image = Images.sunset.withTintColor(.customYellow)
         imageEllipse.toAutoLayout()
         return imageEllipse
     }()
     
     private let imageSunrise: UIImageView = {
         let imageEllipse = UIImageView()
-        imageEllipse.image = UIImage(named: "sunrise")?.withTintColor(UIColor(red: 246/255, green:221/255, blue: 1/255, alpha: 1))
+        imageEllipse.image = Images.sunrise.withTintColor(.customYellow)
         imageEllipse.toAutoLayout()
         return imageEllipse
     }()
@@ -71,7 +71,7 @@ class CallContainerView: UIView {
         label.textAlignment = .center
         label.toAutoLayout()
         label.text = "19:31"
-        label.backgroundColor = UIColor(red: 32/255, green: 78/255, blue: 199/255, alpha: 1)
+        label.backgroundColor = .customBlue
         return label
     }()
     
@@ -82,7 +82,7 @@ class CallContainerView: UIView {
         label.textAlignment = .center
         label.toAutoLayout()
         label.text = "05:41"
-        label.backgroundColor = UIColor(red: 32/255, green: 78/255, blue: 199/255, alpha: 1)
+        label.backgroundColor = .customBlue
         return label
     }()
     
@@ -93,7 +93,7 @@ class CallContainerView: UIView {
         label.textAlignment = .center
         label.toAutoLayout()
         label.text = "7/13"
-        label.backgroundColor = UIColor(red: 32/255, green: 78/255, blue: 199/255, alpha: 1)
+        label.backgroundColor = .customBlue
         return label
     }()
     
@@ -104,7 +104,7 @@ class CallContainerView: UIView {
         label.textAlignment = .center
         label.toAutoLayout()
         label.text = "13"
-        label.backgroundColor = UIColor(red: 32/255, green: 78/255, blue: 199/255, alpha: 1)
+        label.backgroundColor = .customBlue
         return label
     }()
     
@@ -115,13 +115,13 @@ class CallContainerView: UIView {
         label.textAlignment = .center
         label.toAutoLayout()
         label.text = "Возможен небольшой дождь"
-        label.backgroundColor = UIColor(red: 32/255, green: 78/255, blue: 199/255, alpha: 1)
+        label.backgroundColor = .customBlue
         return label
     }()
     
     private let imageClouds: UIImageView = {
         let imageEllipse = UIImageView()
-        imageEllipse.image = UIImage(named: "clouds")
+        imageEllipse.image = Images.rain
         imageEllipse.contentMode = .scaleAspectFit
         imageEllipse.toAutoLayout()
         return imageEllipse
@@ -129,7 +129,7 @@ class CallContainerView: UIView {
     
     private let imageRain: UIImageView = {
         let imageEllipse = UIImageView()
-        imageEllipse.image = UIImage(named: "rain")?.withTintColor(UIColor.white)
+        imageEllipse.image = Images.drop.withTintColor(UIColor.white)
         imageEllipse.contentMode = .scaleAspectFit
         imageEllipse.toAutoLayout()
         return imageEllipse
@@ -137,7 +137,7 @@ class CallContainerView: UIView {
     
     private let imageWind: UIImageView = {
         let imageEllipse = UIImageView()
-        imageEllipse.image = UIImage(named: "wind")
+        imageEllipse.image = Images.windWhite
         imageEllipse.contentMode = .scaleAspectFit
         imageEllipse.toAutoLayout()
         return imageEllipse
@@ -150,7 +150,7 @@ class CallContainerView: UIView {
         label.textAlignment = .center
         label.toAutoLayout()
         label.text = "3 м/c"
-        label.backgroundColor = UIColor(red: 32/255, green: 78/255, blue: 199/255, alpha: 1)
+        label.backgroundColor = .customBlue
         return label
     }()
     
@@ -160,7 +160,7 @@ class CallContainerView: UIView {
         label.textColor = .white
         label.textAlignment = .center
         label.toAutoLayout()
-        label.backgroundColor = UIColor(red: 32/255, green: 78/255, blue: 199/255, alpha: 1)
+        label.backgroundColor = .customBlue
         return label
     }()
     
@@ -170,7 +170,7 @@ class CallContainerView: UIView {
         label.textColor = .white
         label.textAlignment = .right
         label.toAutoLayout()
-        label.backgroundColor = UIColor(red: 32/255, green: 78/255, blue: 199/255, alpha: 1)
+        label.backgroundColor = .customBlue
         return label
     }()
     
@@ -180,18 +180,19 @@ class CallContainerView: UIView {
         label.textColor =  UIColor(red: 246/255, green:221/255, blue: 1/255, alpha: 1)
         label.textAlignment = .center
         label.toAutoLayout()
-        label.backgroundColor = UIColor(red: 32/255, green: 78/255, blue: 199/255, alpha: 1)
+        label.backgroundColor = .customBlue
         return label
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         layer.cornerRadius = 5
-        backgroundColor = UIColor(red: 32/255, green: 78/255, blue: 199/255, alpha: 1)
-
+        backgroundColor = .customBlue
+        
         [imageEllipse, imageSunset, imageSunrise, timeSunset, timeSunrise, tempNightAndDay, tempCurrent, weahtherDescription, imageRain, imageWind, imageClouds, clouds, rain, windSpeed, timeCurrent].forEach { addSubview($0) }
         
         let constraints = [
+            
             imageEllipse.topAnchor.constraint(equalTo: topAnchor, constant: 17),
             imageEllipse.leftAnchor.constraint(equalTo: leftAnchor, constant: 32),
             imageEllipse.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -32),
@@ -228,27 +229,21 @@ class CallContainerView: UIView {
             weahtherDescription.heightAnchor.constraint(equalToConstant: 20),
             
             imageClouds.topAnchor.constraint(equalTo: weahtherDescription.bottomAnchor, constant: 15),
-            imageClouds.leftAnchor.constraint(equalTo: imageEllipse.leftAnchor, constant: 46),
             imageClouds.heightAnchor.constraint(equalToConstant: 18),
             
             clouds.topAnchor.constraint(equalTo: weahtherDescription.bottomAnchor, constant: 15),
-            clouds.leftAnchor.constraint(equalTo: imageClouds.rightAnchor, constant: 0),
             clouds.heightAnchor.constraint(equalToConstant: 18),
             
             imageWind.topAnchor.constraint(equalTo: imageClouds.topAnchor),
-            imageWind.leftAnchor.constraint(equalTo: clouds.rightAnchor, constant: 19),
             imageWind.heightAnchor.constraint(equalToConstant: 18),
             
             windSpeed.topAnchor.constraint(equalTo: imageClouds.topAnchor),
-            windSpeed.leftAnchor.constraint(equalTo: imageWind.rightAnchor, constant: 0),
             windSpeed.heightAnchor.constraint(equalToConstant: 18),
             
             imageRain.topAnchor.constraint(equalTo: imageClouds.topAnchor),
-            imageRain.leftAnchor.constraint(equalTo: windSpeed.rightAnchor, constant: 19),
             imageRain.heightAnchor.constraint(equalToConstant: 18),
             
             rain.topAnchor.constraint(equalTo: imageClouds.topAnchor),
-            rain.leftAnchor.constraint(equalTo: imageRain.rightAnchor, constant: -10),
             rain.heightAnchor.constraint(equalToConstant: 18),
             
             timeCurrent.topAnchor.constraint(equalTo: imageClouds.bottomAnchor, constant: 15),
@@ -258,6 +253,25 @@ class CallContainerView: UIView {
             timeCurrent.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -21)
         ]
         NSLayoutConstraint.activate(constraints)
+        
+        let units = UserDefaults.standard.object(forKey: Keys.stringKey.rawValue) as? String
+        
+        if units == UnitsQuery.metric.rawValue {
+            imageClouds.leftAnchor.constraint(equalTo: imageEllipse.leftAnchor, constant: 36).isActive = true
+            clouds.leftAnchor.constraint(equalTo: imageClouds.rightAnchor, constant: 0).isActive = true
+            imageWind.leftAnchor.constraint(equalTo: clouds.rightAnchor, constant: 19).isActive = true
+            windSpeed.leftAnchor.constraint(equalTo: imageWind.rightAnchor, constant: 0).isActive = true
+            imageRain.leftAnchor.constraint(equalTo: windSpeed.rightAnchor, constant: 19).isActive = true
+            rain.leftAnchor.constraint(equalTo: imageRain.rightAnchor, constant: 5).isActive = true
+        } else {
+            imageClouds.leftAnchor.constraint(equalTo: imageEllipse.leftAnchor, constant: 36).isActive = true
+            clouds.leftAnchor.constraint(equalTo: imageClouds.rightAnchor, constant: -5).isActive = true
+            imageWind.leftAnchor.constraint(equalTo: clouds.rightAnchor, constant: 10).isActive = true
+            windSpeed.leftAnchor.constraint(equalTo: imageWind.rightAnchor, constant: -5).isActive = true
+            imageRain.leftAnchor.constraint(equalTo: windSpeed.rightAnchor, constant: 10).isActive = true
+            rain.leftAnchor.constraint(equalTo: imageRain.rightAnchor, constant: 5).isActive = true
+        }
+        
     }
     
     required init?(coder: NSCoder) {

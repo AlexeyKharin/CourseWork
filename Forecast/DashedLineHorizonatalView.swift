@@ -3,15 +3,6 @@ import UIKit
 
 class DashedLineHorizonatalView: UIView {
     
-//    init() {
-//        super.init(frame: .zero)
-//        setup()
-//    }
-//
-//    required init?(coder _: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         setup()
@@ -19,7 +10,7 @@ class DashedLineHorizonatalView: UIView {
     }
     private func setup() {
         let shapeLayer = CAShapeLayer()
-        shapeLayer.strokeColor = UIColor(red: 32/255, green: 78/255, blue: 199/255, alpha: 1).cgColor
+        shapeLayer.strokeColor = UIColor.customBlue.cgColor
         shapeLayer.lineWidth = 1
        
         shapeLayer.lineDashPattern = [4, 4]

@@ -6,14 +6,14 @@ class DaySummaryTableViewCell: UITableViewCell {
     
     let units = UserDefaults.standard.object(forKey: Keys.stringKey.rawValue) as? String
     
-    var contentDay: ModelOneDay? {
+    var contentDay: UIModelNightDayTableViewCell? {
         didSet {
-            guard let tempDay = contentDay?.tempDay else { return }
-            guard let pop = contentDay?.pop else { return }
-            guard let windSpeed = contentDay?.windSpeed else { return  }
-            guard let feelsLikeDay = contentDay?.feelsLikeDay else { return }
-            guard let uvi = contentDay?.uvi else { return }
-            guard let clouds = contentDay?.clouds else { return }
+            guard let tempDay = contentDay?.temp else { return }
+            guard let pop = contentDay?.rainValue else { return }
+            guard let windSpeed = contentDay?.windSpeedValue else { return  }
+            guard let feelsLikeDay = contentDay?.feelLikesValue else { return }
+            guard let uvi = contentDay?.uviValue else { return }
+            guard let clouds = contentDay?.cloudyValue else { return }
             guard let dataImage = contentDay?.imageCondition else  { return }
             weatherDescription.text = contentDay?.weatherDescription
             uviValue.text = "\(uvi)%"
@@ -21,11 +21,11 @@ class DaySummaryTableViewCell: UITableViewCell {
             cloudyValue.text = "\(clouds)%"
             imageCondition.image = UIImage(data: dataImage)
             
-            if units == "metric" {
+            if units == UnitsQuery.metric.rawValue {
                 temp.text = "\(tempDay)°"
                 feelLikesValue.text = "\(feelsLikeDay)°"
                 windSpeedValue.text = "\(windSpeed)m/s"
-            } else if units == "imperial" {
+            } else if units == UnitsQuery.imperial.rawValue {
                 temp.text = "\(tempDay)F°"
                 feelLikesValue.text = "\(feelsLikeDay)F°"
                 windSpeedValue.text = "\(windSpeed)mil/hour"
@@ -36,42 +36,42 @@ class DaySummaryTableViewCell: UITableViewCell {
     private let lineFirst: UIView = {
         let line = UIView()
         line.toAutoLayout()
-        line.backgroundColor = UIColor(red: 32/255, green: 78/255, blue: 199/255, alpha: 1)
+        line.backgroundColor = .customBlue
         return line
     }()
     
     private let lineSecond: UIView = {
         let line = UIView()
         line.toAutoLayout()
-        line.backgroundColor = UIColor(red: 32/255, green: 78/255, blue: 199/255, alpha: 1)
+        line.backgroundColor = .customBlue
         return line
     }()
     
     private let lineThird: UIView = {
         let line = UIView()
         line.toAutoLayout()
-        line.backgroundColor = UIColor(red: 32/255, green: 78/255, blue: 199/255, alpha: 1)
+        line.backgroundColor = .customBlue
         return line
     }()
     
     private let lineFourth: UIView = {
         let line = UIView()
         line.toAutoLayout()
-        line.backgroundColor = UIColor(red: 32/255, green: 78/255, blue: 199/255, alpha: 1)
+        line.backgroundColor = .customBlue
         return line
     }()
     
     private let lineFifth: UIView = {
         let line = UIView()
         line.toAutoLayout()
-        line.backgroundColor = UIColor(red: 32/255, green: 78/255, blue: 199/255, alpha: 1)
+        line.backgroundColor = .customBlue
         return line
     }()
     
     private let timesOfDay: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-        label.textColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1)
+        label.textColor = .customBlack
         label.textAlignment = .center
         label.text = "День"
         label.toAutoLayout()
@@ -88,7 +88,7 @@ class DaySummaryTableViewCell: UITableViewCell {
     let temp: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 30, weight: .semibold)
-        label.textColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1)
+        label.textColor = .customBlack
         label.textAlignment = .center
         label.toAutoLayout()
         return label
@@ -97,7 +97,7 @@ class DaySummaryTableViewCell: UITableViewCell {
     private let weatherDescription: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-        label.textColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1)
+        label.textColor = .customBlack
         label.textAlignment = .center
         label.toAutoLayout()
         return label
@@ -105,7 +105,7 @@ class DaySummaryTableViewCell: UITableViewCell {
   
     private let imageFeelLikes: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "tempPlus")
+        image.image = Images.tempPlus
         image.contentMode = .scaleAspectFit
         image.toAutoLayout()
         return image
@@ -113,7 +113,7 @@ class DaySummaryTableViewCell: UITableViewCell {
     
     private let imageWind: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "wind")
+        image.image = Images.wind
         image.contentMode = .scaleAspectFit
         image.toAutoLayout()
         return image
@@ -121,7 +121,7 @@ class DaySummaryTableViewCell: UITableViewCell {
     
     private let imageUvi: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "clear")
+        image.image = Images.clear
         image.contentMode = .scaleAspectFit
         image.toAutoLayout()
         return image
@@ -129,7 +129,7 @@ class DaySummaryTableViewCell: UITableViewCell {
   
     private let imageRain: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "rain")
+        image.image = Images.rain
         image.contentMode = .scaleAspectFit
         image.toAutoLayout()
         return image
@@ -137,7 +137,7 @@ class DaySummaryTableViewCell: UITableViewCell {
 
     private let imageClouds: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "clouds")
+        image.image = Images.clouds
         image.contentMode = .scaleAspectFit
         image.toAutoLayout()
         return image
@@ -146,7 +146,7 @@ class DaySummaryTableViewCell: UITableViewCell {
     let feelLikes: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        label.textColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1)
+        label.textColor = .customBlack
         label.textAlignment = .center
         label.text = "По ощущениям"
         label.toAutoLayout()
@@ -156,7 +156,7 @@ class DaySummaryTableViewCell: UITableViewCell {
     let windSpeed: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        label.textColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1)
+        label.textColor = .customBlack
         label.textAlignment = .center
         label.text = "Ветер"
         label.toAutoLayout()
@@ -166,7 +166,7 @@ class DaySummaryTableViewCell: UITableViewCell {
     let uvi: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        label.textColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1)
+        label.textColor = .customBlack
         label.textAlignment = .center
         label.text = "Уф индекс"
         label.toAutoLayout()
@@ -176,7 +176,7 @@ class DaySummaryTableViewCell: UITableViewCell {
     let rain: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        label.textColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1)
+        label.textColor = .customBlack
         label.textAlignment = .center
         label.text = "Дождь"
         label.toAutoLayout()
@@ -186,7 +186,7 @@ class DaySummaryTableViewCell: UITableViewCell {
     let cloudy: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        label.textColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1)
+        label.textColor = .customBlack
         label.textAlignment = .center
         label.text = "Облачность"
         label.toAutoLayout()
@@ -196,7 +196,7 @@ class DaySummaryTableViewCell: UITableViewCell {
     let feelLikesValue: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-        label.textColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1)
+        label.textColor = .customBlack
         label.textAlignment = .center
         label.toAutoLayout()
         return label
@@ -205,7 +205,7 @@ class DaySummaryTableViewCell: UITableViewCell {
     let windSpeedValue: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-        label.textColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1)
+        label.textColor = .customBlack
         label.textAlignment = .center
         label.toAutoLayout()
         return label
@@ -214,7 +214,7 @@ class DaySummaryTableViewCell: UITableViewCell {
     let uviValue: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-        label.textColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1)
+        label.textColor = .customBlack
         label.textAlignment = .center
         label.toAutoLayout()
         return label
@@ -223,7 +223,7 @@ class DaySummaryTableViewCell: UITableViewCell {
     let rainValue: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-        label.textColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1)
+        label.textColor = .customBlack
         label.textAlignment = .center
         label.toAutoLayout()
         return label
@@ -232,7 +232,7 @@ class DaySummaryTableViewCell: UITableViewCell {
     let cloudyValue: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-        label.textColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1)
+        label.textColor = .customBlack
         label.textAlignment = .center
         label.toAutoLayout()
         return label
@@ -242,7 +242,7 @@ class DaySummaryTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         layer.cornerRadius = 5
         clipsToBounds = true
-        backgroundColor = UIColor(red: 233/255, green: 238/255, blue: 250/255, alpha: 1)
+        backgroundColor = .doveColoured
         setUp()
     }
     

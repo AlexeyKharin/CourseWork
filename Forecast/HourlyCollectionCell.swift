@@ -4,25 +4,25 @@ import UIKit
 
 class HourlyCollectionCell: UICollectionViewCell {
     
-    let units = UserDefaults.standard.object(forKey: Keys.stringKey.rawValue) as? String
-    
-    var contentHourly: RealmModelHourly? {
+    var contentHourly: UIModelHourlyCollectionCell? {
         didSet {
+            guard let tempSafety = contentHourly?.temp else { return }
+            imageCondition.image = UIImage(data: contentHourly?.imageData ?? Data())
             dataOfHourlyyForecast.text = contentHourly?.time
-            guard let image = UIImage(data: contentHourly?.imageCondition ?? Data()) else { return }
-            imageCondition.image = image
-            if units == "metric" {
-                temp.text = "\(Int(contentHourly!.temp))°"
-            } else if units == "imperial" {
-                temp.text = "\(Int(contentHourly!.temp))°F"
+            
+            let units = UserDefaults.standard.object(forKey: Keys.stringKey.rawValue) as? String
+            if units == UnitsQuery.metric.rawValue {
+                temp.text = "\(Int(tempSafety))°"
+            } else if units == UnitsQuery.imperial.rawValue {
+                temp.text = "\(Int(tempSafety))°F"
             }
         }
     }
-  
+    
     var switcher: Bool? {
         didSet {
             if switcher! {
-                backgroundColor = UIColor(red: 32/255, green: 78/255, blue: 199/255, alpha: 1)
+                backgroundColor = .customBlue
             } else {
                 backgroundColor = .white
             }
@@ -31,7 +31,6 @@ class HourlyCollectionCell: UICollectionViewCell {
     
     private let imageCondition: UIImageView = {
         let imageRain = UIImageView()
-        imageRain.image = UIImage(named: "clouds")
         imageRain.contentMode = .scaleAspectFit
         imageRain.toAutoLayout()
         return imageRain
@@ -40,7 +39,7 @@ class HourlyCollectionCell: UICollectionViewCell {
     private let temp: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        label.textColor =  UIColor(red: 52/255, green: 48/255, blue: 48/255, alpha: 1)
+        label.textColor =  .customBlackPhaseTwo
         label.textAlignment = .center
         label.toAutoLayout()
         return label
@@ -49,7 +48,7 @@ class HourlyCollectionCell: UICollectionViewCell {
     private let dataOfHourlyyForecast: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
-        label.textColor = UIColor(red: 156/255, green: 151/255, blue: 151/255, alpha: 1)
+        label.textColor = .customGray
         label.textAlignment = .center
         label.numberOfLines = 2
         label.toAutoLayout()
@@ -58,10 +57,10 @@ class HourlyCollectionCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-      
+        
         layer.cornerRadius = 22
         layer.borderWidth = 0.5
-        layer.borderColor = UIColor(red: 171/255, green: 188/255, blue: 234/255, alpha: 1).cgColor
+        layer.borderColor = UIColor.customBluePhaseTwo.cgColor
         
         [temp, dataOfHourlyyForecast, imageCondition].forEach { contentView.addSubview($0) }
         

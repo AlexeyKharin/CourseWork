@@ -4,27 +4,28 @@ import UIKit
 
 class DailyCollectionCell: UICollectionViewCell {
     
-    let units = UserDefaults.standard.object(forKey: Keys.stringKey.rawValue) as? String
-    
-    var contentDaily: ModelOneDay? {
+    var contentDaily: UIModelDailyCollectionCell? {
         didSet {
-            guard let tempDay = contentDaily?.tempDay, let tempMight = contentDaily?.tempNight else { return }
-            guard let pop = contentDaily?.pop else { return }
-            dataOfdailyForecast.text = contentDaily?.dataForTableView
+            dataOfdailyForecast.text = contentDaily?.dataOfdailyForecast
             weatherDescription.text = contentDaily?.weatherDescription
+            guard let pop = contentDaily?.pop else { return }
+            guard let tempDay = contentDaily?.tempDay else { return }
+            guard let tempNight = contentDaily?.tempNight else { return }
+            
             rain.text = "\(pop)%"
-          
-            if units == "metric" {
-                temp.text = "\(tempMight)°-\((tempDay))°"
-            } else if units == "imperial" {
-                temp.text = "\(tempMight)°F-\((tempDay))°F"
+            
+            let units = UserDefaults.standard.object(forKey: Keys.stringKey.rawValue) as? String
+            if units == UnitsQuery.metric.rawValue {
+                temp.text = "\(tempNight)°-\((tempDay))°"
+            } else if units == UnitsQuery.imperial.rawValue {
+                temp.text = "\(tempNight)°F-\((tempDay))°F"
             }
         }
     }
     
     private let imageRain: UIImageView = {
         let imageRain = UIImageView()
-        imageRain.image = UIImage(named: "cloudsRain")
+        imageRain.image = Images.rain
         imageRain.contentMode = .scaleAspectFit
         imageRain.toAutoLayout()
         return imageRain
@@ -33,7 +34,7 @@ class DailyCollectionCell: UICollectionViewCell {
     private let dataOfdailyForecast: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        label.textColor = UIColor(red: 154/255, green: 150/255, blue: 150/255, alpha: 1)
+        label.textColor = .customGray
         label.textAlignment = .center
         label.toAutoLayout()
         return label
@@ -42,7 +43,7 @@ class DailyCollectionCell: UICollectionViewCell {
     private let rain: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
-        label.textColor = UIColor(red: 32/255, green: 78/255, blue: 199/255, alpha: 1)
+        label.textColor = .customBlue
         label.textAlignment = .center
         label.toAutoLayout()
         return label
@@ -51,7 +52,7 @@ class DailyCollectionCell: UICollectionViewCell {
     private let weatherDescription: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        label.textColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1)
+        label.textColor = .customBlack
         label.textAlignment = .left
         label.toAutoLayout()
         return label
@@ -60,7 +61,7 @@ class DailyCollectionCell: UICollectionViewCell {
     private let temp: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-        label.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
+        label.textColor = .black
         label.textAlignment = .center
         label.toAutoLayout()
         return label
@@ -68,7 +69,7 @@ class DailyCollectionCell: UICollectionViewCell {
     
     private let imagerightContinue: UIImageView = {
         let imageRain = UIImageView()
-        imageRain.image = UIImage(named: "rightContinue")
+        imageRain.image = Images.rightContinue
         imageRain.contentMode = .scaleAspectFit
         imageRain.toAutoLayout()
         return imageRain
@@ -78,7 +79,7 @@ class DailyCollectionCell: UICollectionViewCell {
         super.init(frame: frame)
         layer.cornerRadius = 5
         clipsToBounds = true
-        backgroundColor = UIColor(red: 233/255, green: 238/255, blue: 250/255, alpha: 1)
+        backgroundColor = .doveColoured
         setUp()
     }
     

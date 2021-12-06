@@ -6,7 +6,7 @@ target 'Forecast' do
   use_frameworks!
 
 pod 'RealmSwift'
-
+pod 'KeychainAccess'
   # Pods for Forecast
 
 end

@@ -1,14 +1,14 @@
-
 import UIKit
 
 class SettingsViewController: UIViewController {
     
     var units: String = String()
-    var toggleDateFormat: Bool = true
     
+    var toggleDateFormat: Bool = true
+    var createContainer: (() -> Void)?
     private let backgraoundCloudFirst: UIImageView = {
         let imageEllipse = UIImageView()
-        imageEllipse.image = UIImage(named: "backgraoundCloudFirst")?.withTintColor(UIColor(red: 255/255, green:255/255, blue: 255/255, alpha: 0.3))
+        imageEllipse.image = UIImage(named: "backgraoundCloudFirst")?.withTintColor(UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.3))
         imageEllipse.contentMode = .scaleToFill
         imageEllipse.toAutoLayout()
         return imageEllipse
@@ -29,9 +29,10 @@ class SettingsViewController: UIViewController {
         imageEllipse.toAutoLayout()
         return imageEllipse
     }()
+    
     let frameForSettings: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(red: 233/255, green: 238/255, blue: 250/255, alpha: 1)
+        view.backgroundColor = .doveColoured
         view.layer.cornerRadius = 10
         view.toAutoLayout()
         return view
@@ -40,7 +41,7 @@ class SettingsViewController: UIViewController {
     let settings: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-        label.textColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1)
+        label.textColor = .customBlack
         label.text = "Настройки"
         label.textAlignment = .left
         label.toAutoLayout()
@@ -50,7 +51,7 @@ class SettingsViewController: UIViewController {
     let temp: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        label.textColor = UIColor(red: 137/255, green: 131/255, blue: 131/255, alpha: 1)
+        label.textColor = .customGray
         label.text = "Температура"
         label.textAlignment = .left
         label.toAutoLayout()
@@ -60,7 +61,7 @@ class SettingsViewController: UIViewController {
     let windSpeed: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        label.textColor = UIColor(red: 137/255, green: 131/255, blue: 131/255, alpha: 1)
+        label.textColor = .customGray
         label.text = "Скорость ветра"
         label.textAlignment = .left
         label.toAutoLayout()
@@ -70,7 +71,7 @@ class SettingsViewController: UIViewController {
     let formatOfTime: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        label.textColor = UIColor(red: 137/255, green: 131/255, blue: 131/255, alpha: 1)
+        label.textColor = .customGray
         label.text = "Формат времени"
         label.textAlignment = .left
         label.toAutoLayout()
@@ -80,7 +81,7 @@ class SettingsViewController: UIViewController {
     let notifications: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        label.textColor = UIColor(red: 137/255, green: 131/255, blue: 131/255, alpha: 1)
+        label.textColor = .customGray
         label.text = "Уведомления"
         label.textAlignment = .left
         label.toAutoLayout()
@@ -100,15 +101,9 @@ class SettingsViewController: UIViewController {
     }()
     
     @objc func createPageController() {
-        
         UserDefaults.standard.set(units, forKey: Keys.stringKey.rawValue)
         UserDefaults.standard.setValue(toggleDateFormat, forKey: Keys.boolKey.rawValue)
-        
-        guard let navigation = navigationController else { return }
-        let container = ContainerCoordinator(navigation: navigation)
-        let vc = container.containerViewController
-        
-        navigationController?.pushViewController(vc, animated: true)
+        createContainer?()
     }
     
     private lazy var segmetOfTemp: UISegmentedControl = {
@@ -125,10 +120,10 @@ class SettingsViewController: UIViewController {
     @objc func toggleUnitsTemp() {
         if segmetOfTemp.selectedSegmentIndex == 0 {
             segmetOfWindSpeed.selectedSegmentIndex = 1
-            units = "metric"
+            units = UnitsQuery.metric.rawValue
         } else  {
             segmetOfWindSpeed.selectedSegmentIndex = 0
-            units = "imperial"
+            units = UnitsQuery.imperial.rawValue
         }
     }
     
@@ -146,10 +141,10 @@ class SettingsViewController: UIViewController {
     @objc func toggleUnitsWind() {
         if segmetOfWindSpeed.selectedSegmentIndex == 0 {
             segmetOfTemp.selectedSegmentIndex = 1
-            units = "imperial"
+            units = UnitsQuery.imperial.rawValue
         } else  {
             segmetOfTemp.selectedSegmentIndex = 0
-            units = "metric"
+            units = UnitsQuery.metric.rawValue
         }
     }
     
@@ -189,9 +184,9 @@ class SettingsViewController: UIViewController {
         segmetOfFormatOfTime.selectedSegmentIndex = 1
         segmetOfWindSpeed.selectedSegmentIndex = 1
         segmetOfTemp.selectedSegmentIndex = 0
-        units = "metric"
+        units = UnitsQuery.metric.rawValue
         toggleDateFormat = false
-        view.backgroundColor = UIColor(red: 32/255, green: 78/255, blue: 199/255, alpha: 1)
+        view.backgroundColor = .customBlue
     }
     
     func configureSettings() {

@@ -6,23 +6,23 @@ class HourlyTableViewCell: UITableViewCell {
     
     let units = UserDefaults.standard.object(forKey: Keys.stringKey.rawValue) as? String
     
-    var contentHour: RealmModelHourly? {
+    var contentHour: UIModelHourlyTableViewCell? {
         didSet {
-            guard let pop = contentHour?.pop else { return }
-            guard let windSpeed = contentHour?.windSpeed else { return }
-            guard let tempFeelsLike =  contentHour?.tempFeelsLike else { return }
-            guard let clouds = contentHour?.clouds else { return }
+            guard let pop = contentHour?.precipitationValue else { return }
+            guard let windSpeed = contentHour?.windSpeedValue else { return }
+            guard let tempFeelsLike =  contentHour?.feelLikesValue else { return }
+            guard let clouds = contentHour?.cloudyValue else { return }
             
             data.text = contentHour?.data
-            hour.text = contentHour?.time
+            hour.text = contentHour?.hour
             precipitationValue.text = "\(Int(pop*100))%"
             cloudyValue.text = "\(clouds)%"
             
-            if units == "metric" {
+            if units == UnitsQuery.metric.rawValue {
                 feelLikesValue.text = "\(Int(tempFeelsLike))°"
                 windSpeedValue.text = "\(Int(windSpeed)) m/s"
                 temp.text = "\(Int(contentHour!.temp))°"
-            } else if units == "imperial" {
+            } else if units == UnitsQuery.metric.rawValue  {
                 feelLikesValue.text = "\(Int(tempFeelsLike))F°"
                 windSpeedValue.text = "\(Int(windSpeed)) mil/hour"
                 temp.text = "\(Int(contentHour!.temp))F°"
@@ -33,10 +33,10 @@ class HourlyTableViewCell: UITableViewCell {
     let data: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-        label.textColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1)
+        label.textColor = .customBlack
         label.textAlignment = .center
         label.toAutoLayout()
-        label.backgroundColor = UIColor(red: 233/255, green: 238/255, blue: 250/255, alpha: 1)
+        label.backgroundColor = .doveColoured
         return label
     }()
     
@@ -46,23 +46,23 @@ class HourlyTableViewCell: UITableViewCell {
         label.textColor = UIColor(red: 154/255, green: 150/255, blue: 150/255, alpha: 1)
         label.textAlignment = .center
         label.toAutoLayout()
-        label.backgroundColor = UIColor(red: 233/255, green: 238/255, blue: 250/255, alpha: 1)
+        label.backgroundColor = .doveColoured
         return label
     }()
     
     let temp: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-        label.textColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1)
+        label.textColor = .customBlack
         label.textAlignment = .center
         label.toAutoLayout()
-        label.backgroundColor = UIColor(red: 233/255, green: 238/255, blue: 250/255, alpha: 1)
+        label.backgroundColor = .doveColoured
         return label
     }()
     
     private let imageMoon: UIImageView = {
         let imageMoon = UIImageView()
-        imageMoon.image = UIImage(named: "moon")
+        imageMoon.image = Images.moon
         imageMoon.contentMode = .scaleAspectFit
         imageMoon.toAutoLayout()
         return imageMoon
@@ -70,7 +70,7 @@ class HourlyTableViewCell: UITableViewCell {
     
     private let imageWind: UIImageView = {
         let imageWind = UIImageView()
-        imageWind.image = UIImage(named: "wind")
+        imageWind.image = Images.wind
         imageWind.contentMode = .scaleAspectFit
         imageWind.toAutoLayout()
         return imageWind
@@ -78,7 +78,7 @@ class HourlyTableViewCell: UITableViewCell {
     
     private let imageDrop: UIImageView = {
         let imageDrop = UIImageView()
-        imageDrop.image = UIImage(named: "drop")
+        imageDrop.image = Images.drop
         imageDrop.contentMode = .scaleAspectFit
         imageDrop.toAutoLayout()
         return imageDrop
@@ -86,7 +86,7 @@ class HourlyTableViewCell: UITableViewCell {
     
     private let imageClouds: UIImageView = {
         let imageClouds = UIImageView()
-        imageClouds.image = UIImage(named: "clouds")
+        imageClouds.image = Images.clouds
         imageClouds.contentMode = .scaleAspectFit
         imageClouds.toAutoLayout()
         return imageClouds
@@ -95,84 +95,84 @@ class HourlyTableViewCell: UITableViewCell {
     let feelLikes: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        label.textColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1)
+        label.textColor = .customBlack
         label.textAlignment = .left
         label.toAutoLayout()
         label.text = "По ощущению"
-        label.backgroundColor = UIColor(red: 233/255, green: 238/255, blue: 250/255, alpha: 1)
+        label.backgroundColor = .doveColoured
         return label
     }()
     
     let windSpeed: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        label.textColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1)
+        label.textColor = .customBlack
         label.textAlignment = .left
         label.text = "Ветер"
         label.toAutoLayout()
-        label.backgroundColor = UIColor(red: 233/255, green: 238/255, blue: 250/255, alpha: 1)
+        label.backgroundColor = .doveColoured
         return label
     }()
     
     let precipitation: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        label.textColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1)
+        label.textColor = .customBlack
         label.textAlignment = .left
         label.text = "Атмосферные осадки"
         label.toAutoLayout()
-        label.backgroundColor = UIColor(red: 233/255, green: 238/255, blue: 250/255, alpha: 1)
+        label.backgroundColor = .doveColoured
         return label
     }()
     
     let cloudy: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        label.textColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1)
+        label.textColor = .customBlack
         label.textAlignment = .left
         label.text = "Облачность"
         label.toAutoLayout()
-        label.backgroundColor = UIColor(red: 233/255, green: 238/255, blue: 250/255, alpha: 1)
+        label.backgroundColor = .doveColoured
         return label
     }()
     
     let feelLikesValue: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        label.textColor = UIColor(red: 154/255, green: 150/255, blue: 150/255, alpha: 1)
+        label.textColor = .customGray
         label.textAlignment = .center
         label.toAutoLayout()
-        label.backgroundColor = UIColor(red: 233/255, green: 238/255, blue: 250/255, alpha: 1)
+        label.backgroundColor = .doveColoured
         return label
     }()
     
     let cloudyValue: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        label.textColor = UIColor(red: 154/255, green: 150/255, blue: 150/255, alpha: 1)
+        label.textColor = .customGray
         label.textAlignment = .center
         label.toAutoLayout()
-        label.backgroundColor = UIColor(red: 233/255, green: 238/255, blue: 250/255, alpha: 1)
+        label.backgroundColor = .doveColoured
         return label
     }()
     
     let windSpeedValue: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        label.textColor = UIColor(red: 154/255, green: 150/255, blue: 150/255, alpha: 1)
+        label.textColor = .customGray
         label.textAlignment = .center
         label.toAutoLayout()
-        label.backgroundColor = UIColor(red: 233/255, green: 238/255, blue: 250/255, alpha: 1)
+        label.backgroundColor = .doveColoured
         return label
     }()
     
     let precipitationValue: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        label.textColor = UIColor(red: 154/255, green: 150/255, blue: 150/255, alpha: 1)
+        label.textColor = .customGray
         label.textAlignment = .center
         label.toAutoLayout()
-        label.backgroundColor = UIColor(red: 233/255, green: 238/255, blue: 250/255, alpha: 1)
+        label.backgroundColor = .doveColoured
         return label
     }()
     

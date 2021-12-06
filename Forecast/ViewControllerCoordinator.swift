@@ -34,14 +34,12 @@ class ViewControllerCoordinator: Coordinator  {
             //            guard let navigation = (UIApplication.shared.keyWindow?.rootViewController as? UINavigationController) else { return }
             
             let vc = DailySummaryViewController(realmModelDaily: modelDaily, titleCity: nameCity, customNavigationController: navigationController)
-            
             self.navigationController.pushViewController(vc, animated: true)
         }
         
         page.clousureHourlyViewController = { (modelHourly, nameCity) in
             
             let vc = HourlyViewController(realmModelHourly: modelHourly, customNavigationController: navigationController, titleCity: nameCity)
-            
             self.navigationController.pushViewController(vc, animated: true)
         }
     }

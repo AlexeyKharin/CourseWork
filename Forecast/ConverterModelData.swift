@@ -8,25 +8,25 @@ class ConverterModelData {
         
         switch id {
         case 200..<300:
-            image =  UIImage(named: "thunder")!
+            image = Images.thunder
         case 300..<400:
-            image =  UIImage(named: "drizzle")!
+            image = Images.drizzle
         case 500..<600:
-            image =  UIImage(named: "rain")!
+            image = Images.rain
         case 600..<700:
-            image =  UIImage(named: "snow")!
+            image = Images.snow
         case 700..<800:
-            image =  UIImage(named: "atmosphere")!
+            image = Images.atmosphere
         case 800:
-            guard icon != "01d" else {  image = UIImage(named: "clear")!
+            guard icon != "01d" else {  image = Images.clear
                 return  image }
-            guard icon != "01n" else {  image = UIImage(named: "moon")!
+            guard icon != "01n" else {  image = Images.moon
                 return image
             }
         case 801..<900:
-            image = UIImage(named: "clouds")!
+            image = Images.clouds
         default:
-            image = UIImage(named: "standart")!
+            image = Images.standart
         }
         return image
     }
@@ -57,6 +57,7 @@ class ConverterModelData {
         } else {
             dateFormatter.dateFormat = "HH:mm, E d MMM"
         }
+        
         let stringTimeCurrent = dateFormatter.string(from: dataTimeCurrent)
         
         if toggleFormart {
@@ -139,6 +140,7 @@ class ConverterModelData {
             guard let feelsLikeDay = day.feelsLike?.day else { return model }
             guard let icon = day.weather?.first?.icon else { return model }
             guard let id = day.weather?.first?.id else { return model }
+            
             modelOneDay.clouds = day.clouds ?? Int()
             modelOneDay.feelsLikeDay = feelsLikeDay
             modelOneDay.feelsLikeNight = feelsLikeNight
