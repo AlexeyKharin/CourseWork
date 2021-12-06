@@ -50,7 +50,7 @@ class GraphTemp: UIView {
         super.init(frame: .zero)
         setup()
         shapeView = CreateLineGraph(array: arrayTemp).path
-        backgroundColor = UIColor(red: 233/255, green: 238/255, blue: 250/255, alpha: 1)
+        backgroundColor = .doveColoured
     }
     
     required init?(coder _: NSCoder) {
@@ -71,7 +71,7 @@ class GraphTemp: UIView {
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = path
         
-        shapeLayer.strokeColor = UIColor(red: 32/255, green: 78/255, blue: 199/255, alpha: 1).cgColor
+        shapeLayer.strokeColor = UIColor.customBlue.cgColor
         shapeLayer.lineWidth = 0.4
         shapeLayer.lineDashPattern = [7, 7]
         
@@ -92,7 +92,7 @@ class GraphTemp: UIView {
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = path
         
-        shapeLayer.strokeColor = UIColor(red: 32/255, green: 78/255, blue: 199/255, alpha: 1).cgColor
+        shapeLayer.strokeColor = UIColor.customBlue.cgColor
         shapeLayer.lineWidth = 0.4
         shapeLayer.lineDashPattern = [7, 7]
         
@@ -109,8 +109,8 @@ class GraphTemp: UIView {
                 
                 shapeLayer.path = circlePath.cgPath
                 shapeLayer.lineWidth = 1
-                shapeLayer.fillColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1).cgColor
-                shapeLayer.strokeColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1).cgColor
+                shapeLayer.fillColor = UIColor.white.cgColor
+                shapeLayer.strokeColor = UIColor.white.cgColor
                 
                 cAShapeLayer.append(shapeLayer)
             }
@@ -122,8 +122,8 @@ class GraphTemp: UIView {
                 
                 shapeLayer.path = circlePath.cgPath
                 shapeLayer.lineWidth = 1
-                shapeLayer.fillColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1).cgColor
-                shapeLayer.strokeColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1).cgColor
+                shapeLayer.fillColor = UIColor.white.cgColor
+                shapeLayer.strokeColor = UIColor.white.cgColor
                 
                 cAShapeLayer.append(shapeLayer)
             }
@@ -146,15 +146,15 @@ class GraphTemp: UIView {
             textlayer.fontSize = 14
             textlayer.alignmentMode = .center
             
-            if units == "metric" {
+            if units == UnitsQuery.metric.rawValue {
                 textlayer.string = "\(arrayTemp[i])°"
             } else {
                 textlayer.string = "\(arrayTemp[i])°F"
             }
             
             textlayer.isWrapped = true
-            textlayer.backgroundColor = UIColor(red: 233/255, green: 238/255, blue: 250/255, alpha: 1).cgColor
-            textlayer.foregroundColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1).cgColor
+            textlayer.backgroundColor = UIColor.doveColoured.cgColor
+            textlayer.foregroundColor = UIColor.customBlack.cgColor
             layer.addSublayer(textlayer)
         }
     }
@@ -162,7 +162,7 @@ class GraphTemp: UIView {
     func createImage() {
         for i in 0...7 {
             let myLayer = CALayer()
-            let myImage = UIImage(named: "rain")?.cgImage
+            let myImage = Images.rain.cgImage
             myLayer.frame = CGRect(x: arrayPoinX[i], y: 105, width: 20, height: 20)
             myLayer.contents = myImage
             layer.addSublayer(myLayer)
@@ -177,8 +177,8 @@ class GraphTemp: UIView {
             textlayer.alignmentMode = .center
             textlayer.string = "\(arrayPop[i])%"
             textlayer.isWrapped = true
-            textlayer.backgroundColor = UIColor(red: 233/255, green: 238/255, blue: 250/255, alpha: 1).cgColor
-            textlayer.foregroundColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1).cgColor
+            textlayer.backgroundColor = UIColor.doveColoured.cgColor
+            textlayer.foregroundColor = UIColor.customBlack.cgColor
             layer.addSublayer(textlayer)
         }
     }
@@ -190,7 +190,7 @@ class GraphTemp: UIView {
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = path
         
-        shapeLayer.strokeColor = UIColor(red: 32/255, green: 78/255, blue: 199/255, alpha: 1).cgColor
+        shapeLayer.strokeColor = UIColor.customBlue.cgColor
         shapeLayer.lineWidth = 0.5
         
         return shapeLayer
@@ -204,8 +204,8 @@ class GraphTemp: UIView {
             
             shapeLayer.path = rect.cgPath
             shapeLayer.lineWidth = 1
-            shapeLayer.fillColor = UIColor(red: 32/255, green: 78/255, blue: 199/255, alpha: 1).cgColor
-            shapeLayer.strokeColor = UIColor(red: 32/255, green: 78/255, blue: 199/255, alpha: 1).cgColor
+            shapeLayer.fillColor = UIColor.customBlue.cgColor
+            shapeLayer.strokeColor = UIColor.customBlue.cgColor
             
             layer.addSublayer(shapeLayer)
         }
@@ -228,8 +228,8 @@ class GraphTemp: UIView {
             textlayer.alignmentMode = .center
             textlayer.string = "\(arrayTime[i])"
             textlayer.isWrapped = true
-            textlayer.backgroundColor = UIColor(red: 233/255, green: 238/255, blue: 250/255, alpha: 1).cgColor
-            textlayer.foregroundColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1).cgColor
+            textlayer.backgroundColor = UIColor.doveColoured.cgColor
+            textlayer.foregroundColor = UIColor.customBlack.cgColor
             layer.addSublayer(textlayer)
         }
     }
@@ -278,12 +278,11 @@ class GraphTemp: UIView {
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = path.cgPath
         shapeLayer.lineWidth = 0.4
-        shapeLayer.strokeColor = UIColor(red: 32/255, green: 78/255, blue: 199/255, alpha: 1).cgColor
+        shapeLayer.strokeColor = UIColor.customBlue.cgColor
         return (shapeLayer, path)
     }
     
     func gradientFigure() {
-        
         let shape = CreateLineGraph(array: arrayTemp).path
         
         if minValue <= 0 {

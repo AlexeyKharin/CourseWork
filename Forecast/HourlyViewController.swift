@@ -3,14 +3,16 @@ import Foundation
 
 class HourlyViewController: UIViewController {
     
-    var realmModelHourly: RealmModelCurrent
+    private var modelUI: [UIModelHourlyTableViewCell]
     
-    let customNavigationBar = UINavigationBar()
+    private let customNavigationBar = UINavigationBar()
     
-    let customNavigationController: UINavigationController
+    private let customNavigationController: UINavigationController
     
     init(realmModelHourly: RealmModelCurrent, customNavigationController: UINavigationController, titleCity: String) {
-        self.realmModelHourly = realmModelHourly
+        
+        self.modelUI = realmModelHourly.hourlyWeather.map { UIModelHourlyTableViewCell(data: $0.data, hour: $0.time, cloudyValue: $0.clouds, precipitationValue: $0.pop, windSpeedValue: $0.windSpeed, feelLikesValue: $0.tempFeelsLike, temp: $0.temp) }
+        
         self.customNavigationController = customNavigationController
         self.titleCity.text = titleCity
         super.init(nibName: nil, bundle: nil)
@@ -25,17 +27,17 @@ class HourlyViewController: UIViewController {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.backgroundColor = .white
         tableView.toAutoLayout()
-        tableView.separatorColor = UIColor(red: 32/255, green: 78/255, blue: 199/255, alpha: 1)
+        tableView.separatorColor = .customBlue
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(HourlyTableViewCell.self, forCellReuseIdentifier: String(describing: HourlyTableViewCell.self))
         return tableView
     }()
     
-     var titleCity: UILabel = {
+    var titleCity: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-        label.textColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1)
+        label.textColor = .customBlack
         label.textAlignment = .left
         label.numberOfLines = 0
         label.toAutoLayout()
@@ -45,7 +47,7 @@ class HourlyViewController: UIViewController {
     lazy var backTitle: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        label.textColor = UIColor(red: 154/255, green: 150/255, blue: 150/255, alpha: 1)
+        label.textColor = .customGray
         label.text = "Прогноз на 24 часа"
         label.textAlignment = .left
         return label
@@ -55,7 +57,7 @@ class HourlyViewController: UIViewController {
     
     lazy var buttonBack: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "arrow.backward")!.applyingSymbolConfiguration(.init(scale: .large))! .withTintColor(UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)).withRenderingMode(.alwaysOriginal), for:.normal)
+        button.setImage(UIImage(systemName: "arrow.backward")!.applyingSymbolConfiguration(.init(scale: .large))! .withTintColor(.black).withRenderingMode(.alwaysOriginal), for:.normal)
         button.addTarget(self, action: #selector(back), for: .touchUpInside)
         return button
     }()
@@ -110,7 +112,7 @@ class HourlyViewController: UIViewController {
 extension HourlyViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return realmModelHourly.hourlyWeather.count
+        return modelUI.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -118,7 +120,7 @@ extension HourlyViewController: UITableViewDataSource {
             withIdentifier: String(describing: HourlyTableViewCell.self),
             for: indexPath) as! HourlyTableViewCell
         
-        cell.contentHour = realmModelHourly.hourlyWeather[indexPath.row]
+        cell.contentHour = modelUI[indexPath.row]
         
         return cell
     }

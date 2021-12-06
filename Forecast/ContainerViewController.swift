@@ -7,9 +7,10 @@ protocol PageViewControllerDelegate {
 
 class ContainerViewController: UIViewController, PageViewControllerDelegate {
     
-    var pageController: PageViewController
+    var
+        pageController: PageViewController
     
-    var menuViewController: UIViewController
+    var menuViewController: MenuViewController
     
     var isMove = false
     
@@ -31,6 +32,7 @@ class ContainerViewController: UIViewController, PageViewControllerDelegate {
     
     func configurePageViewController() {
         pageController.pageDelegate = self
+        menuViewController.delegate = self
         view.addSubview(pageController.view)
         addChild(pageController)
     }

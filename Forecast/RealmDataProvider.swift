@@ -3,10 +3,9 @@ import RealmSwift
 
 class RealmDataProvider {
     
-    func save(modelHourly: RealmModelCurrent) {
-        
+    func save(modelHourly: RealmModelCurrent)  {
         do {
-            let realm = try! Realm(configuration: .defaultConfiguration)
+            let realm = try Realm(configuration: .defaultConfiguration)
             try realm.write {
                 realm.add(modelHourly, update: .all)
             }
@@ -15,10 +14,9 @@ class RealmDataProvider {
         }
     }
     
-    func save(modelDaily: RealmModelDaily) {
-        
+    func save(modelDaily: RealmModelDaily)  {
         do {
-            let realm = try! Realm(configuration: .defaultConfiguration)
+            let realm = try Realm(configuration: .defaultConfiguration)
             try realm.write {
                 realm.add(modelDaily, update: .all)
             }
@@ -27,9 +25,9 @@ class RealmDataProvider {
         }
     }
     
-    func obtainDailyModel() -> [RealmModelDaily] {
-        
+    func obtainDailyModel()  -> [RealmModelDaily] {
         var  modelsObject = [RealmModelDaily]()
+        
         do {
             let realm = try Realm(configuration: .defaultConfiguration)
             let models = realm.objects(RealmModelDaily.self)
@@ -40,9 +38,9 @@ class RealmDataProvider {
         return modelsObject
     }
     
-    func obtainModelCurrent() -> [RealmModelCurrent] {
-        
+    func obtainModelCurrent()  -> [RealmModelCurrent] {
         var  modelsObject = [RealmModelCurrent]()
+        
         do {
             let realm = try Realm(configuration: .defaultConfiguration)
             let models = realm.objects(RealmModelCurrent.self)
@@ -51,17 +49,5 @@ class RealmDataProvider {
             fatalError("ОШИБКА")
         }
         return modelsObject
-    }
-    
-    func delete(object: RealmModelCurrent) {
-        
-        do {
-            let realm = try Realm(configuration: .defaultConfiguration)
-            try realm.write {
-                realm.delete(object)
-            }
-        } catch {
-            fatalError("ОШИБКА")
-        }
     }
 }

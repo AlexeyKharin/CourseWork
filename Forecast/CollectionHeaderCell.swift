@@ -1,11 +1,10 @@
 
-
 import Foundation
 import UIKit
 
 class CollectionHeaderCell: UICollectionViewCell {
     
-    var contentDaily: ModelOneDay? {
+    var contentDaily: UIModelCollectionHeaderCell? {
         didSet {
             data.text = contentDaily?.dataForCollection
         }
@@ -14,20 +13,20 @@ class CollectionHeaderCell: UICollectionViewCell {
     var switcher: Bool? {
         didSet {
             if switcher! {
-                backgroundColor =  UIColor(red: 32/255, green: 78/255, blue: 199/255, alpha: 1)
-                data.textColor =  UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
-
+                backgroundColor =  .customBlue
+                data.textColor =  .white
+                
             } else {
                 backgroundColor = .white
-                data.textColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1)
+                data.textColor = .customBlack
             }
         }
     }
     
-     let data: UILabel = {
+    let data: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-        label.textColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1)
+        label.textColor = .customBlack
         label.textAlignment = .center
         label.toAutoLayout()
         return label
@@ -36,7 +35,6 @@ class CollectionHeaderCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         layer.cornerRadius = 5
-//        clipsToBounds = true
         setUp()
     }
     

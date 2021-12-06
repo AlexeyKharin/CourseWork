@@ -5,11 +5,17 @@ enum Keys: String {
     case boolKey
 }
 
+enum UnitsQuery: String {
+    case imperial
+    case metric
+}
+
 enum ApiType {
     
     case getDaily(Double, Double)
     case getHourly(Double, Double)
     case geographicData(String)
+    case geographicDataBasedLatLon(String, String)
     
     var scheme: String {
        return "https"
@@ -18,6 +24,8 @@ enum ApiType {
     var host: String {
         switch self {
         case .geographicData:
+            return  "geocode-maps.yandex.ru"
+        case .geographicDataBasedLatLon:
             return  "geocode-maps.yandex.ru"
         default:
             return  "api.openweathermap.org"
@@ -28,6 +36,8 @@ enum ApiType {
         switch self {
         case .geographicData:
             return  "/1.x/"
+        case .geographicDataBasedLatLon:
+            return  "/1.x/"
         default:
             return  "/data/2.5/onecall"
         }
@@ -36,6 +46,8 @@ enum ApiType {
     var apiKey: String {
         switch self {
         case .geographicData:
+            return "69be8e2c-31b4-40d2-93a0-9b9a2a1311b5"
+        case .geographicDataBasedLatLon:
             return "69be8e2c-31b4-40d2-93a0-9b9a2a1311b5"
         default:
             return "f1bc1b3aee2e9ba489dc6af0da95c556"
@@ -50,6 +62,17 @@ enum ApiType {
     
     var inputQuery: [String: String] {
         switch self {
+        
+        case .geographicDataBasedLatLon(let latitude, let longitude):
+            let inputQuery = [
+                "apikey": apiKey,
+                "results": "1",
+                "format": "json",
+                "lang": "ru_RU",
+                "geocode": "\(latitude),\(longitude)"
+        ]
+            return inputQuery
+            
         case .geographicData(let nameCity):
             let inputQuery = [
                 "apikey": apiKey,

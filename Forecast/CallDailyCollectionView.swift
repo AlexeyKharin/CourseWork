@@ -1,3 +1,4 @@
+
 import Foundation
 import UIKit
 
@@ -5,7 +6,13 @@ final class CallDailyCollectionView: UIView {
     
     var delegate: CreateDailySummaryViewController?
     
-    var modelDaily: RealmModelDaily?
+    var modelDaily: RealmModelDaily? {
+        didSet {
+            modelUI = modelDaily?.weatherDaily.map { UIModelDailyCollectionCell(tempNight: $0.tempNight, tempDay: $0.tempDay, pop: $0.pop, weatherDescription: $0.weatherDescription, dataOfdailyForecast: $0.dataForTableView)}
+        }
+    }
+    
+   private var modelUI: [UIModelDailyCollectionCell]?
     
     let dailyForecast: UILabel = {
         let label = UILabel()
@@ -40,10 +47,9 @@ final class CallDailyCollectionView: UIView {
         delegate?.createDailySummaryViewController(modelDaily)
     }
     
-
     private let layout = UICollectionViewFlowLayout()
     
-        lazy var collectionView: UICollectionView = {
+    lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .white
         collectionView.toAutoLayout()
@@ -94,7 +100,7 @@ final class CallDailyCollectionView: UIView {
 extension CallDailyCollectionView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return modelDaily?.weatherDaily.count ?? 0
+        return modelUI?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -103,14 +109,14 @@ extension CallDailyCollectionView: UICollectionViewDataSource {
             withReuseIdentifier: String(describing: DailyCollectionCell.self),
             for: indexPath) as! DailyCollectionCell
         
-        cell.contentDaily = modelDaily?.weatherDaily[indexPath.row]
+        cell.contentDaily = modelUI?[indexPath.row]
         
         return cell
     }
 }
 
 extension CallDailyCollectionView: UICollectionViewDelegateFlowLayout {
-        
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let width: CGFloat = (collectionView.bounds.width - 16 * 2)
@@ -129,4 +135,4 @@ extension CallDailyCollectionView: UICollectionViewDelegateFlowLayout {
         guard let  modelDaily = modelDaily else { return }
         delegate?.createDailySummaryViewController(modelDaily)
     }
-    }
+}

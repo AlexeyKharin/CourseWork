@@ -3,13 +3,13 @@ import Foundation
 import UIKit
 class CollectionHeaderForSectionOne: UITableViewHeaderFooterView {
     
-    var contentDaily: RealmModelDaily? {
+    var contentDaily: [UIModelCollectionHeaderCell]? {
         didSet {
             collection.contentDaily = contentDaily
         }
     }
-    var dataTransfer: ((ModelOneDay) -> Void)?
     
+    var dataTransferInt: ((Int) -> Void)?
     private lazy var collection: CallCollectionView = {
         let collection = CallCollectionView()
         collection.toAutoLayout()
@@ -21,8 +21,8 @@ class CollectionHeaderForSectionOne: UITableViewHeaderFooterView {
         contentView.backgroundColor = .white
         setUp()
         
-        collection.dataTransfer = { [weak self] model in
-            self?.dataTransfer?(model)
+        collection.dataTransferInt = { [weak self] index in
+            self?.dataTransferInt?(index)
         }
     }
     

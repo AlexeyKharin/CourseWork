@@ -29,7 +29,7 @@ class PageViewController: UIPageViewController {
     
     lazy var buttonFindLocation: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "location")!.applyingSymbolConfiguration(.init(scale: .large))! .withTintColor(UIColor(red: 39/255, green: 39/255, blue: 39/255, alpha: 1)).withRenderingMode(.alwaysOriginal), for:.normal)
+        button.setImage(UIImage(named: "location")!.applyingSymbolConfiguration(.init(scale: .large))! .withTintColor(.customBlack).withRenderingMode(.alwaysOriginal), for:.normal)
         button.addTarget(self, action: #selector(returnBack), for: .touchUpInside)
         return button
     }()
@@ -42,26 +42,36 @@ class PageViewController: UIPageViewController {
         let alert = UIAlertController(title: "Хотите изменить город", message: "Введите название горорода, для которого ищите прогноз погоды", preferredStyle: .alert)
         let actionCancel = UIAlertAction(title: "Отмена", style: .cancel) { _ in
         }
-        let actionContinue = UIAlertAction(title: "Изменить", style: .default) { [weak self] _ in
-            
-            let textField = alert.textFields![0] as UITextField
-            guard let text = textField.text else { return }
-            
-            let page = (self?.pages[(self?.currentIndexA)!])! as! ViewController
-            page.udateCity(nameCity: text)
+        
+        if let page = pages[(currentIndexA)] as? ViewController {
+            let actionContinue = UIAlertAction(title: "Изменить", style: .default) { _ in
+                let textField = alert.textFields![0] as UITextField
+                guard let text = textField.text else { return }
+                page.udateCity(nameCity: text)
+            }
+            alert.addAction(actionContinue)
+        }
+        
+        if let page = pages[(currentIndexA)] as? CreateViewController {
+            alert.title = "Хотите добавить город"
+            let actionContinue = UIAlertAction(title: "Добавить", style: .default) { _ in
+                
+                let textField = alert.textFields![0] as UITextField
+                guard let text = textField.text else { return }
+                page.transferString?(text)
+            }
+            alert.addAction(actionContinue)
         }
         
         alert.addTextField { (textField) in
             textField.placeholder = "Введите город"
         }
-        
-        alert.addAction(actionContinue)
         alert.addAction(actionCancel)
         
         present(alert, animated: true, completion: nil)
     }
     
-     var titleCity: UILabel = {
+    var titleCity: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         label.textColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1)
@@ -74,7 +84,7 @@ class PageViewController: UIPageViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         view.addSubview(customNavigationBar)
         customNavigationBar.backgroundColor = .white
         customNavigationBar.addSubview(buttonSettings)
@@ -105,13 +115,16 @@ class PageViewController: UIPageViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        
-        guard let page = pages[currentIndexA] as? ViewController else { return }
-        let parts = page.nameCityCountry.split(separator: ",")
-        guard let nameCity = parts.last else { return }
-        titleCity.text = String(nameCity)
+        self.pageControl.currentPage = pages.count - 1
+        if let page = pages[currentIndexA] as? ViewController {
+            let parts = page.nameCityCountry.split(separator: ",")
+            guard let nameCity = parts.last else { return }
+            titleCity.text = String(nameCity)
+        } else {
+            titleCity.text = "Прогноз погоды"
+        }
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.isNavigationBarHidden = false
@@ -123,19 +136,20 @@ extension PageViewController {
     func createOneViewCintroller(page: UIViewController) {
         pages.append(page)
         pageControl.numberOfPages = pages.count
-        setViewControllers([pages[initialPage]], direction: .forward, animated: true, completion: nil)
+        pageControl.currentPage = pages.count - 1
+        setViewControllers([pages[pages.count - 1]], direction: .forward, animated: true, completion: nil)
     }
     
     func createBasedViewControllers(pages: [UIViewController]) {
         self.pages = pages
         self.pageControl.numberOfPages = self.pages.count
-        setViewControllers([self.pages[initialPage]], direction: .forward, animated: true, completion: nil)
+        self.pageControl.currentPage = pages.count - 1
+        setViewControllers([self.pages[pages.count - 1]], direction: .forward, animated: true, completion: nil)
     }
     
     func setup() {
         dataSource = self
         delegate = self
-        
         pageControl.addTarget(self, action: #selector(pageControlTapped(_:)), for: .valueChanged)
     }
     
@@ -197,7 +211,7 @@ extension PageViewController: UIPageViewControllerDataSource {
 
 // MARK: - Delegates
 extension PageViewController: UIPageViewControllerDelegate {
-  
+    
     // How we keep our pageControl in sync with viewControllers
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         
@@ -207,8 +221,7 @@ extension PageViewController: UIPageViewControllerDelegate {
         pageControl.currentPage = currentIndex
         self.currentIndexA = currentIndex
         
-        if ((pages[currentIndex] as? ViewController) != nil) {
-            let page = pages[currentIndex] as! ViewController
+        if let page = pages[currentIndex] as? ViewController {
             let parts = page.nameCityCountry.split(separator: ",")
             guard let nameCity = parts.last else { return }
             titleCity.text = String(nameCity)

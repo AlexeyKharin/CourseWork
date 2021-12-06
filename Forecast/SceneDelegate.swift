@@ -10,12 +10,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
-        
-//        let vc = pageCoordinator.pageViewController
-//        let vc = ContainerViewController()
-        let vc = SettingsViewController()
+//        let navigation = UINavigationController()
+        let vc = OnboardingViewController()
+//        let vc = OnboardingCoordinator(navigation: navigation)
         let navigation = UINavigationController(rootViewController: vc)
        
+       
+//        window?.rootViewController = vc.onboardingController
         window?.rootViewController = navigation
         window?.makeKeyAndVisible()
     }

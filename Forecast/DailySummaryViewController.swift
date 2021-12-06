@@ -2,13 +2,35 @@ import UIKit
 
 class DailySummaryViewController: UIViewController {
     
-    var realmModelOndeDay: ModelOneDay?
+    private var switchedIndex: Int = 0
     
-    let customNavigationBar = UINavigationBar()
+    private let customNavigationBar = UINavigationBar()
     
-    var realmModelDaily: RealmModelDaily
+    private let customNavigationController: UINavigationController
+    
+    private var modelUINight: [UIModelNightDayTableViewCell]
+    
+    private var modelUIDay: [UIModelNightDayTableViewCell]
+    
+    private var modelUIHeader: [UIModelCollectionHeaderCell]
+    
+    private var modelUIDayNight: [UIModelSunAndMoonСell]
+    
+    init(realmModelDaily: RealmModelDaily, titleCity: String, customNavigationController: UINavigationController) {
         
-    let customNavigationController: UINavigationController
+        self.modelUIDay = realmModelDaily.weatherDaily.map { UIModelNightDayTableViewCell(weatherDescription: $0.weatherDescription, uviValue: $0.uvi, rainValue: $0.pop, imageCondition: $0.imageCondition, cloudyValue: $0.clouds, temp: $0.tempDay, feelLikesValue: $0.feelsLikeDay, windSpeedValue: $0.windSpeed) }
+        
+        self.modelUINight = realmModelDaily.weatherDaily.map { UIModelNightDayTableViewCell(weatherDescription: $0.weatherDescription, uviValue: $0.uvi, rainValue: $0.pop, imageCondition: $0.imageCondition, cloudyValue: $0.clouds, temp: $0.tempNight, feelLikesValue: $0.feelsLikeNight, windSpeedValue: $0.windSpeed) }
+        
+        self.modelUIHeader = realmModelDaily.weatherDaily.map { UIModelCollectionHeaderCell(dataForCollection: $0.dataForCollection) }
+        
+        self.modelUIDayNight = realmModelDaily.weatherDaily.map { UIModelSunAndMoonСell(sunsetValue: $0.sunset, sunriseValue: $0.sunrise, moonsetValue: $0.moonset, moonriseValue: $0.moonrise) }
+        
+        self.titleCity.text = titleCity
+        self.customNavigationController = customNavigationController
+        super.init(nibName: nil, bundle: nil)
+    }
+    
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
@@ -34,14 +56,14 @@ class DailySummaryViewController: UIViewController {
     }()
     
     let titleCity: UILabel = {
-       let label = UILabel()
-       label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-       label.textColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1)
-       label.textAlignment = .left
-       label.numberOfLines = 0
-       label.toAutoLayout()
-       return label
-   }()
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        label.textColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1)
+        label.textAlignment = .left
+        label.numberOfLines = 0
+        label.toAutoLayout()
+        return label
+    }()
     
     lazy var buttonBack: UIButton = {
         let button = UIButton(type: .system)
@@ -57,7 +79,7 @@ class DailySummaryViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-    
+        
         buttonBack.frame = CGRect(
             x: 16,
             y: 34,
@@ -75,22 +97,16 @@ class DailySummaryViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.isNavigationBarHidden = false
     }
     
-    init(realmModelDaily: RealmModelDaily, titleCity: String, customNavigationController: UINavigationController) {
-        self.realmModelDaily = realmModelDaily
-        self.titleCity.text = titleCity
-        self.customNavigationController = customNavigationController
-        super.init(nibName: nil, bundle: nil)
-    }
-        
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(customNavigationBar)
@@ -99,7 +115,7 @@ class DailySummaryViewController: UIViewController {
         view.addSubview(titleCity)
         view.backgroundColor = .white
         view.addSubview(tableView)
-
+        
         customNavigationBar.frame = CGRect(
             x: .zero,
             y: 44,
@@ -115,11 +131,9 @@ class DailySummaryViewController: UIViewController {
             tableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 15),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40)
-
+            
         ]
         NSLayoutConstraint.activate(constraints)
-        
-        realmModelOndeDay = realmModelDaily.weatherDaily.first
     }
 }
 
@@ -141,21 +155,23 @@ extension DailySummaryViewController: UITableViewDataSource {
             let cell: NightSummaryTableViewCell = tableView.dequeueReusableCell(
                 withIdentifier: String(describing: NightSummaryTableViewCell.self),
                 for: indexPath) as! NightSummaryTableViewCell
-            cell.contentNight = realmModelOndeDay
+            let content = modelUINight[switchedIndex]
+            cell.contentNight = content
             return cell
             
         case 1:
             let cell: DaySummaryTableViewCell = tableView.dequeueReusableCell(
                 withIdentifier: String(describing: DaySummaryTableViewCell.self),
                 for: indexPath) as! DaySummaryTableViewCell
-            cell.contentDay = realmModelOndeDay
+            let content = modelUIDay[switchedIndex]
+            cell.contentDay = content
             return cell
             
         default:
             let cell: SunAndMoonСell = tableView.dequeueReusableCell(
                 withIdentifier: String(describing: SunAndMoonСell.self),
                 for: indexPath) as! SunAndMoonСell
-            cell.contentDay = realmModelOndeDay
+            cell.contentDay = modelUIDayNight[switchedIndex]
             return cell
         }
     }
@@ -165,10 +181,10 @@ extension DailySummaryViewController: UITableViewDataSource {
         case 0:
             let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: String(describing: CollectionHeaderForSectionOne.self) ) as! CollectionHeaderForSectionOne
             
-            headerView.contentDaily = realmModelDaily
-    
-            headerView.dataTransfer =  { model in
-                self.realmModelOndeDay = model
+            headerView.contentDaily = modelUIHeader
+            
+            headerView.dataTransferInt = { index in
+                self.switchedIndex = index
                 self.tableView.reloadData()
             }
             return headerView
@@ -180,12 +196,11 @@ extension DailySummaryViewController: UITableViewDataSource {
             
         }
     }
-    
 }
 
 //    MARK: - UITableViewDelegate
 extension DailySummaryViewController: UITableViewDelegate {
-
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
         case 0:

@@ -1,93 +1,97 @@
 import Foundation
-enum ObtainPostResult {
-    case successDaily(data: [ModelDaily])
-    case succesHourly(data:[ModelHourly])
-    case succesGeoData(data: [GeoData])
-    case failure(error: Error)
+
+enum ObtainError: Error {
+    case failedConnect
+    case failedDecodeData
+    case failedGetGeoData
 }
 
 struct NetworkManager {
     
-    static func obtainPost(apiType: ApiType, completion: @escaping (ObtainPostResult) -> Void)  {
-        
+    static func obtainGeoData(url: URL, completion: @escaping (Result< GeoData, ObtainError>) -> Void)  {
         let session = URLSession.shared
         let decoder = JSONDecoder()
         
-        switch apiType {
+        session.dataTask(
+            with: URLRequest(url: url)
+        ) { (data, response, error) in
+   
+            var result: Result< GeoData, ObtainError>
+            
+            defer {
+                DispatchQueue.main.async {
+                    completion(result)
+                }
+            }
+            
+            if let parsData = data {
+                guard let posts = try? decoder.decode(GeoData.self, from: parsData) else {
+                    result = .failure(.failedDecodeData)
+                    return
+                }
+                result = .success(posts)
+                print(response)
+            } else {
+                result = .failure(.failedGetGeoData)
+            }
+        }.resume()
+    }
+    
+    static func obtainHourlyData(url: URL, completion: @escaping (Result< ModelHourly, ObtainError>) -> Void)  {
+        let session = URLSession.shared
+        let decoder = JSONDecoder()
         
-        case .geographicData:
-            session.dataTask(
-                with: URLRequest(url: apiType.request)
-            ) { (data, response, error) in
-                
-                var result: ObtainPostResult
-                
-                defer {
-                    DispatchQueue.main.async {
-                        completion(result)
-                        print(apiType.request)
-                    }
-                }
-                
-                if let parsData = data {
-                    guard let posts = try? decoder.decode(GeoData.self, from: parsData) else {
-                        result = .failure(error: error!)
-                        return
-                    }
-                    result = .succesGeoData(data: [posts])
-                } else {
-                    result = .failure(error: error!)
-                }
-            }.resume()
+        session.dataTask(
+            with: URLRequest(url: url)
+        ) { (data, response, error) in
             
-        case .getDaily:
-            session.dataTask(
-                with: URLRequest(url: apiType.request)
-            ) { (data, response, error) in
-                
-                var result: ObtainPostResult
-                
-                defer {
-                    DispatchQueue.main.async {
-                        completion(result)
-                    }
-                }
-                
-                if let parsData = data {
-                    guard let posts = try? decoder.decode(ModelDaily.self, from: parsData) else {
-                        result = .failure(error: error!)
-                        return
-                    }
-                    result = .successDaily(data: [posts])
-                } else {
-                    result = .failure(error: error!)
-                }
-            }.resume()
+            var result: Result< ModelHourly, ObtainError>
             
-        case .getHourly:
-            session.dataTask(
-                with: URLRequest(url: apiType.request)
-            ) {  (data, response, error) in
-                
-                var result: ObtainPostResult
-                
-                defer {
-                    DispatchQueue.main.async {
-                        completion(result)
-                    }
+            defer {
+                DispatchQueue.main.async {
+                    completion(result)
                 }
-                
-                if let parsData = data {
-                    guard let posts = try? decoder.decode(ModelHourly.self, from: parsData) else {
-                        result = .failure(error: error!)
-                        return
-                    }
-                    result = .succesHourly(data: [posts])
-                } else {
-                    result = .failure(error: error!)
+            }
+            
+            if let parsData = data {
+                guard let posts = try? decoder.decode(ModelHourly.self, from: parsData) else {
+                    result = .failure(.failedDecodeData)
+                    return
                 }
-            }.resume()
-        }
+                result = .success(posts)
+                print(response)
+            } else {
+                result = .failure(.failedConnect)
+            }
+        }.resume()
+    }
+    
+    static func obtainDailyData(url: URL, completion: @escaping (Result< ModelDaily, ObtainError>) -> Void)  {
+        let session = URLSession.shared
+        let decoder = JSONDecoder()
+        
+        session.dataTask(
+            with: URLRequest(url: url)
+        ) { (data, response, error) in
+            
+            var result: Result< ModelDaily, ObtainError>
+            
+            defer {
+                DispatchQueue.main.async {
+                    completion(result)
+                }
+            }
+            
+            if let parsData = data {
+                guard let posts = try? decoder.decode(ModelDaily.self, from: parsData) else {
+                    result = .failure(.failedDecodeData)
+                    return
+                }
+                result = .success(posts)
+                print(response)
+            } else {
+                result = .failure(.failedConnect)
+            }
+        }.resume()
     }
 }
-

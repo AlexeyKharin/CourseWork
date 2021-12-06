@@ -2,17 +2,17 @@ import Foundation
 import UIKit
 final class CallCollectionView: UIView, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    var selectedIndex = Int ()
+    var selectedIndex = Int()
     
-    var contentDaily: RealmModelDaily? {
+    var contentDaily: [UIModelCollectionHeaderCell]? {
         didSet {
-            weatherDaily = Array(contentDaily!.weatherDaily)
+            weatherDaily = contentDaily!
         }
     }
     
-    var dataTransfer: ((ModelOneDay) -> Void)?
+    var dataTransferInt: ((Int) -> Void)?
     
-    var weatherDaily: [ModelOneDay] = []
+    var weatherDaily: [UIModelCollectionHeaderCell] = []
     
     private let layout = UICollectionViewFlowLayout()
     
@@ -61,7 +61,7 @@ final class CallCollectionView: UIView, UICollectionViewDataSource, UICollection
         let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: String(describing: CollectionHeaderCell.self),
             for: indexPath) as! CollectionHeaderCell
-
+        
         let content = weatherDaily[indexPath.row]
         
         if selectedIndex == indexPath.row {
@@ -87,12 +87,11 @@ final class CallCollectionView: UIView, UICollectionViewDataSource, UICollection
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: .zero, left: .zero, bottom: .zero, right: .zero)
     }
- 
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let model = weatherDaily[indexPath.row]
-        dataTransfer?(model)
-        selectedIndex = indexPath.row
-        self.collectionView.reloadData()
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedIndex = indexPath.row
+        dataTransferInt?(selectedIndex)
+        self.collectionView.reloadData()
+        
     }
 }

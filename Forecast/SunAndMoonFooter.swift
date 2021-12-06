@@ -3,12 +3,12 @@ import  UIKit
 
 class SunAndMoonСell: UITableViewCell {
     
-    var contentDay: ModelOneDay? {
+    var contentDay: UIModelSunAndMoonСell? {
         didSet {
-            guard let sunrise = contentDay?.sunrise else { return }
-            guard let sunset = contentDay?.sunset else { return }
-            guard let  moonrise = contentDay?.moonrise else { return }
-            guard let  moonset = contentDay?.moonset else { return }
+            guard let sunrise = contentDay?.sunriseValue else { return }
+            guard let sunset = contentDay?.sunsetValue else { return }
+            guard let  moonrise = contentDay?.moonriseValue else { return }
+            guard let  moonset = contentDay?.moonsetValue else { return }
             
             sunsetValue.text = sunset
             sunriseValue.text = sunrise
@@ -16,6 +16,7 @@ class SunAndMoonСell: UITableViewCell {
             moonriseValue.text = moonrise
         }
     }
+    
     private let lineHorizontalOne: DashedLineHorizonatalView = {
         let line = DashedLineHorizonatalView()
         line.toAutoLayout()
@@ -43,14 +44,14 @@ class SunAndMoonСell: UITableViewCell {
     private let lineVertical: UIView = {
         let line = UIView()
         line.toAutoLayout()
-        line.backgroundColor = UIColor(red: 32/255, green: 78/255, blue: 199/255, alpha: 1)
+        line.backgroundColor = .customBlue
         return line
     }()
     
     private let sunAndMoon: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-        label.textColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1)
+        label.textColor = .customBlack
         label.textAlignment = .center
         label.text = "Солнце и Луна"
         label.toAutoLayout()
@@ -60,7 +61,7 @@ class SunAndMoonСell: UITableViewCell {
     private let sunrise: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        label.textColor = UIColor(red: 154/255, green: 150/255, blue: 150/255, alpha: 1)
+        label.textColor = .customGray
         label.textAlignment = .center
         label.text = "Восход"
         label.toAutoLayout()
@@ -70,7 +71,7 @@ class SunAndMoonСell: UITableViewCell {
     private let sunriseValue: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        label.textColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1)
+        label.textColor = .customBlack
         label.textAlignment = .center
         label.toAutoLayout()
         return label
@@ -79,7 +80,7 @@ class SunAndMoonСell: UITableViewCell {
     private let sunset: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        label.textColor = UIColor(red: 154/255, green: 150/255, blue: 150/255, alpha: 1)
+        label.textColor = .customGray
         label.textAlignment = .center
         label.text = "Заход"
         label.toAutoLayout()
@@ -89,7 +90,7 @@ class SunAndMoonСell: UITableViewCell {
     private let sunsetValue: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        label.textColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1)
+        label.textColor = .customBlack
         label.textAlignment = .center
         label.toAutoLayout()
         return label
@@ -98,7 +99,7 @@ class SunAndMoonСell: UITableViewCell {
     private let moonrise: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        label.textColor = UIColor(red: 154/255, green: 150/255, blue: 150/255, alpha: 1)
+        label.textColor = .customGray
         label.textAlignment = .center
         label.text = "Восход"
         label.toAutoLayout()
@@ -108,7 +109,7 @@ class SunAndMoonСell: UITableViewCell {
     private let moonriseValue: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        label.textColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1)
+        label.textColor = .customBlack
         label.textAlignment = .center
         label.toAutoLayout()
         return label
@@ -117,7 +118,7 @@ class SunAndMoonСell: UITableViewCell {
     private let moonset: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        label.textColor = UIColor(red: 154/255, green: 150/255, blue: 150/255, alpha: 1)
+        label.textColor = .customGray
         label.textAlignment = .center
         label.text = "Заход"
         label.toAutoLayout()
@@ -127,7 +128,7 @@ class SunAndMoonСell: UITableViewCell {
     private let moonsetValue: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        label.textColor = UIColor(red: 39/255, green: 39/255, blue: 34/255, alpha: 1)
+        label.textColor = .customBlack
         label.textAlignment = .center
         label.toAutoLayout()
         return label
@@ -135,7 +136,7 @@ class SunAndMoonСell: UITableViewCell {
    
     private let imageSun: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "clear")
+        image.image = Images.clear
         image.contentMode = .scaleAspectFit
         image.toAutoLayout()
         return image
@@ -143,7 +144,7 @@ class SunAndMoonСell: UITableViewCell {
     
     private let imageMoon: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "moon")
+        image.image = Images.moon
         image.contentMode = .scaleAspectFit
         image.toAutoLayout()
         return image
